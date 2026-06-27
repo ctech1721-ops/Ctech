@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>CTECH – Smart Solutions for a Digital World</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--navy:#0a1628;--dark-blue:#0d2244;--accent-blue:#1e6fcf;--light-blue:#4fa3e8;--white:#fff;--text-muted:#7a9bbf;--green:#25D366;--red:#e94560;--gold:#f5a623;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden;}
+.page{display:none!important;}.page.active{display:block!important;}
+
+
+/* NAV */
+nav{position:fixed;top:0;left:0;width:100%;z-index:999;padding:14px 5%;display:flex;justify-content:space-between;align-items:center;background:rgba(10,22,40,0.95);backdrop-filter:blur(14px);border-bottom:1px solid rgba(79,163,232,0.12);}
+.logo{display:flex;align-items:center;gap:12px;flex-wrap:nowrap;}
+.logo-circle{width:46px;height:46px;border-radius:50%;overflow:hidden;flex-shrink:0;display:flex;justify-content:center;align-items:center;}
+.logo-circle img{width:100%;height:100%;object-fit:cover;}
+.company-name{margin:0;font-size:2rem;font-weight:800;line-height:1;white-space:nowrap;}
+.company-name{font-family:'Syne',sans-serif;font-size:1.55rem;font-weight:800;letter-spacing:1px;}
+.c-letter{color:#4fa3e8;}.tech-letter{color:#fff;}
+.nav-links{display:flex;gap:1.3rem;list-style:none;align-items:center;}
+.nav-links a{color:var(--text-muted);text-decoration:none;font-size:.85rem;font-weight:500;transition:color .3s;}
+.nav-links a:hover{color:var(--light-blue);}
+.nav-cta{background:var(--accent-blue);color:#fff!important;padding:8px 18px;border-radius:6px;}
+.nav-cta:hover{background:var(--light-blue)!important;}
+.lock-btn{background:none;border:1px solid rgba(79,163,232,0.25);border-radius:8px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text-muted);font-size:.95rem;transition:all .3s;}
+.lock-btn:hover{border-color:var(--light-blue);color:var(--light-blue);}
+
+/* HERO BANNER */
+.hero-banner{width:100%;position:relative;display:none;margin-top:65px;}
+.hero-banner img{width:100%;max-height:600px;object-fit:cover;display:block;object-fit:cover;object-position:center 0%;transform:translateY(20px);}
+
+
+.banner-text h2{font-family:'Syne',sans-serif;font-size:clamp(1.4rem,4vw,2.8rem);font-weight:800;margin-bottom:.5rem;}
+.banner-text p{color:rgba(255,255,255,0.8);font-size:.95rem;max-width:380px;}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:120px 6% 80px;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 70% 50%,rgba(30,111,207,0.15) 0%,transparent 70%);}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(79,163,232,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(79,163,232,0.04) 1px,transparent 1px);background-size:60px 60px;}
+.hero-content{position:relative;max-width:650px;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(79,163,232,0.1);border:1px solid rgba(79,163,232,0.25);padding:7px 16px;border-radius:50px;font-size:.8rem;color:var(--light-blue);margin-bottom:1.5rem;cursor:pointer;transition:all .3s;}
+.hero-badge:hover{background:rgba(79,163,232,0.18);border-color:var(--light-blue);}
+.badge-dot{width:7px;height:7px;background:#25D366;border-radius:50%;animation:pulse 1.5s infinite;flex-shrink:0;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.5;transform:scale(1.3);}}
+h1{font-family:'Syne',sans-serif;font-size:clamp(2.2rem,5vw,3.8rem);font-weight:800;line-height:1.1;margin-bottom:1.2rem;}
+h1 span{color:var(--light-blue);}
+.hero-sub{font-size:1.05rem;color:var(--text-muted);line-height:1.8;margin-bottom:2.5rem;max-width:520px;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{background:var(--accent-blue);color:#fff;padding:13px 30px;border-radius:8px;text-decoration:none;font-weight:500;font-size:.92rem;transition:all .3s;border:none;cursor:pointer;display:inline-block;}
+.btn-primary:hover{background:var(--light-blue);transform:translateY(-2px);}
+.btn-outline{border:1px solid rgba(79,163,232,0.4);color:var(--light-blue);padding:13px 30px;border-radius:8px;text-decoration:none;font-weight:500;font-size:.92rem;transition:all .3s;display:inline-block;}
+.btn-outline:hover{background:rgba(79,163,232,0.08);transform:translateY(-2px);}
+.hero-stats{display:flex;gap:2.5rem;margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(79,163,232,0.12);}
+.stat h3{font-family:'Syne',sans-serif;font-size:1.7rem;font-weight:700;}
+.stat p{font-size:.78rem;color:var(--text-muted);margin-top:3px;}
+
+/* SECTIONS */
+section{padding:80px 6%;}
+.section-label{font-size:.72rem;letter-spacing:2px;color:var(--light-blue);text-transform:uppercase;font-weight:600;margin-bottom:.8rem;}
+.section-title{font-family:'Syne',sans-serif;font-size:clamp(1.7rem,3vw,2.5rem);font-weight:700;line-height:1.2;margin-bottom:1rem;}
+.section-sub{color:var(--text-muted);font-size:.97rem;line-height:1.8;max-width:540px;}
+
+/* SERVICES */
+.services{background:var(--dark-blue);}
+.services-header{text-align:center;margin-bottom:3rem;}
+.services-header .section-sub{margin:0 auto;}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.4rem;}
+.service-card{background:rgba(255,255,255,0.03);border:1px solid rgba(79,163,232,0.1);border-radius:12px;padding:1.8rem;transition:all .3s;position:relative;overflow:hidden;}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent-blue),var(--light-blue));transform:scaleX(0);transition:transform .3s;}
+.service-card:hover{border-color:rgba(79,163,232,0.3);background:rgba(79,163,232,0.05);transform:translateY(-4px);}
+.service-card:hover::before{transform:scaleX(1);}
+.service-icon{width:50px;height:50px;background:rgba(30,111,207,0.15);border-radius:10px;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem auto;}
+.service-icon i{font-size:1.3rem;color:var(--light-blue);}
+.service-card h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:600;margin-bottom:.6rem;text-align:center;}
+.service-card p{color:var(--text-muted);font-size:.87rem;line-height:1.7;text-align:center;}
+
+/* ABOUT */
+.about{background:var(--navy);}
+.about-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.about-visual{background:rgba(79,163,232,0.05);border:1px solid rgba(79,163,232,0.12);border-radius:16px;padding:2.2rem;display:flex;flex-direction:column;gap:1.1rem;}
+.about-item{display:flex;align-items:flex-start;gap:1rem;}
+.about-item-icon{width:38px;height:38px;background:rgba(30,111,207,0.15);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.about-item-icon i{color:var(--light-blue);font-size:.95rem;}
+.about-item h4{font-family:'Syne',sans-serif;font-size:.9rem;font-weight:600;margin-bottom:.25rem;}
+.about-item p{color:var(--text-muted);font-size:.83rem;line-height:1.6;}
+
+/* PORTFOLIO / RECENT PROJECTS */
+.portfolio{background:var(--dark-blue);}
+.portfolio-header{margin-bottom:2.5rem;}
+.portfolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.4rem;}
+.portfolio-card{background:rgba(255,255,255,0.03);border:1px solid rgba(79,163,232,0.1);border-radius:12px;overflow:hidden;transition:all .3s;}
+.portfolio-card:hover{transform:translateY(-4px);border-color:rgba(79,163,232,0.3);}
+.portfolio-thumb{height:130px;display:flex;align-items:center;justify-content:center;font-size:2.6rem;background:rgba(30,111,207,0.07);}
+.portfolio-info{padding:1.3rem;}
+.portfolio-tag{font-size:.68rem;letter-spacing:1px;color:var(--light-blue);text-transform:uppercase;font-weight:600;margin-bottom:.4rem;}
+.portfolio-info h3{font-family:'Syne',sans-serif;font-size:.97rem;font-weight:600;margin-bottom:.4rem;}
+.portfolio-info p{color:var(--text-muted);font-size:.83rem;line-height:1.6;}
+
+/* PROJECTS FOR SALE */
+.projects-section{background:var(--navy);padding:80px 6%;}
+.proj-header{text-align:center;margin-bottom:2.5rem;}
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;}
+.proj-card{background:var(--dark-blue);border:1px solid rgba(79,163,232,0.15);border-radius:14px;overflow:hidden;transition:all .3s;position:relative;}
+.proj-card:hover{transform:translateY(-5px);border-color:rgba(79,163,232,0.4);box-shadow:0 10px 30px rgba(30,111,207,0.15);}
+.proj-imgs{position:relative;height:190px;overflow:hidden;}
+.proj-imgs img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .4s;}
+.proj-imgs img.active{opacity:1;z-index:2;}
+.proj-imgs img:not(.active){opacity:0;z-index:1;}
+.proj-img-dots{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);display:flex;gap:5px;z-index:3;}
+.proj-img-dots span{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.4);cursor:pointer;transition:background .3s;}
+.proj-img-dots span.active{background:#fff;}
+.proj-no-img{height:190px;display:flex;align-items:center;justify-content:center;font-size:3rem;background:rgba(30,111,207,0.08);}
+.proj-badge{position:absolute;top:10px;left:10px;background:rgba(10,22,40,0.85);color:var(--light-blue);font-size:.68rem;padding:4px 10px;border-radius:20px;font-weight:600;z-index:4;backdrop-filter:blur(4px);}
+.proj-body{padding:1.3rem;}
+.proj-name{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:.3rem;}
+.proj-domain{font-size:.75rem;color:var(--light-blue);margin-bottom:.5rem;}
+.proj-budget{display:inline-block;background:rgba(245,166,35,0.12);border:1px solid rgba(245,166,35,0.3);color:var(--gold);font-size:.78rem;font-weight:600;padding:3px 10px;border-radius:20px;margin-bottom:.8rem;}
+.proj-desc{font-size:.83rem;color:var(--text-muted);line-height:1.6;margin-bottom:1rem;}
+.proj-btns{display:flex;gap:.6rem;}
+.proj-buy-btn{flex:1;padding:9px 0;background:var(--accent-blue);color:#fff;border:none;border-radius:8px;font-family:'Syne',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;transition:all .3s;}
+.proj-buy-btn:hover{background:var(--light-blue);}
+.proj-enq-btn{flex:1;padding:9px 0;background:rgba(79,163,232,0.08);color:var(--light-blue);border:1px solid rgba(79,163,232,0.3);border-radius:8px;font-family:'Syne',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;transition:all .3s;}
+.proj-enq-btn:hover{background:rgba(79,163,232,0.15);}
+
+/* SOCIAL */
+.social-section{background:var(--dark-blue);padding:55px 6%;display:none;}
+.social-section-inner{max-width:680px;margin:0 auto;text-align:center;}
+.social-section h2{font-family:'Syne',sans-serif;font-size:1.7rem;font-weight:700;margin-bottom:.5rem;}
+.social-section p{color:var(--text-muted);margin-bottom:1.8rem;}
+.social-links-grid{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;}
+.social-link-btn{display:flex;align-items:center;gap:10px;padding:13px 26px;border-radius:50px;font-family:'Syne',sans-serif;font-size:.88rem;font-weight:600;text-decoration:none;transition:all .3s;}
+.wa-btn{background:rgba(37,211,102,0.1);border:1px solid rgba(37,211,102,0.3);color:#25D366;}
+.wa-btn:hover{background:rgba(37,211,102,0.2);transform:translateY(-2px);}
+.ig-btn{background:rgba(225,48,108,0.1);border:1px solid rgba(225,48,108,0.3);color:#E1306C;}
+.ig-btn:hover{background:rgba(225,48,108,0.2);transform:translateY(-2px);}
+.tg-btn{background:rgba(0,136,204,0.1);border:1px solid rgba(0,136,204,0.3);color:#0088cc;}
+.tg-btn:hover{background:rgba(0,136,204,0.2);transform:translateY(-2px);}
+
+
+* CONTACT */
+.contact{background:var(--navy);}
+.contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+.contact-info{display:flex;flex-direction:column;gap:1.3rem;margin-top:2rem;}
+.contact-item{display:flex;align-items:center;gap:1rem;}
+.contact-item i{color:var(--light-blue);font-size:1rem;width:20px;}
+.contact-item span{color:var(--text-muted);font-size:.88rem;}
+.contact-form{display:flex;flex-direction:column;gap:1rem;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.form-field{display:flex;flex-direction:column;gap:.35rem;}
+.form-field label{font-size:.78rem;color:var(--text-muted);}
+.form-field input,.form-field textarea,.form-field select{background:rgba(255,255,255,0.04);border:1px solid rgba(79,163,232,0.15);border-radius:8px;padding:11px 14px;color:#fff;font-family:'DM Sans',sans-serif;font-size:.88rem;outline:none;transition:border .3s;resize:none;}
+.form-field input:focus,.form-field textarea:focus,.form-field select:focus{border-color:rgba(79,163,232,0.5);}
+.form-field select option{background:var(--navy);}
+.submit-btn{background:var(--accent-blue);color:#fff;border:none;padding:13px;border-radius:8px;font-family:'Syne',sans-serif;font-size:.97rem;font-weight:600;cursor:pointer;transition:all .3s;}
+.submit-btn:hover{background:var(--light-blue);transform:translateY(-2px);}
+.success-msg{display:none;background:rgba(37,211,102,0.1);border:1px solid rgba(37,211,102,0.3);border-radius:8px;padding:13px;text-align:center;color:#25D366;font-size:.88rem;}
+
+
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:2000;display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px);}
+.modal-overlay.open{display:flex;}
+.modal-box{background:var(--dark-blue);border:1px solid rgba(79,163,232,0.2);border-radius:18px;padding:28px;width:100%;max-width:440px;position:relative;max-height:90vh;overflow-y:auto;}
+.modal-close{position:absolute;top:14px;right:16px;background:none;border:none;color:var(--text-muted);font-size:1.3rem;cursor:pointer;transition:color .3s;}
+.modal-close:hover{color:#fff;}
+.modal-title{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:6px;}
+.modal-proj-name{font-size:.82rem;color:var(--light-blue);margin-bottom:1.4rem;padding-bottom:1rem;border-bottom:1px solid rgba(79,163,232,0.12);}
+.mf{margin-bottom:11px;}
+.mf label{display:block;font-size:.76rem;color:var(--text-muted);margin-bottom:.35rem;}
+.mf input{width:100%;padding:10px 13px;background:rgba(255,255,255,0.04);border:1px solid rgba(79,163,232,0.15);border-radius:8px;color:#fff;font-family:'DM Sans',sans-serif;font-size:.87rem;outline:none;transition:border .3s;}
+.mf input:focus{border-color:var(--light-blue);}
+.mf input[readonly]{opacity:.6;cursor:not-allowed;}
+.modal-submit{width:100%;padding:12px;background:var(--accent-blue);color:#fff;border:none;border-radius:8px;font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;cursor:pointer;margin-top:6px;transition:background .3s;}
+.modal-submit:hover{background:var(--light-blue);}
+.modal-success{display:none;text-align:center;padding:20px 0;}
+.modal-success i{font-size:2.5rem;color:#25D366;margin-bottom:10px;}
+.modal-success h3{font-family:'Syne',sans-serif;font-size:1.1rem;margin-bottom:6px;}
+.modal-success p{color:var(--text-muted);font-size:.85rem;}
+.enq-options{display:flex;flex-direction:column;gap:.8rem;margin-top:.5rem;}
+.enq-opt-btn{display:flex;align-items:center;gap:12px;padding:14px 18px;border-radius:10px;border:1px solid rgba(79,163,232,0.2);background:rgba(79,163,232,0.04);cursor:pointer;transition:all .3s;text-align:left;width:100%;}
+.enq-opt-btn:hover{border-color:var(--light-blue);background:rgba(79,163,232,0.1);}
+.enq-opt-btn i{font-size:1.3rem;width:24px;flex-shrink:0;}
+.eot{font-family:'Syne',sans-serif;font-size:.9rem;font-weight:700;display:block;margin-bottom:2px;}
+.eos{font-size:.78rem;color:var(--text-muted);}
+.enq-call-btn i{color:#25D366;}
+.enq-sms-btn i{color:var(--light-blue);}
+
+/* FLOAT + FOOTER + TOAST */
+.whatsapp-float{position:fixed;bottom:28px;right:28px;z-index:500;background:#25D366;width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 18px rgba(37,211,102,0.4);transition:transform .3s;}
+.whatsapp-float:hover{transform:scale(1.1);}
+.whatsapp-float i{color:#fff;font-size:1.5rem;}
+footer{background:var(--dark-blue);padding:2rem 6%;border-top:1px solid rgba(79,163,232,0.1);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+footer p{color:var(--text-muted);font-size:.83rem;}
+.footer-links{display:flex;gap:1.4rem;}
+.footer-links a{color:var(--text-muted);font-size:.83rem;text-decoration:none;transition:color .3s;}
+.footer-links a:hover{color:var(--light-blue);}
+.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:var(--dark-blue);color:#fff;padding:11px 22px;border-radius:10px;font-size:.86rem;z-index:9999;display:none;border:1px solid rgba(79,163,232,0.3);box-shadow:0 4px 18px rgba(0,0,0,0.4);white-space:nowrap;}
+
+/* ADMIN LOGIN */
+#admin-login-page.active{display:flex!important;align-items:center;justify-content:center;min-height:100vh;background:var(--navy);}
+.login-box{background:var(--dark-blue);border:1px solid rgba(79,163,232,0.15);border-radius:20px;padding:40px 34px;width:100%;max-width:390px;box-shadow:0 20px 60px rgba(0,0,0,0.5);}
+.login-box h2{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;text-align:center;margin-bottom:.3rem;}
+.login-sub{text-align:center;color:var(--text-muted);font-size:.83rem;margin-bottom:1.8rem;}
+.lf{margin-bottom:1rem;}
+.lf label{display:block;font-size:.77rem;color:var(--text-muted);margin-bottom:.4rem;}
+.lf input{width:100%;padding:11px 14px;background:rgba(255,255,255,0.04);border:1px solid rgba(79,163,232,0.2);border-radius:8px;color:#fff;font-family:'DM Sans',sans-serif;font-size:.88rem;outline:none;transition:border .3s;}
+.lf input:focus{border-color:var(--light-blue);}
+.login-btn{width:100%;padding:12px;background:var(--accent-blue);color:#fff;border:none;border-radius:8px;font-family:'Syne',sans-serif;font-size:.97rem;font-weight:600;cursor:pointer;margin-top:.4rem;transition:background .3s;}
+.login-btn:hover{background:var(--light-blue);}
+.login-err{color:var(--red);font-size:.78rem;text-align:center;margin-top:.7rem;display:none;}
+.back-link{display:block;text-align:center;margin-top:.9rem;color:var(--text-muted);font-size:.83rem;cursor:pointer;}
+.back-link:hover{color:var(--light-blue);}
+
+/* ADMIN PANEL */
+#admin-page{min-height:100vh;background:#06101d;}
+.admin-header{background:var(--dark-blue);padding:0 22px;display:flex;align-items:center;justify-content:space-between;height:60px;border-bottom:1px solid rgba(79,163,232,0.15);}
+.admin-header h2{font-family:'Syne',sans-serif;font-size:1.05rem;color:#fff;}
+.admin-logout{background:var(--red);color:#fff;border:none;padding:7px 15px;border-radius:7px;font-size:.78rem;font-weight:700;cursor:pointer;}
+.admin-body{max-width:1200px;margin:0 auto;padding:24px 18px;}
+.admin-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px;}
+.astat{background:var(--dark-blue);border:1px solid rgba(79,163,232,0.12);border-radius:12px;padding:16px;text-align:center;}
+.astat .num{font-family:'Syne',sans-serif;font-size:1.9rem;font-weight:700;color:var(--light-blue);}
+.astat .lbl{font-size:.72rem;color:var(--text-muted);margin-top:3px;}
+.admin-tabs{display:flex;gap:5px;margin-bottom:20px;background:var(--dark-blue);padding:5px;border-radius:12px;border:1px solid rgba(79,163,232,0.1);flex-wrap:wrap;}
+.atab{flex:1;min-width:80px;padding:9px 5px;border:none;background:none;border-radius:8px;font-size:.75rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;color:var(--text-muted);transition:all .3s;}
+.atab.active{background:var(--accent-blue);color:#fff;}
+.atc{display:none;}.atc.active{display:block;}
+.acard{background:var(--dark-blue);border:1px solid rgba(79,163,232,0.1);border-radius:14px;padding:20px;margin-bottom:18px;}
+.acard h3{font-family:'Syne',sans-serif;font-size:.97rem;font-weight:700;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid rgba(79,163,232,0.1);}
+.acard .adesc{font-size:.8rem;color:var(--text-muted);margin-bottom:14px;}
+.af{margin-bottom:11px;}
+.af label{display:block;font-size:.76rem;color:var(--text-muted);margin-bottom:.35rem;}
+.af input,.af textarea,.af select{width:100%;padding:10px 12px;background:rgba(255,255,255,0.04);border:1px solid rgba(79,163,232,0.15);border-radius:8px;color:#fff;font-family:'DM Sans',sans-serif;font-size:.86rem;outline:none;transition:border .3s;}
+.af input:focus,.af textarea:focus,.af select:focus{border-color:var(--light-blue);}
+.af textarea{resize:vertical;min-height:55px;}
+.af select option{background:var(--navy);}
+.af-row{display:grid;grid-template-columns:1fr 1fr;gap:11px;}
+.srow{display:flex;gap:8px;align-items:flex-end;margin-bottom:13px;}
+.srow .af{flex:1;margin:0;}
+.apost-btn{width:100%;padding:11px;background:var(--accent-blue);color:#fff;border:none;border-radius:8px;font-family:'Syne',sans-serif;font-size:.88rem;font-weight:700;cursor:pointer;margin-top:8px;transition:background .3s;}
+.apost-btn:hover{background:var(--light-blue);}
+.apost-btn.danger{background:rgba(233,69,96,0.2);color:var(--red);}
+.apost-btn.danger:hover{background:var(--red);color:#fff;}
+.save-btn{padding:8px 16px;background:var(--accent-blue);color:#fff;border:none;border-radius:7px;font-size:.8rem;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap;transition:background .3s;}
+.save-btn:hover{background:var(--light-blue);}
+.proj-upload-grid{display:flex;gap:8px;margin-top:8px;}
+.proj-img-slot{width:80px;height:68px;border:2px dashed rgba(79,163,232,0.25);border-radius:8px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;flex-shrink:0;cursor:pointer;background:rgba(79,163,232,0.03);transition:border .3s;}
+.proj-img-slot:hover{border-color:var(--light-blue);}
+.proj-img-slot input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.proj-img-slot img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;}
+.proj-img-slot .plus{color:var(--text-muted);font-size:1.2rem;pointer-events:none;}
+.sub-card{background:rgba(255,255,255,0.03);border:1px solid rgba(79,163,232,0.1);border-radius:10px;padding:15px;margin-bottom:11px;}
+.sub-card h4{font-family:'Syne',sans-serif;font-size:.87rem;font-weight:700;margin-bottom:7px;color:var(--light-blue);}
+.sub-card .sub-type{display:inline-block;font-size:.65rem;padding:2px 9px;border-radius:20px;font-weight:700;margin-bottom:8px;margin-left:6px;}
+.sub-card .sub-type.buy{background:rgba(30,111,207,0.2);color:var(--light-blue);}
+.sub-card .sub-type.enq{background:rgba(79,163,232,0.1);color:var(--text-muted);}
+.sub-card p{font-size:.8rem;color:var(--text-muted);margin-bottom:3px;line-height:1.5;}
+.sub-card p span{color:rgba(255,255,255,0.85);}
+.sub-time{font-size:.7rem;color:rgba(255,255,255,0.28);margin-top:5px;}
+.del-btn{background:rgba(233,69,96,0.1);border:1px solid rgba(233,69,96,0.25);color:var(--red);padding:4px 11px;border-radius:6px;font-size:.73rem;font-weight:700;cursor:pointer;margin-top:7px;}
+.del-btn:hover{background:var(--red);color:#fff;}
+.empty-box{text-align:center;padding:35px 20px;color:var(--text-muted);font-size:.87rem;}
+.img-upload-box{border:2px dashed rgba(79,163,232,0.22);border-radius:10px;padding:22px;text-align:center;cursor:pointer;position:relative;background:rgba(79,163,232,0.02);transition:border .3s;}
+.img-upload-box:hover{border-color:var(--light-blue);}
+.img-upload-box input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.img-upload-box i{font-size:1.8rem;color:var(--light-blue);margin-bottom:7px;}
+.img-upload-box p{color:var(--text-muted);font-size:.83rem;}
+.banner-prev{margin-top:12px;display:none;}
+.banner-prev img{width:100%;border-radius:8px;max-height:180px;object-fit:cover;}
+.banner-prev p{font-size:.76rem;color:#25D366;margin-top:5px;}
+.sp-row{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px;}
+.sp-badge{padding:7px 14px;border-radius:50px;font-size:.77rem;font-weight:600;}
+.sp-wa{background:rgba(37,211,102,0.1);color:#25D366;border:1px solid rgba(37,211,102,0.3);}
+.sp-ig{background:rgba(225,48,108,0.1);color:#E1306C;border:1px solid rgba(225,48,108,0.3);}
+.sp-tg{background:rgba(0,136,204,0.1);color:#0088cc;border:1px solid rgba(0,136,204,0.3);}
+
+/* ICON PICKER */
+.icon-picker-wrap{position:relative;}
+.icon-preview{display:flex;align-items:center;gap:8px;padding:10px 12px;background:rgba(255,255,255,0.04);border:1px solid rgba(79,163,232,0.15);border-radius:8px;cursor:pointer;transition:border .3s;}
+.icon-preview:hover{border-color:var(--light-blue);}
+.icon-preview i{font-size:1.1rem;color:var(--light-blue);width:20px;text-align:center;}
+.icon-preview span{font-size:.85rem;color:var(--text-muted);flex:1;}
+.icon-preview .arrow{font-size:.7rem;color:var(--text-muted);}
+.icon-dropdown{position:absolute;top:calc(100% + 6px);left:0;right:0;background:#0d1f3c;border:1px solid rgba(79,163,232,0.2);border-radius:10px;padding:10px;z-index:100;display:none;max-height:220px;overflow-y:auto;}
+.icon-dropdown.open{display:block;}
+.icon-search-inp{width:100%;padding:8px 10px;background:rgba(255,255,255,0.05);border:1px solid rgba(79,163,232,0.15);border-radius:7px;color:#fff;font-size:.82rem;outline:none;margin-bottom:8px;}
+.icon-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:4px;}
+.icon-opt{width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;border-radius:7px;cursor:pointer;background:rgba(79,163,232,0.05);border:1px solid transparent;transition:all .3s;font-size:1rem;color:var(--text-muted);}
+.icon-opt:hover,.icon-opt.sel{background:rgba(79,163,232,0.15);border-color:var(--light-blue);color:var(--light-blue);}
+
+@media(max-width:768px){
+  .about-inner,.contact-inner{grid-template-columns:1fr;}
+  .hero-stats{gap:1.4rem;}
+  .form-row,.af-row{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+  .admin-stats{grid-template-columns:repeat(2,1fr);}
+  .proj-btns{flex-direction:column;}
+}
+</style>
+</head>
+<body>
+
+<!-- ========== MAIN PAGE ========== -->
+<div id="main-page" class="page active">
+
+<nav>
+  <div class="logo" onclick="scrollTop()">
+    <div class="logo-circle">
+      <span class="logo-ph"></span>
+      <img id="nav-logo-img" src="c:\Users\LENOVO\Desktop\our bussines\logo.png" alt=""/>
+    </div>
+    <h2 class="company-name"><span class="c-letter">C</span><span class="tech-letter">TECH</span></h2>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#portfolio">Recent Projects</a></li>
+    <li><a href="#projects">For Sale</a></li>
+    <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+    <li><button class="lock-btn" onclick="showPage('admin-login-page')" title="Admin Login"><i class="fas fa-lock"></i></button></li>
+  </ul>
+</nav>
+
+<!-- HERO BANNER -->
+<div id="hero-banner" class="hero-banner">
+  <img id="banner-img" src="" alt="Banner"/>
+  <div class="banner-overlay">
+    <div class="banner-text">
+      <h2 id="banner-title-txt"></h2>
+      <p id="banner-sub-txt"></p>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div><div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">
+      <span class="badge-dot"></span> Available for new projects — View Now
+    </div>
+    <h1>Smart Solutions<br/>for a <span>Digital World</span></h1>
+    <p class="hero-sub">We build websites, mobile apps, billing software, Power BI dashboards, and IoT & robotics solutions — everything your business needs to grow in the digital age.</p>
+    <div class="hero-btns">
+      <a href="#services" class="btn-primary">Explore Services</a>
+      <a href="#contact" class="btn-outline">Get in Touch</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><h3>50+</h3><p>Projects Delivered</p></div>
+      <div class="stat"><h3>30+</h3><p>Happy Clients</p></div>
+      <div class="stat"><h3>5+</h3><p>Service Areas</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-header">
+    <div class="section-label">What We Do</div>
+    <h2 class="section-title">Our Core Services</h2>
+    <p class="section-sub">From concept to deployment, we deliver end-to-end tech solutions tailored to your goals.</p>
+  </div>
+  <div class="services-grid" id="services-grid">
+    <!-- Default services rendered by JS -->
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div>
+      <div class="section-label">Who We Are</div>
+      <h2 class="section-title">Built on Expertise,<br/>Driven by Innovation</h2>
+      <p class="section-sub" style="margin-bottom:2rem;">CTECH is a technology company based in India, delivering smart digital solutions to businesses, colleges, and individuals.</p>
+      <a href="#contact" class="btn-primary">Work With Us</a>
+    </div>
+    <div class="about-visual">
+      <div class="about-item"><div class="about-item-icon"><i class="fas fa-code"></i></div><div><h4>Full-Stack Development</h4><p>Frontend and backend systems with modern technologies and clean code.</p></div></div>
+      <div class="about-item"><div class="about-item-icon"><i class="fas fa-lightbulb"></i></div><div><h4>Creative Problem Solving</h4><p>Every project gets a tailored approach — no cookie-cutter solutions.</p></div></div>
+      <div class="about-item"><div class="about-item-icon"><i class="fas fa-handshake"></i></div><div><h4>Client-First Approach</h4><p>We stay in close contact, ensuring your vision becomes reality.</p></div></div>
+      <div class="about-item"><div class="about-item-icon"><i class="fas fa-shield-alt"></i></div><div><h4>On-Time Delivery</h4><p>We respect deadlines and deliver quality work within agreed timelines.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- RECENT PROJECTS (PORTFOLIO) -->
+<section class="portfolio" id="portfolio">
+  <div class="portfolio-header">
+    <div class="section-label">Our Work</div>
+    <h2 class="section-title">Recent Projects</h2>
+    <p class="section-sub">A glimpse of what we've built — from dashboards to smart devices.</p>
+  </div>
+  <div class="portfolio-grid" id="portfolio-grid">
+    <!-- rendered by JS -->
+  </div>
+</section>
+
+<!-- PROJECTS FOR SALE -->
+<section class="projects-section" id="projects">
+  <div class="proj-header">
+    <div class="section-label">Available Now</div>
+    <h2 class="section-title" style="text-align:center;">Projects for Sale</h2>
+    <p class="section-sub" style="margin:0 auto;text-align:center;">Ready-made projects — Buy or Enquire directly below.</p>
+  </div>
+  <div class="proj-grid" id="proj-grid">
+    <div class="empty-box" style="grid-column:1/-1;padding:60px 20px;">
+      <i class="fas fa-folder-open" style="font-size:2.5rem;color:var(--text-muted);margin-bottom:12px;display:block;"></i>
+      No projects uploaded yet. Admin can add projects from the Admin Panel.
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div>
+      <div class="section-label">Contact Us</div>
+      <h2 class="section-title">Let's Build Something Great Together</h2>
+      <p class="section-sub">Have a project in mind? Fill in the form and we'll get back to you within 24 hours.</p>
+      <div class="contact-info">
+        <div class="contact-item"><i class="fas fa-envelope"></i><span>ctech1721@gmail.com</span></div>
+        <div class="contact-item"><i class="fas fa-phone"></i><span>+91 73959 84042</span></div>
+        <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Chennai, Tamil Nadu, India</span></div>
+        <div class="contact-item"><i class="fab fa-whatsapp"></i><span>WhatsApp: +91 73959 84042</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="contact-form">
+        <div class="form-row">
+          <div class="form-field"><label>Your Name *</label><input type="text" id="cName" placeholder="John Doe"/></div>
+          <div class="form-field"><label>Email Address *</label><input type="email" id="cEmail" placeholder="john@email.com"/></div>
+        </div>
+        <div class="form-row">
+          <div class="form-field"><label>Phone Number</label><input type="text" id="cPhone" placeholder="+91 98765 43210"/></div>
+          <div class="form-field"><label>Company / College</label><input type="text" id="cCompany" placeholder="ABC Pvt Ltd"/></div>
+        </div>
+        <div class="form-field">
+          <label>Service Needed *</label>
+          <select id="cService">
+            <option value="">Select a service...</option>
+            <option>Website Development</option><option>Mobile App</option>
+            <option>Power BI Dashboard</option><option>IoT Solution</option>
+            <option>Robotics Project</option><option>College Tech Project</option>
+          </select>
+        </div>
+        <div class="form-field"><label>Deadline</label><input type="date" id="cDeadline"/></div>
+        <div class="form-field"><label>Project Description</label><textarea rows="4" id="cMessage" placeholder="Describe your project in detail..."></textarea></div>
+        <button class="submit-btn" onclick="submitContactForm()">Send Request →</button>
+        <div class="success-msg" id="successMsg">✅ Request submitted! We will contact you within 24 hours.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<a href="https://wa.me/917395984042" class="whatsapp-float" id="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+<!-- FOOTER -->
+<footer>
+  <div class="logo">
+  </div>
+  <p>© 2025 CTECH. Smart Solutions for a Digital World.</p>
+  <div class="footer-links">
+    <a href="#home">Home</a>
+    <a href="#services">Services</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+</div><!-- end main-page -->
+</div>
+
+<!-- SOCIAL (now sits just above the footer) -->
+<div class="social-section" id="social-section">
+  <div class="social-section-inner">
+    <div class="section-label">Community</div>
+    <h2>Join Our Community</h2>
+    <p>Follow us and join our groups for updates, offers, and tech tips.</p>
+    <div class="social-links-grid" id="social-links-grid"></div>
+  </div>
+</div>
+
+
+
+<!-- BUY MODAL -->
+<div class="modal-overlay" id="buy-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('buy-modal')"><i class="fas fa-times"></i></button>
+    <div id="buy-form-wrap">
+      <div class="modal-title">🛒 Buy This Project</div>
+      <div class="modal-proj-name" id="buy-proj-label">Project: —</div>
+      <div class="mf"><label>Your Name *</label><input type="text" id="buy-name" placeholder="Your full name"/></div>
+      <div class="mf"><label>Phone Number *</label><input type="text" id="buy-phone" placeholder="+91 98765 43210"/></div>
+      <div class="mf"><label>College / Company</label><input type="text" id="buy-college" placeholder="College or Company name"/></div>
+      <div class="mf"><label>Project</label><input type="text" id="buy-proj" readonly/></div>
+      <button class="modal-submit" onclick="submitBuy()">Submit Request →</button>
+    </div>
+    <div class="modal-success" id="buy-success">
+      <i class="fas fa-check-circle"></i><h3>Request Received!</h3>
+      <p>We will contact you soon regarding this project.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ENQUIRY CHOICE MODAL -->
+<div class="modal-overlay" id="enq-choice-modal">
+  <div class="modal-box" style="max-width:360px;">
+    <button class="modal-close" onclick="closeModal('enq-choice-modal')"><i class="fas fa-times"></i></button>
+    <div class="modal-title">📩 Enquiry</div>
+    <div class="modal-proj-name" id="enq-proj-label">Project: —</div>
+    <div class="enq-options">
+      <button class="enq-opt-btn enq-call-btn" onclick="doCall()">
+        <i class="fas fa-phone-alt"></i>
+        <div><span class="eot">Call Us</span><span class="eos">Tap to call +91 73959 84042</span></div>
+      </button>
+      <button class="enq-opt-btn enq-sms-btn" onclick="openSmsForm()">
+        <i class="fas fa-comment-dots"></i>
+        <div><span class="eot">Send SMS / Message</span><span class="eos">Fill a quick form & we'll reply</span></div>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- SMS MODAL -->
+<div class="modal-overlay" id="sms-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('sms-modal')"><i class="fas fa-times"></i></button>
+    <div id="sms-form-wrap">
+      <div class="modal-title">💬 Send Enquiry</div>
+      <div class="modal-proj-name" id="sms-proj-label">Project: —</div>
+      <div class="mf"><label>Your Name *</label><input type="text" id="sms-name" placeholder="Your full name"/></div>
+      <div class="mf"><label>Phone Number *</label><input type="text" id="sms-phone" placeholder="+91 98765 43210"/></div>
+      <div class="mf"><label>College / Company</label><input type="text" id="sms-college" placeholder="College or Company name"/></div>
+      <div class="mf"><label>Project</label><input type="text" id="sms-proj" readonly/></div>
+      <button class="modal-submit" onclick="submitSms()">Submit Enquiry →</button>
+    </div>
+    <div class="modal-success" id="sms-success">
+      <i class="fas fa-check-circle"></i><h3>Enquiry Sent!</h3>
+      <p>We will contact you soon. Thank you!</p>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN LOGIN -->
+<div id="admin-login-page" class="page">
+  <div class="login-box">
+    <h2>🔐 Admin Login</h2>
+    <p class="login-sub">Sign in to manage CTECH website</p>
+    <div class="lf"><label>Username</label><input type="text" id="lu" placeholder="Username" onkeydown="if(event.key==='Enter')doLogin()"/></div>
+    <div class="lf"><label>Password</label><input type="password" id="lp" placeholder="Password" onkeydown="if(event.key==='Enter')doLogin()"/></div>
+    <button class="login-btn" onclick="doLogin()">Sign In</button>
+    <div class="login-err" id="lerr">❌ Invalid username or password</div>
+    <a class="back-link" onclick="showPage('main-page')">← Back to Website</a>
+  </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div id="admin-page" class="page">
+  <div class="admin-header">
+    <h2>⚙️ CTECH Admin Panel</h2>
+    <button class="admin-logout" onclick="doLogout()">Logout</button>
+  </div>
+  <div class="admin-body">
+    <div class="admin-stats">
+      <div class="astat"><div class="num" id="st-projs">0</div><div class="lbl">Sale Projects</div></div>
+      <div class="astat"><div class="num" id="st-subs">0</div><div class="lbl">Enquiries</div></div>
+      <div class="astat"><div class="num" id="st-svcs">0</div><div class="lbl">Services</div></div>
+      <div class="astat"><div class="num" id="st-rp">0</div><div class="lbl">Recent Projects</div></div>
+    </div>
+    <div class="admin-tabs">
+      <button class="atab active" onclick="switchTab('t-projs',this)">📦 Projects</button>
+      <button class="atab" onclick="switchTab('t-subs',this)">📥 Enquiries</button>
+      <button class="atab" onclick="switchTab('t-services',this)">🛠️ Services</button>
+      <button class="atab" onclick="switchTab('t-recent',this)">🗂️ Recent Projects</button>
+      <button class="atab" onclick="switchTab('t-banner',this)">🖼️ Banner</button>
+      <button class="atab" onclick="switchTab('t-social',this)">🔗 Social</button>
+      <button class="atab" onclick="switchTab('t-settings',this)">⚙️ Settings</button>
+    </div>
+
+    <!-- PROJECTS FOR SALE TAB -->
+    <div id="t-projs" class="atc active">
+      <div class="acard">
+        <h3>➕ Add New Project (For Sale)</h3>
+        <div class="af-row">
+          <div class="af"><label>Project Name *</label><input type="text" id="p-name" placeholder="e.g. Smart Attendance System"/></div>
+          <div class="af"><label>Domain / Category *</label><input type="text" id="p-domain" placeholder="e.g. IoT, Web, Mobile App"/></div>
+        </div>
+        <div class="af-row">
+          <div class="af"><label>Budget / Price (₹) *</label><input type="text" id="p-budget" placeholder="e.g. 5,000"/></div>
+          <div class="af"><label>Tech Stack</label><input type="text" id="p-tech" placeholder="e.g. Arduino, Python, Firebase"/></div>
+        </div>
+        <div class="af"><label>Description</label><textarea id="p-desc" placeholder="Brief description of the project..."></textarea></div>
+        <div class="af">
+          <label>Project Images (up to 3)</label>
+          <div class="proj-upload-grid">
+            <div class="proj-img-slot" id="slot0"><input type="file" accept="image/*" onchange="handleProjImg(this,0)"/><span class="plus"><i class="fas fa-plus"></i></span></div>
+            <div class="proj-img-slot" id="slot1"><input type="file" accept="image/*" onchange="handleProjImg(this,1)"/><span class="plus"><i class="fas fa-plus"></i></span></div>
+            <div class="proj-img-slot" id="slot2"><input type="file" accept="image/*" onchange="handleProjImg(this,2)"/><span class="plus"><i class="fas fa-plus"></i></span></div>
+          </div>
+        </div>
+        <button class="apost-btn" onclick="addProject()">📦 Post Project</button>
+      </div>
+      <div class="acard">
+        <h3>📋 Projects for Sale (<span id="proj-count">0</span>)</h3>
+        <div id="admin-proj-list"><div class="empty-box">No projects yet.</div></div>
+      </div>
+    </div>
+
+    <!-- ENQUIRIES TAB -->
+    <div id="t-subs" class="atc">
+      <div class="acard">
+        <h3>📥 All Enquiries & Buy Requests (<span id="sub-count">0</span>)</h3>
+        <div id="subs-list"><div class="empty-box">No enquiries yet.</div></div>
+      </div>
+    </div>
+
+    <!-- SERVICES TAB -->
+    <div id="t-services" class="atc">
+      <div class="acard">
+        <h3>➕ Add New Service</h3>
+        <p class="adesc">Add a service card — it will appear in the "Our Core Services" section on the main page with the icon you choose.</p>
+        <div class="af">
+          <label>Choose Icon</label>
+          <div class="icon-picker-wrap" id="svc-icon-wrap">
+            <div class="icon-preview" onclick="toggleIconPicker('svc')">
+              <i class="fas fa-globe" id="svc-icon-preview-i"></i>
+              <span id="svc-icon-preview-txt">fas fa-globe</span>
+              <span class="arrow">▼</span>
+            </div>
+            <div class="icon-dropdown" id="svc-icon-dd">
+              <input class="icon-search-inp" placeholder="Search icon..." oninput="filterIcons('svc',this.value)"/>
+              <div class="icon-grid" id="svc-icon-grid"></div>
+            </div>
+          </div>
+        </div>
+        <div class="af"><label>Service Name *</label><input type="text" id="svc-name" placeholder="e.g. Billing Software"/></div>
+        <div class="af"><label>Description *</label><textarea id="svc-desc" placeholder="Brief description of this service..."></textarea></div>
+        <button class="apost-btn" onclick="addService()">➕ Add Service</button>
+      </div>
+      <div class="acard">
+        <h3>🛠️ Current Services (<span id="svc-count">0</span>)</h3>
+        <div id="admin-svc-list"><div class="empty-box">No custom services yet. Default services shown.</div></div>
+      </div>
+    </div>
+
+    <!-- RECENT PROJECTS TAB -->
+    <div id="t-recent" class="atc">
+      <div class="acard">
+        <h3>➕ Add Recent Project</h3>
+        <p class="adesc">Add a card to the "Recent Projects" section — choose an icon, domain & project name.</p>
+        <div class="af">
+          <label>Choose Icon</label>
+          <div class="icon-picker-wrap" id="rp-icon-wrap">
+            <div class="icon-preview" onclick="toggleIconPicker('rp')">
+              <i class="fas fa-globe" id="rp-icon-preview-i"></i>
+              <span id="rp-icon-preview-txt">fas fa-globe</span>
+              <span class="arrow">▼</span>
+            </div>
+            <div class="icon-dropdown" id="rp-icon-dd">
+              <input class="icon-search-inp" placeholder="Search icon..." oninput="filterIcons('rp',this.value)"/>
+              <div class="icon-grid" id="rp-icon-grid"></div>
+            </div>
+          </div>
+        </div>
+        <div class="af-row">
+          <div class="af"><label>Project Name *</label><input type="text" id="rp-name" placeholder="e.g. HR Management Portal"/></div>
+          <div class="af"><label>Domain *</label><input type="text" id="rp-domain" placeholder="e.g. Web + Dashboard"/></div>
+        </div>
+        <div class="af"><label>About Project</label><textarea id="rp-about" placeholder="Short description about this project..."></textarea></div>
+        <button class="apost-btn" onclick="addRecentProject()">📌 Add to Recent Projects</button>
+      </div>
+      <div class="acard">
+        <h3>🗂️ Recent Projects (<span id="rp-count">0</span>)</h3>
+        <div id="admin-rp-list"><div class="empty-box">No recent projects yet.</div></div>
+      </div>
+    </div>
+
+    <!-- BANNER TAB -->
+    <div id="t-banner" class="atc">
+      <div class="acard">
+        <h3>🖼️ Home Page Banner</h3>
+        <p class="adesc">Upload a banner image — appears below the nav bar on your home page.</p>
+        <div class="af">
+          <label>Banner Image (Recommended: 1400×420px)</label>
+          <div class="img-upload-box">
+            <input type="file" accept="image/*" onchange="handleBannerImg(this)"/>
+            <i class="fas fa-image"></i><p>Click to upload banner image</p>
+          </div>
+          <div class="banner-prev" id="banner-prev">
+            <img id="banner-prev-img" src="" alt=""/>
+            <p>✅ Image ready — click Save to apply</p>
+          </div>
+        </div>
+        <div class="af"><label>Banner Title</label><input type="text" id="b-title" placeholder="e.g. New Year Special Offers 🎉"/></div>
+        <div class="af"><label>Banner Subtitle</label><input type="text" id="b-sub" placeholder="e.g. Get 20% off on all web projects!"/></div>
+        <button class="apost-btn" onclick="saveBanner()">💾 Save & Apply Banner</button>
+        <button class="apost-btn danger" onclick="removeBanner()" style="margin-top:7px;">🗑️ Remove Banner</button>
+      </div>
+    </div>
+
+    <!-- SOCIAL TAB -->
+    <div id="t-social" class="atc">
+      <div class="acard">
+        <h3>🔗 Social & Community Links</h3>
+        <p class="adesc">Set your group links — buttons will appear on the website.</p>
+        <div class="srow"><div class="af"><label><i class="fab fa-whatsapp" style="color:#25D366;margin-right:5px;"></i>WhatsApp Group Link</label><input type="text" id="wa-inp" placeholder="https://chat.whatsapp.com/xxx"/></div><button class="save-btn" onclick="saveSocial('wa')">Save</button><button class="del-btn" style="margin-top:0;" onclick="removeSocial('wa')">🗑️</button></div>
+        <div class="srow"><div class="af"><label><i class="fab fa-instagram" style="color:#E1306C;margin-right:5px;"></i>Instagram Link</label><input type="text" id="ig-inp" placeholder="https://instagram.com/yourpage"/></div><button class="save-btn" onclick="saveSocial('ig')">Save</button><button class="del-btn" style="margin-top:0;" onclick="removeSocial('ig')">🗑️</button></div>
+        <div class="srow"><div class="af"><label><i class="fab fa-telegram" style="color:#0088cc;margin-right:5px;"></i>Telegram Group Link</label><input type="text" id="tg-inp" placeholder="https://t.me/yourchannel"/></div><button class="save-btn" onclick="saveSocial('tg')">Save</button><button class="del-btn" style="margin-top:0;" onclick="removeSocial('tg')">🗑️</button></div>
+        <div class="srow"><div class="af"><label><i class="fab fa-linkdin" style="color:#E1306C;margin-right:5px;"></i>linkdin link </label><input type="text" id="ig-inp" placeholder="https://linkdin.com/yourpage"/></div><button class="save-btn" onclick="saveSocial('ig')">Save</button><button class="del-btn" style="margin-top:0;" onclick="removeSocial('ig')">🗑️</button></div>
+        <div><p style="font-size:.76rem;color:var(--text-muted);margin-bottom:7px;">Active on website:</p><div class="sp-row" id="sp-preview"><span style="font-size:.8rem;color:var(--text-muted);">No links saved yet.</span></div></div>
+      </div>
+    </div>
+
+    <!-- SETTINGS TAB -->
+    <div id="t-settings" class="atc">
+      <div class="acard">
+        <h3>🔑 Admin Credentials</h3>
+        <div class="af-row">
+          <div class="af"><label>New Username</label><input type="text" id="new-u" placeholder="New username"/></div>
+          <div class="af"><label>New Password</label><input type="password" id="new-p" placeholder="New password"/></div>
+        </div>
+        <button class="apost-btn" onclick="saveCreds()">💾 Update Credentials</button>
+      </div>
+      <div class="acard">
+        <h3>📱 WhatsApp Float Button</h3>
+        <div class="srow"><div class="af"><label>Number (with country code, no +)</label><input type="text" id="wa-num" placeholder="917395984042"/></div><button class="save-btn" onclick="saveWaNum()">Save</button></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ============ ALL ICONS LIST ============
+var ALL_ICONS = [
+  'fa-globe','fa-mobile-alt','fa-chart-bar','fa-microchip','fa-robot','fa-graduation-cap',
+  'fa-code','fa-laptop-code','fa-database','fa-server','fa-cloud','fa-wifi',
+  'fa-shield-alt','fa-lock','fa-key','fa-bug','fa-terminal','fa-cog',
+  'fa-lightbulb','fa-brain','fa-magic','fa-star','fa-fire','fa-bolt',
+  'fa-chart-line','fa-chart-pie','fa-analytics','fa-dollar-sign','fa-coins','fa-wallet',
+  'fa-shopping-cart','fa-store','fa-tags','fa-receipt','fa-credit-card','fa-qrcode',
+  'fa-users','fa-user-tie','fa-handshake','fa-comments','fa-headset','fa-phone',
+  'fa-envelope','fa-bell','fa-calendar','fa-clock','fa-map-marker-alt','fa-truck',
+  'fa-car','fa-bus','fa-plane','fa-industry','fa-factory','fa-building',
+  'fa-home','fa-school','fa-hospital','fa-flask','fa-dna','fa-heartbeat',
+  'fa-camera','fa-video','fa-music','fa-gamepad','fa-tv','fa-print',
+  'fa-file-code','fa-file-alt','fa-folder','fa-download','fa-upload','fa-sync',
+  'fa-paint-brush','fa-pen','fa-pencil-alt','fa-cut','fa-crop','fa-image',
+  'fa-leaf','fa-sun','fa-moon','fa-snowflake','fa-tint','fa-recycle',
+  'fa-wrench','fa-tools','fa-hammer','fa-screwdriver','fa-plug','fa-battery-full',
+  'fa-satellite','fa-satellite-dish','fa-signal','fa-broadcast-tower','fa-drone','fa-microphone',
+  'fa-box','fa-boxes','fa-inventory','fa-warehouse','fa-pallet','fa-barcode',
+  'fa-calculator','fa-cash-register','fa-file-invoice','fa-file-invoice-dollar','fa-balance-scale','fa-percentage'
+];
+
+var selIcon = {svc:'fas fa-globe', rp:'fas fa-globe'};
+
+function buildIconGrid(prefix){
+  var grid = document.getElementById(prefix+'-icon-grid');
+  grid.innerHTML = ALL_ICONS.map(function(ic){
+    var full = 'fas '+ic;
+    return '<div class="icon-opt'+(selIcon[prefix]===full?' sel':'')+'" onclick="selectIcon(\''+prefix+'\',\''+full+'\')" title="'+ic+'"><i class="fas '+ic+'"></i></div>';
+  }).join('');
+}
+function filterIcons(prefix, q){
+  var grid = document.getElementById(prefix+'-icon-grid');
+  var filtered = q ? ALL_ICONS.filter(function(ic){return ic.includes(q.toLowerCase());}) : ALL_ICONS;
+  grid.innerHTML = filtered.map(function(ic){
+    var full='fas '+ic;
+    return '<div class="icon-opt'+(selIcon[prefix]===full?' sel':'')+'" onclick="selectIcon(\''+prefix+'\',\''+full+'\')" title="'+ic+'"><i class="fas '+ic+'"></i></div>';
+  }).join('');
+}
+function toggleIconPicker(prefix){
+  var dd=document.getElementById(prefix+'-icon-dd');
+  var isOpen=dd.classList.contains('open');
+  document.querySelectorAll('.icon-dropdown').forEach(function(d){d.classList.remove('open');});
+  if(!isOpen){dd.classList.add('open');buildIconGrid(prefix);}
+}
+function selectIcon(prefix, full){
+  selIcon[prefix]=full;
+  document.getElementById(prefix+'-icon-preview-i').className=full;
+  document.getElementById(prefix+'-icon-preview-txt').textContent=full;
+  document.getElementById(prefix+'-icon-dd').classList.remove('open');
+}
+document.addEventListener('click',function(e){
+  if(!e.target.closest('.icon-picker-wrap')){
+    document.querySelectorAll('.icon-dropdown').forEach(function(d){d.classList.remove('open');});
+  }
+});
+
+// ============ STATE ============
+var S = {
+  user:'admin', pass:'admin123',
+  projects:[], submissions:[],
+  services:[], recentProjects:[],
+  banner:{img:null,title:'',sub:'',on:false},
+  social:{wa:'',ig:'',tg:''},
+  waNum:'917395984042'
+};
+var bannerImg=null;
+var projImgs=[null,null,null];
+var activeProj=null;
+
+// DEFAULT SERVICES
+var DEFAULT_SERVICES = [
+  {id:'d1',icon:'fas fa-globe',name:'Website Development',desc:'Professional, responsive websites for businesses, startups, and institutions. Fast, SEO-ready, and visually stunning.'},
+  {id:'d2',icon:'fas fa-mobile-alt',name:'Mobile App Development',desc:'Android and iOS apps built for performance. From simple tools to complex platforms.'},
+  {id:'d3',icon:'fas fa-chart-bar',name:'Power BI Dashboards',desc:'Turn raw data into actionable insights with beautifully designed Power BI dashboards.'},
+  {id:'d4',icon:'fas fa-microchip',name:'IoT Solutions',desc:'Smart connected device systems for colleges, industries, and homes.'},
+  {id:'d5',icon:'fas fa-robot',name:'Robotics Projects',desc:'Custom robotics for college final year projects, research labs, and industrial automation.'},
+  {id:'d6',icon:'fas fa-graduation-cap',name:'College Tech Projects',desc:'Helping students and institutions with end-to-end project development.'}
+];
+
+// DEFAULT RECENT PROJECTS
+var DEFAULT_RECENT = [
+  {id:'r1',icon:'fas fa-globe',domain:'Web Development',name:'E-Commerce Platform',about:'A full-featured online store with inventory management and payments.'},
+  {id:'r2',icon:'fas fa-chart-bar',domain:'Power BI',name:'Sales Analytics Dashboard',about:'Real-time sales KPIs and trends for a regional distribution company.'},
+  {id:'r3',icon:'fas fa-robot',domain:'Robotics',name:'Autonomous Line Follower',about:'Award-winning final year robotics project using Arduino and computer vision.'},
+  {id:'r4',icon:'fas fa-mobile-alt',domain:'Mobile App',name:'College Attendance App',about:'QR-based attendance tracking deployed across 3 engineering colleges.'},
+  {id:'r5',icon:'fas fa-plug',domain:'IoT',name:'Smart Classroom System',about:'IoT-based energy management for college labs and classrooms.'},
+  {id:'r6',icon:'fas fa-briefcase',domain:'Web + Dashboard',name:'HR Management Portal',about:'Employee management system with Power BI reporting.'}
+];
+
+// ============ PAGE NAV ============
+function showPage(id){
+  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+function switchTab(id,btn){
+  document.querySelectorAll('.atc').forEach(function(c){c.classList.remove('active');});
+  document.querySelectorAll('.atab').forEach(function(b){b.classList.remove('active');});
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+function toast(msg){
+  var t=document.getElementById('toast');
+  t.textContent=msg;t.style.display='block';
+  setTimeout(function(){t.style.display='none';},2800);
+}
+
+// ============ MODALS ============
+function openModal(id){document.getElementById(id).classList.add('open');}
+function closeModal(id){
+  document.getElementById(id).classList.remove('open');
+  var fw=document.getElementById('buy-form-wrap'); var bs=document.getElementById('buy-success');
+  var sf=document.getElementById('sms-form-wrap'); var ss=document.getElementById('sms-success');
+  if(fw)fw.style.display=''; if(bs)bs.style.display='none';
+  if(sf)sf.style.display=''; if(ss)ss.style.display='none';
+}
+document.querySelectorAll('.modal-overlay').forEach(function(el){
+  el.addEventListener('click',function(e){if(e.target===el)closeModal(el.id);});
+});
+
+// ============ LOGIN ============
+function doLogin(){
+  var u=document.getElementById('lu').value.trim();
+  var p=document.getElementById('lp').value.trim();
+  if(u===S.user&&p===S.pass){
+    document.getElementById('lerr').style.display='none';
+    showPage('admin-page'); refreshAdmin(); toast('✅ Logged in');
+  }else{document.getElementById('lerr').style.display='block';}
+}
+function doLogout(){showPage('main-page');toast('Logged out');}
+
+// ============ RENDER SERVICES ============
+function renderServices(){
+  var grid=document.getElementById('services-grid');
+  var list = S.services.length ? S.services : DEFAULT_SERVICES;
+  grid.innerHTML=list.map(function(s){
+    return '<div class="service-card">'
+      +'<div class="service-icon"><i class="'+s.icon+'"></i></div>'
+      +'<h3>'+s.name+'</h3>'
+      +'<p>'+s.desc+'</p>'
+      +'</div>';
+  }).join('');
+}
+
+// ============ RENDER RECENT PROJECTS ============
+function renderRecentProjects(){
+  var grid=document.getElementById('portfolio-grid');
+  var list = S.recentProjects.length ? S.recentProjects : DEFAULT_RECENT;
+  grid.innerHTML=list.map(function(p){
+    return '<div class="portfolio-card">'
+      +'<div class="portfolio-thumb"><i class="'+p.icon+'" style="font-size:2.6rem;color:var(--light-blue);"></i></div>'
+      +'<div class="portfolio-info">'
+      +'<div class="portfolio-tag">'+p.domain+'</div>'
+      +'<h3>'+p.name+'</h3>'
+      +'<p>'+p.about+'</p>'
+      +'</div></div>';
+  }).join('');
+}
+
+// ============ ADD SERVICE ============
+function addService(){
+  var name=document.getElementById('svc-name').value.trim();
+  var desc=document.getElementById('svc-desc').value.trim();
+  if(!name||!desc){toast('⚠️ Fill Service Name & Description');return;}
+  S.services.push({id:Date.now(),icon:selIcon['svc'],name:name,desc:desc});
+  document.getElementById('svc-name').value='';
+  document.getElementById('svc-desc').value='';
+  renderServices(); refreshAdmin();
+  toast('✅ Service added!');
+}
+
+// ============ ADD RECENT PROJECT ============
+function addRecentProject(){
+  var name=document.getElementById('rp-name').value.trim();
+  var domain=document.getElementById('rp-domain').value.trim();
+  var about=document.getElementById('rp-about').value.trim();
+  if(!name||!domain){toast('⚠️ Fill Project Name & Domain');return;}
+  S.recentProjects.push({id:Date.now(),icon:selIcon['rp'],name:name,domain:domain,about:about});
+  document.getElementById('rp-name').value='';
+  document.getElementById('rp-domain').value='';
+  document.getElementById('rp-about').value='';
+  renderRecentProjects(); refreshAdmin();
+  toast('✅ Recent project added!');
+}
+
+// ============ PROJECTS FOR SALE ============
+function handleProjImg(input,idx){
+  if(!input.files[0])return;
+  var r=new FileReader();
+  r.onload=function(e){
+    projImgs[idx]=e.target.result;
+    var slot=document.getElementById('slot'+idx);
+    var img=slot.querySelector('img');
+    if(!img){img=document.createElement('img');slot.appendChild(img);}
+    img.src=e.target.result;
+    slot.querySelector('.plus').style.display='none';
+  };
+  r.readAsDataURL(input.files[0]);
+}
+function addProject(){
+  var name=document.getElementById('p-name').value.trim();
+  var domain=document.getElementById('p-domain').value.trim();
+  var budget=document.getElementById('p-budget').value.trim();
+  var tech=document.getElementById('p-tech').value.trim();
+  var desc=document.getElementById('p-desc').value.trim();
+  if(!name||!domain||!budget){toast('⚠️ Fill Project Name, Domain & Budget');return;}
+  var imgs=projImgs.filter(function(i){return i!==null;});
+  S.projects.unshift({id:Date.now(),name:name,domain:domain,budget:budget,tech:tech,desc:desc,imgs:imgs});
+  document.getElementById('p-name').value='';document.getElementById('p-domain').value='';
+  document.getElementById('p-budget').value='';document.getElementById('p-tech').value='';
+  document.getElementById('p-desc').value='';
+  projImgs=[null,null,null];
+  [0,1,2].forEach(function(i){
+    var slot=document.getElementById('slot'+i);
+    var img=slot.querySelector('img');if(img)img.remove();
+    slot.querySelector('.plus').style.display='';
+  });
+  refreshAdmin(); renderProjects(); toast('✅ Project posted!');
+}
+function renderProjects(){
+  var grid=document.getElementById('proj-grid');
+  if(!S.projects.length){
+    grid.innerHTML='<div class="empty-box" style="grid-column:1/-1;padding:60px 20px;"><i class="fas fa-folder-open" style="font-size:2.5rem;color:var(--text-muted);margin-bottom:12px;display:block;"></i>No projects uploaded yet.</div>';
+    return;
+  }
+  grid.innerHTML=S.projects.map(function(p){
+    var imgHtml='';
+    if(p.imgs&&p.imgs.length>0){
+      imgHtml='<div class="proj-imgs">';
+      p.imgs.forEach(function(src,i){imgHtml+='<img src="'+src+'" class="'+(i===0?'active':'')+'" />';});
+      if(p.imgs.length>1){
+        imgHtml+='<div class="proj-img-dots">';
+        p.imgs.forEach(function(_,i){imgHtml+='<span class="'+(i===0?'active':'')+'" onclick="switchImg('+p.id+','+i+',event)"></span>';});
+        imgHtml+='</div>';
+      }
+      imgHtml+='<div class="proj-badge">'+p.domain+'</div></div>';
+    }else{
+      imgHtml='<div style="position:relative;"><div class="proj-no-img">📁</div><div class="proj-badge">'+p.domain+'</div></div>';
+    }
+    return '<div class="proj-card">'+imgHtml
+      +'<div class="proj-body">'
+      +'<div class="proj-name">'+p.name+'</div>'
+      +'<div class="proj-domain"><i class="fas fa-tag" style="margin-right:5px;font-size:.7rem;"></i>'+p.domain+'</div>'
+      +'<div class="proj-budget">₹ '+p.budget+'</div>'
+      +(p.tech?'<div style="font-size:.75rem;color:var(--text-muted);margin-bottom:.7rem;">🛠 '+p.tech+'</div>':'')
+      +(p.desc?'<div class="proj-desc">'+p.desc+'</div>':'')
+      +'<div class="proj-btns">'
+      +'<button class="proj-buy-btn" onclick="openBuy('+p.id+')">🛒 Buy</button>'
+      +'<button class="proj-enq-btn" onclick="openEnq('+p.id+')">📩 Enquiry</button>'
+      +'</div></div></div>';
+  }).join('');
+}
+function switchImg(pid,idx,ev){
+  var card=ev.target.closest('.proj-card');
+  var imgs=card.querySelectorAll('.proj-imgs img');
+  var dots=card.querySelectorAll('.proj-img-dots span');
+  imgs.forEach(function(i){i.classList.remove('active');});
+  dots.forEach(function(d){d.classList.remove('active');});
+  imgs[idx].classList.add('active');
+  if(dots[idx])dots[idx].classList.add('active');
+}
+
+// ============ BUY / ENQ MODALS ============
+function openBuy(pid){
+  var proj=S.projects.find(function(p){return p.id===pid;});
+  if(!proj)return; activeProj=proj;
+  document.getElementById('buy-proj-label').textContent='Project: '+proj.name;
+  document.getElementById('buy-proj').value=proj.name;
+  document.getElementById('buy-name').value='';document.getElementById('buy-phone').value='';document.getElementById('buy-college').value='';
+  document.getElementById('buy-form-wrap').style.display='';document.getElementById('buy-success').style.display='none';
+  openModal('buy-modal');
+}
+function submitBuy(){
+  var name=document.getElementById('buy-name').value.trim();
+  var phone=document.getElementById('buy-phone').value.trim();
+  if(!name||!phone){toast('⚠️ Fill Name & Phone');return;}
+  S.submissions.unshift({id:Date.now(),type:'BUY',name:name,phone:phone,college:document.getElementById('buy-college').value.trim(),project:activeProj?activeProj.name:'',time:new Date().toLocaleString('en-IN')});
+  document.getElementById('buy-form-wrap').style.display='none';
+  document.getElementById('buy-success').style.display='block';
+  refreshAdmin();
+}
+function openEnq(pid){
+  var proj=S.projects.find(function(p){return p.id===pid;});
+  if(!proj)return; activeProj=proj;
+  document.getElementById('enq-proj-label').textContent='Project: '+proj.name;
+  openModal('enq-choice-modal');
+}
+function doCall(){closeModal('enq-choice-modal');window.location.href='tel:+917395984042';}
+function openSmsForm(){
+  closeModal('enq-choice-modal');
+  document.getElementById('sms-proj-label').textContent='Project: '+(activeProj?activeProj.name:'');
+  document.getElementById('sms-proj').value=activeProj?activeProj.name:'';
+  document.getElementById('sms-name').value='';document.getElementById('sms-phone').value='';document.getElementById('sms-college').value='';
+  document.getElementById('sms-form-wrap').style.display='';document.getElementById('sms-success').style.display='none';
+  openModal('sms-modal');
+}
+function submitSms(){
+  var name=document.getElementById('sms-name').value.trim();
+  var phone=document.getElementById('sms-phone').value.trim();
+  if(!name||!phone){toast('⚠️ Fill Name & Phone');return;}
+  S.submissions.unshift({id:Date.now(),type:'ENQUIRY',name:name,phone:phone,college:document.getElementById('sms-college').value.trim(),project:activeProj?activeProj.name:'',time:new Date().toLocaleString('en-IN')});
+  document.getElementById('sms-form-wrap').style.display='none';document.getElementById('sms-success').style.display='block';
+  refreshAdmin();
+}
+
+// ============ CONTACT FORM ============
+function submitContactForm(){
+  var name=document.getElementById('cName').value.trim();
+  var email=document.getElementById('cEmail').value.trim();
+  var service=document.getElementById('cService').value.trim();
+  if(!name||!email||!service){toast('⚠️ Fill Name, Email & Service');return;}
+  S.submissions.unshift({id:Date.now(),type:'CONTACT',name:name,email:email,phone:document.getElementById('cPhone').value.trim(),company:document.getElementById('cCompany').value.trim(),service:service,deadline:document.getElementById('cDeadline').value.trim(),message:document.getElementById('cMessage').value.trim(),time:new Date().toLocaleString('en-IN')});
+  ['cName','cEmail','cPhone','cCompany','cDeadline','cMessage'].forEach(function(id){document.getElementById(id).value='';});
+  document.getElementById('cService').value='';
+  var s=document.getElementById('successMsg');s.style.display='block';
+  setTimeout(function(){s.style.display='none';},5000);
+  toast('✅ Request sent!'); refreshAdmin();
+}
+
+// ============ BANNER ============
+function handleBannerImg(input){
+  if(!input.files[0])return;
+  var r=new FileReader();
+  r.onload=function(e){bannerImg=e.target.result;document.getElementById('banner-prev-img').src=e.target.result;document.getElementById('banner-prev').style.display='block';};
+  r.readAsDataURL(input.files[0]);
+}
+function saveBanner(){
+  if(!bannerImg&&!S.banner.img){toast('⚠️ Upload an image first');return;}
+  S.banner.img=bannerImg||S.banner.img;S.banner.title=document.getElementById('b-title').value.trim();S.banner.sub=document.getElementById('b-sub').value.trim();S.banner.on=true;
+  applyBanner();toast('🖼️ Banner applied!');
+}
+function removeBanner(){S.banner.on=false;S.banner.img=null;bannerImg=null;document.getElementById('banner-prev').style.display='none';document.getElementById('b-title').value='';document.getElementById('b-sub').value='';applyBanner();toast('🗑️ Banner removed');}
+function applyBanner(){
+  var el=document.getElementById('hero-banner');
+  if(S.banner.on&&S.banner.img){document.getElementById('banner-img').src=S.banner.img;document.getElementById('banner-title-txt').textContent=S.banner.title;document.getElementById('banner-sub-txt').textContent=S.banner.sub;el.style.display='block';}
+  else{el.style.display='none';}
+}
+
+// ============ SOCIAL ============
+function saveSocial(type){var val=document.getElementById(type+'-inp').value.trim();if(!val){toast('⚠️ Enter a link');return;}S.social[type]=val;applySocial();refreshAdmin();toast('✅ '+type.toUpperCase()+' link saved!');}
+function removeSocial(type){if(!confirm('Remove this link?'))return;S.social[type]='';document.getElementById(type+'-inp').value='';applySocial();refreshAdmin();toast('🗑️ '+type.toUpperCase()+' link removed');}
+function applySocial(){
+  var grid=document.getElementById('social-links-grid');var section=document.getElementById('social-section');var prev=document.getElementById('sp-preview');
+  var btns=[],badges=[];
+  if(S.social.wa){btns.push('<a href="'+S.social.wa+'" target="_blank" class="social-link-btn wa-btn"><i class="fab fa-whatsapp"></i> WhatsApp Group</a>');badges.push('<span class="sp-badge sp-wa"><i class="fab fa-whatsapp"></i> WhatsApp ✅</span>');}
+  if(S.social.ig){btns.push('<a href="'+S.social.ig+'" target="_blank" class="social-link-btn ig-btn"><i class="fab fa-instagram"></i> Instagram</a>');badges.push('<span class="sp-badge sp-ig"><i class="fab fa-instagram"></i> Instagram ✅</span>');}
+  if(S.social.tg){btns.push('<a href="'+S.social.tg+'" target="_blank" class="social-link-btn tg-btn"><i class="fab fa-telegram"></i> Telegram</a>');badges.push('<span class="sp-badge sp-tg"><i class="fab fa-telegram"></i> Telegram ✅</span>');}
+  if(S.social.tg){btns.push('<a href="'+S.social.tg+'" target="_blank" class="social-link-btn tg-btn"><i class="fab fa-linkdin "></i> linkdin</a>');badges.push('<span class="sp-badge sp-tg"><i class="fab fa-linkdin"></i> linkdin✅</span>');}
+  if(btns.length){grid.innerHTML=btns.join('');section.style.display='block';}else{section.style.display='none';}
+  if(prev)prev.innerHTML=badges.length?badges.join(''):'<span style="font-size:.8rem;color:var(--text-muted);">No links saved yet.</span>';
+}
+
+// ============ SETTINGS ============
+function saveCreds(){var u=document.getElementById('new-u').value.trim();var p=document.getElementById('new-p').value.trim();if(u)S.user=u;if(p)S.pass=p;document.getElementById('new-u').value='';document.getElementById('new-p').value='';toast('✅ Credentials updated');}
+function saveWaNum(){var n=document.getElementById('wa-num').value.trim();if(!n){toast('⚠️ Enter a number');return;}S.waNum=n;document.getElementById('wa-float').href='https://wa.me/'+n;toast('✅ WhatsApp number updated');}
+
+// ============ REFRESH ADMIN ============
+function refreshAdmin(){
+  document.getElementById('st-projs').textContent=S.projects.length;
+  document.getElementById('st-subs').textContent=S.submissions.length;
+  var svcList=S.services.length?S.services:DEFAULT_SERVICES;
+  document.getElementById('st-svcs').textContent=svcList.length;
+  var rpList=S.recentProjects.length?S.recentProjects:DEFAULT_RECENT;
+  document.getElementById('st-rp').textContent=rpList.length;
+  document.getElementById('proj-count').textContent=S.projects.length;
+  document.getElementById('sub-count').textContent=S.submissions.length;
+  document.getElementById('svc-count').textContent=svcList.length;
+  document.getElementById('rp-count').textContent=rpList.length;
+  if(S.social.wa)document.getElementById('wa-inp').value=S.social.wa;
+  if(S.social.ig)document.getElementById('ig-inp').value=S.social.ig;
+  if(S.social.tg)document.getElementById('tg-inp').value=S.social.tg;
+  applySocial();
+
+  // Projects for sale list
+  var aplist=document.getElementById('admin-proj-list');
+  if(!S.projects.length){aplist.innerHTML='<div class="empty-box">No projects yet. Add one above.</div>';}
+  else{aplist.innerHTML=S.projects.map(function(p){return '<div class="sub-card"><h4>📦 '+p.name+'<span class="sub-type buy">'+p.domain+'</span></h4><p>💰 Budget: <span>'+p.budget+'</span></p>'+(p.tech?'<p>🛠 Tech: <span>'+p.tech+'</span></p>':'')+'<p>🖼️ Images: <span>'+(p.imgs?p.imgs.length:0)+' uploaded</span></p><button class="del-btn" onclick="deleteProj('+p.id+')">🗑️ Delete</button></div>';}).join('');}
+
+  // Services list — show active list (custom or default)
+  var svcAdminList=document.getElementById('admin-svc-list');
+  var activeSvcs=S.services.length?S.services:DEFAULT_SERVICES;
+  svcAdminList.innerHTML=activeSvcs.map(function(s,i){return '<div class="sub-card"><h4><i class="'+s.icon+'" style="color:var(--light-blue);margin-right:6px;"></i>'+s.name+'</h4><p style="color:var(--text-muted);font-size:.8rem;">'+s.desc+'</p><button class="del-btn" onclick="deleteSvc('+i+')">🗑️ Delete</button></div>';}).join('');
+
+  // Recent projects list — show active list (custom or default)
+  var rpAdminList=document.getElementById('admin-rp-list');
+  var activeRPs=S.recentProjects.length?S.recentProjects:DEFAULT_RECENT;
+  rpAdminList.innerHTML=activeRPs.map(function(p,i){return '<div class="sub-card"><h4><i class="'+p.icon+'" style="color:var(--light-blue);margin-right:6px;"></i>'+p.name+'<span class="sub-type buy">'+p.domain+'</span></h4><p style="color:var(--text-muted);font-size:.8rem;">'+p.about+'</p><button class="del-btn" onclick="deleteRP('+i+')">🗑️ Delete</button></div>';}).join('');
+
+  // Enquiries
+  var slist=document.getElementById('subs-list');
+  if(!S.submissions.length){slist.innerHTML='<div class="empty-box">No enquiries yet.</div>';}
+  else{slist.innerHTML=S.submissions.map(function(s){var tl=s.type==='BUY'?'BUY 🛒':s.type==='ENQUIRY'?'ENQUIRY 💬':'CONTACT 📧';var tc=s.type==='BUY'?'buy':'enq';return '<div class="sub-card"><h4>👤 '+s.name+'<span class="sub-type '+tc+'">'+tl+'</span></h4>'+(s.phone?'<p>📞 Phone: <span>'+s.phone+'</span></p>':'')+(s.email?'<p>📧 Email: <span>'+s.email+'</span></p>':'')+(s.college?'<p>🏫 College: <span>'+s.college+'</span></p>':'')+(s.company?'<p>🏢 Company: <span>'+s.company+'</span></p>':'')+(s.project?'<p>📦 Project: <span>'+s.project+'</span></p>':'')+(s.service?'<p>🔧 Service: <span>'+s.service+'</span></p>':'')+(s.message?'<p>💬 Message: <span>'+s.message+'</span></p>':'')+'<div class="sub-time">⏰ '+s.time+'</div><button class="del-btn" onclick="delSub('+s.id+')">🗑️ Delete</button></div>';}).join('');}
+}
+
+function deleteProj(id){if(!confirm('Delete?'))return;S.projects=S.projects.filter(function(p){return p.id!==id;});refreshAdmin();renderProjects();toast('🗑️ Deleted');}
+function deleteSvc(idx){if(!confirm('Delete this service?'))return;var list=S.services.length?S.services:DEFAULT_SERVICES.slice();if(!S.services.length)S.services=DEFAULT_SERVICES.slice();S.services.splice(idx,1);renderServices();refreshAdmin();toast('🗑️ Service deleted');}
+function deleteRP(idx){if(!confirm('Delete this project?'))return;if(!S.recentProjects.length)S.recentProjects=DEFAULT_RECENT.slice();S.recentProjects.splice(idx,1);renderRecentProjects();refreshAdmin();toast('🗑️ Project deleted');}
+function delSub(id){if(!confirm('Delete?'))return;S.submissions=S.submissions.filter(function(s){return s.id!==id;});refreshAdmin();toast('🗑️ Deleted');}
+
+// INIT
+document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
+document.getElementById('main-page').classList.add('active');
+renderServices();
+renderRecentProjects();
+</script>
+</body>
+</html>
