@@ -13,14 +13,12 @@ html{scroll-behavior:smooth;}
 body{font-family:'DM Sans',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden;}
 .page{display:none!important;}.page.active{display:block!important;}
 
-
 /* NAV */
-nav{position:fixed;top:0;left:0;width:100%;z-index:999;padding:14px 5%;display:flex;justify-content:space-between;align-items:center;background:rgba(10,22,40,0.95);backdrop-filter:blur(14px);border-bottom:1px solid rgba(79,163,232,0.12);}
-.logo{display:flex;align-items:center;gap:12px;flex-wrap:nowrap;}
-.logo-circle{width:46px;height:46px;border-radius:50%;overflow:hidden;flex-shrink:0;display:flex;justify-content:center;align-items:center;}
+nav{position:fixed;top:0;left:0;width:100%;z-index:999;padding:14px 5%;display:flex;justify-content:space-between;align-items:center;background:rgba(10,22,40,0.97);backdrop-filter:blur(14px);border-bottom:1px solid rgba(79,163,232,0.12);}
+.logo{display:flex;align-items:center;gap:12px;flex-wrap:nowrap;cursor:pointer;}
+.logo-circle{width:46px;height:46px;border-radius:50%;overflow:hidden;flex-shrink:0;display:flex;justify-content:center;align-items:center;background:rgba(79,163,232,0.15);}
 .logo-circle img{width:100%;height:100%;object-fit:cover;}
-.company-name{margin:0;font-size:2rem;font-weight:800;line-height:1;white-space:nowrap;}
-.company-name{font-family:'Syne',sans-serif;font-size:1.55rem;font-weight:800;letter-spacing:1px;}
+.company-name{font-family:'Syne',sans-serif;font-size:1.55rem;font-weight:800;letter-spacing:1px;margin:0;}
 .c-letter{color:#4fa3e8;}.tech-letter{color:#fff;}
 .nav-links{display:flex;gap:1.3rem;list-style:none;align-items:center;}
 .nav-links a{color:var(--text-muted);text-decoration:none;font-size:.85rem;font-weight:500;transition:color .3s;}
@@ -30,16 +28,57 @@ nav{position:fixed;top:0;left:0;width:100%;z-index:999;padding:14px 5%;display:f
 .lock-btn{background:none;border:1px solid rgba(79,163,232,0.25);border-radius:8px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text-muted);font-size:.95rem;transition:all .3s;}
 .lock-btn:hover{border-color:var(--light-blue);color:var(--light-blue);}
 
-/* HERO BANNER */
-.hero-banner{width:100%;position:relative;display:none;margin-top:65px;}
-.hero-banner img{width:100%;max-height:600px;object-fit:cover;display:block;object-fit:cover;object-position:center 0%;transform:translateY(20px);}
+/* ===== FIXED BANNER ===== */
+#hero-banner{
+  position:fixed;
+  top:73px;
+  left:0;
+  width:100%;
+  height:220px;
+  z-index:900;
+  display:none;
+  overflow:hidden;
+  box-shadow:0 4px 30px rgba(0,0,0,0.5);
+}
+#hero-banner img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center center;
+  display:block;
+}
+#hero-banner .banner-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,rgba(10,22,40,0.75) 0%,rgba(10,22,40,0.2) 60%,transparent 100%);
+  display:flex;
+  align-items:center;
+  padding:0 5%;
+}
+.banner-text h2{font-family:'Syne',sans-serif;font-size:clamp(1.2rem,3vw,2.2rem);font-weight:800;margin-bottom:.4rem;text-shadow:0 2px 8px rgba(0,0,0,0.5);}
+.banner-text p{color:rgba(255,255,255,0.85);font-size:.92rem;max-width:380px;text-shadow:0 1px 4px rgba(0,0,0,0.5);}
+
+.hero-banner{
+    width:100%;
+    height:750px;
+    overflow:hidden;
+}
+
+.hero-banner img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+    display:block;
+}
 
 
-.banner-text h2{font-family:'Syne',sans-serif;font-size:clamp(1.4rem,4vw,2.8rem);font-weight:800;margin-bottom:.5rem;}
-.banner-text p{color:rgba(255,255,255,0.8);font-size:.95rem;max-width:380px;}
+/* When banner is active, push content down */
+body.banner-active .hero{padding-top:calc(120px + 220px)!important;}
+body.banner-active #home-wrapper{padding-top:220px;}
 
 /* HERO */
-.hero{min-height:100vh;display:flex;align-items:center;padding:120px 6% 80px;position:relative;overflow:hidden;}
+.hero{min-height:100vh;display:flex;align-items:center;padding:120px 6% 80px;position:relative;overflow:hidden;transition:padding-top .3s;}
 .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 70% 50%,rgba(30,111,207,0.15) 0%,transparent 70%);}
 .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(79,163,232,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(79,163,232,0.04) 1px,transparent 1px);background-size:60px 60px;}
 .hero-content{position:relative;max-width:650px;}
@@ -127,22 +166,24 @@ section{padding:80px 6%;}
 .proj-enq-btn{flex:1;padding:9px 0;background:rgba(79,163,232,0.08);color:var(--light-blue);border:1px solid rgba(79,163,232,0.3);border-radius:8px;font-family:'Syne',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;transition:all .3s;}
 .proj-enq-btn:hover{background:rgba(79,163,232,0.15);}
 
-/* SOCIAL */
-.social-section{background:var(--dark-blue);padding:55px 6%;display:none;}
-.social-section-inner{max-width:680px;margin:0 auto;text-align:center;}
-.social-section h2{font-family:'Syne',sans-serif;font-size:1.7rem;font-weight:700;margin-bottom:.5rem;}
-.social-section p{color:var(--text-muted);margin-bottom:1.8rem;}
-.social-links-grid{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;}
-.social-link-btn{display:flex;align-items:center;gap:10px;padding:13px 26px;border-radius:50px;font-family:'Syne',sans-serif;font-size:.88rem;font-weight:600;text-decoration:none;transition:all .3s;}
-.wa-btn{background:rgba(37,211,102,0.1);border:1px solid rgba(37,211,102,0.3);color:#25D366;}
-.wa-btn:hover{background:rgba(37,211,102,0.2);transform:translateY(-2px);}
-.ig-btn{background:rgba(225,48,108,0.1);border:1px solid rgba(225,48,108,0.3);color:#E1306C;}
-.ig-btn:hover{background:rgba(225,48,108,0.2);transform:translateY(-2px);}
-.tg-btn{background:rgba(0,136,204,0.1);border:1px solid rgba(0,136,204,0.3);color:#0088cc;}
-.tg-btn:hover{background:rgba(0,136,204,0.2);transform:translateY(-2px);}
+/* PROJECT ENQUIRY FORM BELOW GRID */
+.proj-enquiry-section{background:var(--dark-blue);padding:60px 6%;border-top:1px solid rgba(79,163,232,0.1);}
+.proj-enquiry-inner{max-width:700px;margin:0 auto;}
+.proj-enquiry-inner .section-label{text-align:center;}
+.proj-enquiry-inner .section-title{text-align:center;margin-bottom:.5rem;}
+.proj-enquiry-inner .section-sub{text-align:center;margin:0 auto 2.5rem auto;}
+.penq-form{display:flex;flex-direction:column;gap:1rem;}
+.penq-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.penq-field{display:flex;flex-direction:column;gap:.35rem;}
+.penq-field label{font-size:.78rem;color:var(--text-muted);}
+.penq-field input,.penq-field textarea,.penq-field select{background:rgba(255,255,255,0.04);border:1px solid rgba(79,163,232,0.15);border-radius:8px;padding:11px 14px;color:#fff;font-family:'DM Sans',sans-serif;font-size:.88rem;outline:none;transition:border .3s;resize:none;}
+.penq-field input:focus,.penq-field textarea:focus,.penq-field select:focus{border-color:rgba(79,163,232,0.5);}
+.penq-field select option{background:var(--navy);}
+.penq-submit{background:var(--accent-blue);color:#fff;border:none;padding:13px;border-radius:8px;font-family:'Syne',sans-serif;font-size:.97rem;font-weight:600;cursor:pointer;transition:all .3s;}
+.penq-submit:hover{background:var(--light-blue);transform:translateY(-2px);}
+.penq-success{display:none;background:rgba(37,211,102,0.1);border:1px solid rgba(37,211,102,0.3);border-radius:8px;padding:14px;text-align:center;color:#25D366;font-size:.9rem;margin-top:.5rem;}
 
-
-* CONTACT */
+/* CONTACT */
 .contact{background:var(--navy);}
 .contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
 .contact-info{display:flex;flex-direction:column;gap:1.3rem;margin-top:2rem;}
@@ -160,7 +201,21 @@ section{padding:80px 6%;}
 .submit-btn:hover{background:var(--light-blue);transform:translateY(-2px);}
 .success-msg{display:none;background:rgba(37,211,102,0.1);border:1px solid rgba(37,211,102,0.3);border-radius:8px;padding:13px;text-align:center;color:#25D366;font-size:.88rem;}
 
-
+/* SOCIAL */
+.social-section{background:var(--dark-blue);padding:55px 6%;display:none;}
+.social-section-inner{max-width:680px;margin:0 auto;text-align:center;}
+.social-section h2{font-family:'Syne',sans-serif;font-size:1.7rem;font-weight:700;margin-bottom:.5rem;}
+.social-section p{color:var(--text-muted);margin-bottom:1.8rem;}
+.social-links-grid{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;}
+.social-link-btn{display:flex;align-items:center;gap:10px;padding:13px 26px;border-radius:50px;font-family:'Syne',sans-serif;font-size:.88rem;font-weight:600;text-decoration:none;transition:all .3s;}
+.wa-btn{background:rgba(37,211,102,0.1);border:1px solid rgba(37,211,102,0.3);color:#25D366;}
+.wa-btn:hover{background:rgba(37,211,102,0.2);transform:translateY(-2px);}
+.ig-btn{background:rgba(225,48,108,0.1);border:1px solid rgba(225,48,108,0.3);color:#E1306C;}
+.ig-btn:hover{background:rgba(225,48,108,0.2);transform:translateY(-2px);}
+.tg-btn{background:rgba(0,136,204,0.1);border:1px solid rgba(0,136,204,0.3);color:#0088cc;}
+.tg-btn:hover{background:rgba(0,136,204,0.2);transform:translateY(-2px);}
+.li-btn{background:rgba(0,119,181,0.1);border:1px solid rgba(0,119,181,0.3);color:#0077b5;}
+.li-btn:hover{background:rgba(0,119,181,0.2);transform:translateY(-2px);}
 
 /* MODAL */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:2000;display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px);}
@@ -278,6 +333,7 @@ footer p{color:var(--text-muted);font-size:.83rem;}
 .sp-wa{background:rgba(37,211,102,0.1);color:#25D366;border:1px solid rgba(37,211,102,0.3);}
 .sp-ig{background:rgba(225,48,108,0.1);color:#E1306C;border:1px solid rgba(225,48,108,0.3);}
 .sp-tg{background:rgba(0,136,204,0.1);color:#0088cc;border:1px solid rgba(0,136,204,0.3);}
+.sp-li{background:rgba(0,119,181,0.1);color:#0077b5;border:1px solid rgba(0,119,181,0.3);}
 
 /* ICON PICKER */
 .icon-picker-wrap{position:relative;}
@@ -296,10 +352,11 @@ footer p{color:var(--text-muted);font-size:.83rem;}
 @media(max-width:768px){
   .about-inner,.contact-inner{grid-template-columns:1fr;}
   .hero-stats{gap:1.4rem;}
-  .form-row,.af-row{grid-template-columns:1fr;}
+  .form-row,.af-row,.penq-row{grid-template-columns:1fr;}
   .nav-links{display:none;}
   .admin-stats{grid-template-columns:repeat(2,1fr);}
   .proj-btns{flex-direction:column;}
+  #hero-banner{height:140px;}
 }
 </style>
 </head>
@@ -311,9 +368,9 @@ footer p{color:var(--text-muted);font-size:.83rem;}
 <nav>
   <div class="logo" onclick="scrollTop()">
     <div class="logo-circle">
-      <span class="logo-ph"></span>
-     <img id="nav-logo-img" src="logo.png" alt="CTECH Logo">
+      <img id="nav-logo-img" src="" alt="CTECH"/>
     </div>
+    
     <h2 class="company-name"><span class="c-letter">C</span><span class="tech-letter">TECH</span></h2>
   </div>
   <ul class="nav-links">
@@ -327,7 +384,13 @@ footer p{color:var(--text-muted);font-size:.83rem;}
 </nav>
 
 <!-- HERO BANNER -->
-<div id="hero-banner" class="hero-banner">
+<section class="hero-banner">
+    <img src="c:\Users\LENOVO\Downloads\ChatGPT Image Jun 27, 2026, 01_50_53 AM.png" alt="CTECH Banner">
+</section>
+
+
+<!-- FIXED BANNER — sits below nav, fixed position -->
+<div id="hero-banner">
   <img id="banner-img" src="" alt="Banner"/>
   <div class="banner-overlay">
     <div class="banner-text">
@@ -365,9 +428,7 @@ footer p{color:var(--text-muted);font-size:.83rem;}
     <h2 class="section-title">Our Core Services</h2>
     <p class="section-sub">From concept to deployment, we deliver end-to-end tech solutions tailored to your goals.</p>
   </div>
-  <div class="services-grid" id="services-grid">
-    <!-- Default services rendered by JS -->
-  </div>
+  <div class="services-grid" id="services-grid"></div>
 </section>
 
 <!-- ABOUT -->
@@ -395,9 +456,7 @@ footer p{color:var(--text-muted);font-size:.83rem;}
     <h2 class="section-title">Recent Projects</h2>
     <p class="section-sub">A glimpse of what we've built — from dashboards to smart devices.</p>
   </div>
-  <div class="portfolio-grid" id="portfolio-grid">
-    <!-- rendered by JS -->
-  </div>
+  <div class="portfolio-grid" id="portfolio-grid"></div>
 </section>
 
 <!-- PROJECTS FOR SALE -->
@@ -407,13 +466,55 @@ footer p{color:var(--text-muted);font-size:.83rem;}
     <h2 class="section-title" style="text-align:center;">Projects for Sale</h2>
     <p class="section-sub" style="margin:0 auto;text-align:center;">Ready-made projects — Buy or Enquire directly below.</p>
   </div>
-  <div class="proj-grid" id="proj-grid">
-    <div class="empty-box" style="grid-column:1/-1;padding:60px 20px;">
-      <i class="fas fa-folder-open" style="font-size:2.5rem;color:var(--text-muted);margin-bottom:12px;display:block;"></i>
-      No projects uploaded yet. Admin can add projects from the Admin Panel.
+  <div class="proj-grid" id="proj-grid"></div>
+</section>
+
+<!-- PROJECT ENQUIRY FORM (below Projects for Sale) -->
+<div class="proj-enquiry-section">
+  <div class="proj-enquiry-inner">
+    <div class="section-label">Interested?</div>
+    <h2 class="section-title">Enquire About a Project</h2>
+    <p class="section-sub">Fill in your details and we'll get back to you with full project info, source code details, and pricing.</p>
+    <div class="penq-form">
+      <div class="penq-row">
+        <div class="penq-field"><label>Your Name *</label><input type="text" id="pq-name" placeholder="Your full name"/></div>
+        <div class="penq-field"><label>Phone Number *</label><input type="text" id="pq-phone" placeholder="+91 98765 43210"/></div>
+      </div>
+      <div class="penq-row">
+        <div class="penq-field"><label>Email Address</label><input type="email" id="pq-email" placeholder="you@email.com"/></div>
+        <div class="penq-field"><label>College / Company</label><input type="text" id="pq-college" placeholder="College or Company name"/></div>
+      </div>
+      <div class="penq-field">
+        <label>Which Project are you interested in? *</label>
+        <select id="pq-project">
+          <option value="">Select a project...</option>
+          <option>Blind Stick with GPS & Obstacle Detection</option>
+          <option>Smart IoT Home Automation</option>
+          <option>Face Recognition Attendance System</option>
+          <option>Hospital Management System</option>
+          <option>E-Commerce Website with Admin Panel</option>
+          <option>Smart Farming IoT System</option>
+          <option>College ERP Portal</option>
+          <option>Power BI Sales Dashboard</option>
+          <option>Other / All Projects</option>
+        </select>
+      </div>
+      <div class="penq-field"><label>Your Message / Requirements</label><textarea id="pq-message" rows="3" placeholder="Tell us what you need, your deadline, budget, etc."></textarea></div>
+      <button class="penq-submit" onclick="submitProjEnquiry()">📩 Send Enquiry →</button>
+      <div class="penq-success" id="penq-success">✅ Enquiry received! We'll contact you within 24 hours.</div>
     </div>
   </div>
-</section>
+</div>
+
+<!-- SOCIAL -->
+<div class="social-section" id="social-section">
+  <div class="social-section-inner">
+    <div class="section-label">Community</div>
+    <h2>Join Our Community</h2>
+    <p>Follow us and join our groups for updates, offers, and tech tips.</p>
+    <div class="social-links-grid" id="social-links-grid"></div>
+  </div>
+</div>
 
 <!-- CONTACT -->
 <section class="contact" id="contact">
@@ -458,10 +559,9 @@ footer p{color:var(--text-muted);font-size:.83rem;}
 </section>
 
 <a href="https://wa.me/917395984042" class="whatsapp-float" id="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
-<!-- FOOTER -->
+
 <footer>
-  <div class="logo">
-  </div>
+  <p style="font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;"><span style="color:#4fa3e8;">C</span><span>TECH</span></p>
   <p>© 2025 CTECH. Smart Solutions for a Digital World.</p>
   <div class="footer-links">
     <a href="#home">Home</a>
@@ -471,19 +571,6 @@ footer p{color:var(--text-muted);font-size:.83rem;}
   </div>
 </footer>
 </div><!-- end main-page -->
-</div>
-
-<!-- SOCIAL (now sits just above the footer) -->
-<div class="social-section" id="social-section">
-  <div class="social-section-inner">
-    <div class="section-label">Community</div>
-    <h2>Join Our Community</h2>
-    <p>Follow us and join our groups for updates, offers, and tech tips.</p>
-    <div class="social-links-grid" id="social-links-grid"></div>
-  </div>
-</div>
-
-
 
 <!-- BUY MODAL -->
 <div class="modal-overlay" id="buy-modal">
@@ -621,7 +708,7 @@ footer p{color:var(--text-muted);font-size:.83rem;}
     <div id="t-services" class="atc">
       <div class="acard">
         <h3>➕ Add New Service</h3>
-        <p class="adesc">Add a service card — it will appear in the "Our Core Services" section on the main page with the icon you choose.</p>
+        <p class="adesc">Add a service card — it will appear in the "Our Core Services" section on the main page.</p>
         <div class="af">
           <label>Choose Icon</label>
           <div class="icon-picker-wrap" id="svc-icon-wrap">
@@ -681,10 +768,10 @@ footer p{color:var(--text-muted);font-size:.83rem;}
     <!-- BANNER TAB -->
     <div id="t-banner" class="atc">
       <div class="acard">
-        <h3>🖼️ Home Page Banner</h3>
-        <p class="adesc">Upload a banner image — appears below the nav bar on your home page.</p>
+        <h3>🖼️ Fixed Home Page Banner</h3>
+        <p class="adesc">Upload a banner image — it will appear <strong>fixed below the navbar</strong> at the top of the page at all times. Recommended: 1400×220px wide banner.</p>
         <div class="af">
-          <label>Banner Image (Recommended: 1400×420px)</label>
+          <label>Banner Image</label>
           <div class="img-upload-box">
             <input type="file" accept="image/*" onchange="handleBannerImg(this)"/>
             <i class="fas fa-image"></i><p>Click to upload banner image</p>
@@ -694,9 +781,9 @@ footer p{color:var(--text-muted);font-size:.83rem;}
             <p>✅ Image ready — click Save to apply</p>
           </div>
         </div>
-        <div class="af"><label>Banner Title</label><input type="text" id="b-title" placeholder="e.g. New Year Special Offers 🎉"/></div>
-        <div class="af"><label>Banner Subtitle</label><input type="text" id="b-sub" placeholder="e.g. Get 20% off on all web projects!"/></div>
-        <button class="apost-btn" onclick="saveBanner()">💾 Save & Apply Banner</button>
+        <div class="af"><label>Banner Title (optional overlay text)</label><input type="text" id="b-title" placeholder="e.g. Special Offers This Month 🎉"/></div>
+        <div class="af"><label>Banner Subtitle (optional)</label><input type="text" id="b-sub" placeholder="e.g. Get 20% off on all web projects!"/></div>
+        <button class="apost-btn" onclick="saveBanner()">💾 Save & Show Banner</button>
         <button class="apost-btn danger" onclick="removeBanner()" style="margin-top:7px;">🗑️ Remove Banner</button>
       </div>
     </div>
@@ -705,11 +792,11 @@ footer p{color:var(--text-muted);font-size:.83rem;}
     <div id="t-social" class="atc">
       <div class="acard">
         <h3>🔗 Social & Community Links</h3>
-        <p class="adesc">Set your group links — buttons will appear on the website.</p>
+        <p class="adesc">Set your group/profile links — buttons will appear on the website.</p>
         <div class="srow"><div class="af"><label><i class="fab fa-whatsapp" style="color:#25D366;margin-right:5px;"></i>WhatsApp Group Link</label><input type="text" id="wa-inp" placeholder="https://chat.whatsapp.com/xxx"/></div><button class="save-btn" onclick="saveSocial('wa')">Save</button><button class="del-btn" style="margin-top:0;" onclick="removeSocial('wa')">🗑️</button></div>
         <div class="srow"><div class="af"><label><i class="fab fa-instagram" style="color:#E1306C;margin-right:5px;"></i>Instagram Link</label><input type="text" id="ig-inp" placeholder="https://instagram.com/yourpage"/></div><button class="save-btn" onclick="saveSocial('ig')">Save</button><button class="del-btn" style="margin-top:0;" onclick="removeSocial('ig')">🗑️</button></div>
         <div class="srow"><div class="af"><label><i class="fab fa-telegram" style="color:#0088cc;margin-right:5px;"></i>Telegram Group Link</label><input type="text" id="tg-inp" placeholder="https://t.me/yourchannel"/></div><button class="save-btn" onclick="saveSocial('tg')">Save</button><button class="del-btn" style="margin-top:0;" onclick="removeSocial('tg')">🗑️</button></div>
-        <div class="srow"><div class="af"><label><i class="fab fa-linkdin" style="color:#E1306C;margin-right:5px;"></i>linkdin link </label><input type="text" id="ig-inp" placeholder="https://linkdin.com/yourpage"/></div><button class="save-btn" onclick="saveSocial('ig')">Save</button><button class="del-btn" style="margin-top:0;" onclick="removeSocial('ig')">🗑️</button></div>
+        <div class="srow"><div class="af"><label><i class="fab fa-linkedin" style="color:#0077b5;margin-right:5px;"></i>LinkedIn Link</label><input type="text" id="li-inp" placeholder="https://linkedin.com/company/yourpage"/></div><button class="save-btn" onclick="saveSocial('li')">Save</button><button class="del-btn" style="margin-top:0;" onclick="removeSocial('li')">🗑️</button></div>
         <div><p style="font-size:.76rem;color:var(--text-muted);margin-bottom:7px;">Active on website:</p><div class="sp-row" id="sp-preview"><span style="font-size:.8rem;color:var(--text-muted);">No links saved yet.</span></div></div>
       </div>
     </div>
@@ -736,78 +823,24 @@ footer p{color:var(--text-muted);font-size:.83rem;}
 <div class="toast" id="toast"></div>
 
 <script>
-// ============ ALL ICONS LIST ============
-var ALL_ICONS = [
-  'fa-globe','fa-mobile-alt','fa-chart-bar','fa-microchip','fa-robot','fa-graduation-cap',
-  'fa-code','fa-laptop-code','fa-database','fa-server','fa-cloud','fa-wifi',
-  'fa-shield-alt','fa-lock','fa-key','fa-bug','fa-terminal','fa-cog',
-  'fa-lightbulb','fa-brain','fa-magic','fa-star','fa-fire','fa-bolt',
-  'fa-chart-line','fa-chart-pie','fa-analytics','fa-dollar-sign','fa-coins','fa-wallet',
-  'fa-shopping-cart','fa-store','fa-tags','fa-receipt','fa-credit-card','fa-qrcode',
-  'fa-users','fa-user-tie','fa-handshake','fa-comments','fa-headset','fa-phone',
-  'fa-envelope','fa-bell','fa-calendar','fa-clock','fa-map-marker-alt','fa-truck',
-  'fa-car','fa-bus','fa-plane','fa-industry','fa-factory','fa-building',
-  'fa-home','fa-school','fa-hospital','fa-flask','fa-dna','fa-heartbeat',
-  'fa-camera','fa-video','fa-music','fa-gamepad','fa-tv','fa-print',
-  'fa-file-code','fa-file-alt','fa-folder','fa-download','fa-upload','fa-sync',
-  'fa-paint-brush','fa-pen','fa-pencil-alt','fa-cut','fa-crop','fa-image',
-  'fa-leaf','fa-sun','fa-moon','fa-snowflake','fa-tint','fa-recycle',
-  'fa-wrench','fa-tools','fa-hammer','fa-screwdriver','fa-plug','fa-battery-full',
-  'fa-satellite','fa-satellite-dish','fa-signal','fa-broadcast-tower','fa-drone','fa-microphone',
-  'fa-box','fa-boxes','fa-inventory','fa-warehouse','fa-pallet','fa-barcode',
-  'fa-calculator','fa-cash-register','fa-file-invoice','fa-file-invoice-dollar','fa-balance-scale','fa-percentage'
-];
+// ============ ICONS ============
+var ALL_ICONS=['fa-globe','fa-mobile-alt','fa-chart-bar','fa-microchip','fa-robot','fa-graduation-cap','fa-code','fa-laptop-code','fa-database','fa-server','fa-cloud','fa-wifi','fa-shield-alt','fa-lock','fa-key','fa-bug','fa-terminal','fa-cog','fa-lightbulb','fa-brain','fa-magic','fa-star','fa-fire','fa-bolt','fa-chart-line','fa-chart-pie','fa-dollar-sign','fa-coins','fa-wallet','fa-shopping-cart','fa-store','fa-tags','fa-receipt','fa-credit-card','fa-qrcode','fa-users','fa-user-tie','fa-handshake','fa-comments','fa-headset','fa-phone','fa-envelope','fa-bell','fa-calendar','fa-clock','fa-map-marker-alt','fa-truck','fa-car','fa-bus','fa-plane','fa-industry','fa-factory','fa-building','fa-home','fa-school','fa-hospital','fa-flask','fa-dna','fa-heartbeat','fa-camera','fa-video','fa-music','fa-gamepad','fa-tv','fa-print','fa-file-code','fa-file-alt','fa-folder','fa-download','fa-upload','fa-sync','fa-paint-brush','fa-pen','fa-pencil-alt','fa-cut','fa-crop','fa-image','fa-leaf','fa-sun','fa-moon','fa-snowflake','fa-tint','fa-recycle','fa-wrench','fa-tools','fa-hammer','fa-screwdriver','fa-plug','fa-battery-full','fa-satellite','fa-satellite-dish','fa-signal','fa-broadcast-tower','fa-microphone','fa-box','fa-boxes','fa-warehouse','fa-pallet','fa-barcode','fa-calculator','fa-cash-register','fa-file-invoice','fa-balance-scale','fa-percentage','fa-eye','fa-assistive-listening-systems','fa-blind','fa-wheelchair'];
 
-var selIcon = {svc:'fas fa-globe', rp:'fas fa-globe'};
-
-function buildIconGrid(prefix){
-  var grid = document.getElementById(prefix+'-icon-grid');
-  grid.innerHTML = ALL_ICONS.map(function(ic){
-    var full = 'fas '+ic;
-    return '<div class="icon-opt'+(selIcon[prefix]===full?' sel':'')+'" onclick="selectIcon(\''+prefix+'\',\''+full+'\')" title="'+ic+'"><i class="fas '+ic+'"></i></div>';
-  }).join('');
-}
-function filterIcons(prefix, q){
-  var grid = document.getElementById(prefix+'-icon-grid');
-  var filtered = q ? ALL_ICONS.filter(function(ic){return ic.includes(q.toLowerCase());}) : ALL_ICONS;
-  grid.innerHTML = filtered.map(function(ic){
-    var full='fas '+ic;
-    return '<div class="icon-opt'+(selIcon[prefix]===full?' sel':'')+'" onclick="selectIcon(\''+prefix+'\',\''+full+'\')" title="'+ic+'"><i class="fas '+ic+'"></i></div>';
-  }).join('');
-}
-function toggleIconPicker(prefix){
-  var dd=document.getElementById(prefix+'-icon-dd');
-  var isOpen=dd.classList.contains('open');
-  document.querySelectorAll('.icon-dropdown').forEach(function(d){d.classList.remove('open');});
-  if(!isOpen){dd.classList.add('open');buildIconGrid(prefix);}
-}
-function selectIcon(prefix, full){
-  selIcon[prefix]=full;
-  document.getElementById(prefix+'-icon-preview-i').className=full;
-  document.getElementById(prefix+'-icon-preview-txt').textContent=full;
-  document.getElementById(prefix+'-icon-dd').classList.remove('open');
-}
-document.addEventListener('click',function(e){
-  if(!e.target.closest('.icon-picker-wrap')){
-    document.querySelectorAll('.icon-dropdown').forEach(function(d){d.classList.remove('open');});
-  }
-});
+var selIcon={svc:'fas fa-globe',rp:'fas fa-globe'};
+function buildIconGrid(p){var g=document.getElementById(p+'-icon-grid');g.innerHTML=ALL_ICONS.map(function(ic){var f='fas '+ic;return '<div class="icon-opt'+(selIcon[p]===f?' sel':'')+'" onclick="selectIcon(\''+p+'\',\''+f+'\')" title="'+ic+'"><i class="fas '+ic+'"></i></div>';}).join('');}
+function filterIcons(p,q){var g=document.getElementById(p+'-icon-grid');var f=q?ALL_ICONS.filter(function(i){return i.includes(q.toLowerCase());}):ALL_ICONS;g.innerHTML=f.map(function(ic){var full='fas '+ic;return '<div class="icon-opt'+(selIcon[p]===full?' sel':'')+'" onclick="selectIcon(\''+p+'\',\''+full+'\')" title="'+ic+'"><i class="fas '+ic+'"></i></div>';}).join('');}
+function toggleIconPicker(p){var dd=document.getElementById(p+'-icon-dd');var o=dd.classList.contains('open');document.querySelectorAll('.icon-dropdown').forEach(function(d){d.classList.remove('open');});if(!o){dd.classList.add('open');buildIconGrid(p);}}
+function selectIcon(p,f){selIcon[p]=f;document.getElementById(p+'-icon-preview-i').className=f;document.getElementById(p+'-icon-preview-txt').textContent=f;document.getElementById(p+'-icon-dd').classList.remove('open');}
+document.addEventListener('click',function(e){if(!e.target.closest('.icon-picker-wrap')){document.querySelectorAll('.icon-dropdown').forEach(function(d){d.classList.remove('open');});}});
 
 // ============ STATE ============
-var S = {
-  user:'admin', pass:'admin123',
-  projects:[], submissions:[],
-  services:[], recentProjects:[],
-  banner:{img:null,title:'',sub:'',on:false},
-  social:{wa:'',ig:'',tg:''},
-  waNum:'917395984042'
-};
+var S={user:'admin',pass:'admin123',projects:[],submissions:[],services:[],recentProjects:[],banner:{img:null,title:'',sub:'',on:false},social:{wa:'',ig:'',tg:'',li:''},waNum:'917395984042'};
 var bannerImg=null;
 var projImgs=[null,null,null];
 var activeProj=null;
 
 // DEFAULT SERVICES
-var DEFAULT_SERVICES = [
+var DEFAULT_SERVICES=[
   {id:'d1',icon:'fas fa-globe',name:'Website Development',desc:'Professional, responsive websites for businesses, startups, and institutions. Fast, SEO-ready, and visually stunning.'},
   {id:'d2',icon:'fas fa-mobile-alt',name:'Mobile App Development',desc:'Android and iOS apps built for performance. From simple tools to complex platforms.'},
   {id:'d3',icon:'fas fa-chart-bar',name:'Power BI Dashboards',desc:'Turn raw data into actionable insights with beautifully designed Power BI dashboards.'},
@@ -817,7 +850,7 @@ var DEFAULT_SERVICES = [
 ];
 
 // DEFAULT RECENT PROJECTS
-var DEFAULT_RECENT = [
+var DEFAULT_RECENT=[
   {id:'r1',icon:'fas fa-globe',domain:'Web Development',name:'E-Commerce Platform',about:'A full-featured online store with inventory management and payments.'},
   {id:'r2',icon:'fas fa-chart-bar',domain:'Power BI',name:'Sales Analytics Dashboard',about:'Real-time sales KPIs and trends for a regional distribution company.'},
   {id:'r3',icon:'fas fa-robot',domain:'Robotics',name:'Autonomous Line Follower',about:'Award-winning final year robotics project using Arduino and computer vision.'},
@@ -826,321 +859,228 @@ var DEFAULT_RECENT = [
   {id:'r6',icon:'fas fa-briefcase',domain:'Web + Dashboard',name:'HR Management Portal',about:'Employee management system with Power BI reporting.'}
 ];
 
+// 8 DEFAULT PROJECTS FOR SALE
+var DEFAULT_PROJECTS=[
+  {id:1001,name:'Smart Blind Stick with GPS',domain:'IoT',budget:'4,999',tech:'Arduino, GPS Module, Ultrasonic, Buzzer',desc:'Advanced blind stick with obstacle detection, GPS tracking, and emergency alert. Perfect for final year project.',imgs:[]},
+  {id:1002,name:'IoT Smart Home Automation',domain:'IoT',budget:'6,499',tech:'ESP8266, Relay, Mobile App, Firebase',desc:'Control home appliances via mobile app with real-time monitoring. Voice control ready.',imgs:[]},
+  {id:1003,name:'Face Recognition Attendance',domain:'AI + IoT',budget:'7,999',tech:'Python, OpenCV, Raspberry Pi, MySQL',desc:'Automated attendance system using face recognition — no manual entry required.',imgs:[]},
+  {id:1004,name:'Hospital Management System',domain:'Web',budget:'8,499',tech:'PHP, MySQL, Bootstrap, JS',desc:'Complete HMS with patient records, appointment scheduling, billing, and doctor dashboard.',imgs:[]},
+  {id:1005,name:'E-Commerce Website + Admin',domain:'Web',budget:'5,999',tech:'HTML, CSS, JS, PHP, MySQL',desc:'Full e-commerce site with product management, cart, payment gateway, and admin panel.',imgs:[]},
+  {id:1006,name:'Smart Farming IoT System',domain:'IoT',budget:'5,499',tech:'Arduino, Soil Sensor, DHT11, GSM, LCD',desc:'Automated irrigation and crop monitoring system with SMS alerts for farmers.',imgs:[]},
+  {id:1007,name:'College ERP Portal',domain:'Web',budget:'9,999',tech:'React, Node.js, MongoDB, Express',desc:'Full college management system — students, faculty, attendance, results, and fees in one platform.',imgs:[]},
+  {id:1008,name:'Power BI Sales Dashboard',domain:'Dashboard',budget:'3,499',tech:'Power BI, Excel, DAX',desc:'Interactive sales analytics dashboard with real-time KPIs, charts, and custom filters.',imgs:[]}
+];
+
 // ============ PAGE NAV ============
-function showPage(id){
-  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
-  document.getElementById(id).classList.add('active');
-  window.scrollTo(0,0);
-}
-function switchTab(id,btn){
-  document.querySelectorAll('.atc').forEach(function(c){c.classList.remove('active');});
-  document.querySelectorAll('.atab').forEach(function(b){b.classList.remove('active');});
-  document.getElementById(id).classList.add('active');
-  btn.classList.add('active');
-}
-function toast(msg){
-  var t=document.getElementById('toast');
-  t.textContent=msg;t.style.display='block';
-  setTimeout(function(){t.style.display='none';},2800);
-}
+function showPage(id){document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});document.getElementById(id).classList.add('active');window.scrollTo(0,0);}
+function scrollTop(){document.querySelector('#main-page').classList.add('active');document.getElementById('home').scrollIntoView({behavior:'smooth'});}
+function switchTab(id,btn){document.querySelectorAll('.atc').forEach(function(c){c.classList.remove('active');});document.querySelectorAll('.atab').forEach(function(b){b.classList.remove('active');});document.getElementById(id).classList.add('active');btn.classList.add('active');}
+function toast(msg){var t=document.getElementById('toast');t.textContent=msg;t.style.display='block';setTimeout(function(){t.style.display='none';},2800);}
 
 // ============ MODALS ============
 function openModal(id){document.getElementById(id).classList.add('open');}
 function closeModal(id){
   document.getElementById(id).classList.remove('open');
-  var fw=document.getElementById('buy-form-wrap'); var bs=document.getElementById('buy-success');
-  var sf=document.getElementById('sms-form-wrap'); var ss=document.getElementById('sms-success');
-  if(fw)fw.style.display=''; if(bs)bs.style.display='none';
-  if(sf)sf.style.display=''; if(ss)ss.style.display='none';
+  var fw=document.getElementById('buy-form-wrap'),bs=document.getElementById('buy-success'),sf=document.getElementById('sms-form-wrap'),ss=document.getElementById('sms-success');
+  if(fw)fw.style.display='';if(bs)bs.style.display='none';if(sf)sf.style.display='';if(ss)ss.style.display='none';
 }
-document.querySelectorAll('.modal-overlay').forEach(function(el){
-  el.addEventListener('click',function(e){if(e.target===el)closeModal(el.id);});
-});
+document.querySelectorAll('.modal-overlay').forEach(function(el){el.addEventListener('click',function(e){if(e.target===el)closeModal(el.id);});});
 
 // ============ LOGIN ============
-function doLogin(){
-  var u=document.getElementById('lu').value.trim();
-  var p=document.getElementById('lp').value.trim();
-  if(u===S.user&&p===S.pass){
-    document.getElementById('lerr').style.display='none';
-    showPage('admin-page'); refreshAdmin(); toast('✅ Logged in');
-  }else{document.getElementById('lerr').style.display='block';}
-}
+function doLogin(){var u=document.getElementById('lu').value.trim(),p=document.getElementById('lp').value.trim();if(u===S.user&&p===S.pass){document.getElementById('lerr').style.display='none';showPage('admin-page');refreshAdmin();toast('✅ Logged in');}else{document.getElementById('lerr').style.display='block';}}
 function doLogout(){showPage('main-page');toast('Logged out');}
 
 // ============ RENDER SERVICES ============
 function renderServices(){
   var grid=document.getElementById('services-grid');
-  var list = S.services.length ? S.services : DEFAULT_SERVICES;
-  grid.innerHTML=list.map(function(s){
-    return '<div class="service-card">'
-      +'<div class="service-icon"><i class="'+s.icon+'"></i></div>'
-      +'<h3>'+s.name+'</h3>'
-      +'<p>'+s.desc+'</p>'
-      +'</div>';
-  }).join('');
+  var list=S.services.length?S.services:DEFAULT_SERVICES;
+  grid.innerHTML=list.map(function(s){return '<div class="service-card"><div class="service-icon"><i class="'+s.icon+'"></i></div><h3>'+s.name+'</h3><p>'+s.desc+'</p></div>';}).join('');
 }
 
 // ============ RENDER RECENT PROJECTS ============
 function renderRecentProjects(){
   var grid=document.getElementById('portfolio-grid');
-  var list = S.recentProjects.length ? S.recentProjects : DEFAULT_RECENT;
-  grid.innerHTML=list.map(function(p){
-    return '<div class="portfolio-card">'
-      +'<div class="portfolio-thumb"><i class="'+p.icon+'" style="font-size:2.6rem;color:var(--light-blue);"></i></div>'
-      +'<div class="portfolio-info">'
-      +'<div class="portfolio-tag">'+p.domain+'</div>'
-      +'<h3>'+p.name+'</h3>'
-      +'<p>'+p.about+'</p>'
-      +'</div></div>';
-  }).join('');
+  var list=S.recentProjects.length?S.recentProjects:DEFAULT_RECENT;
+  grid.innerHTML=list.map(function(p){return '<div class="portfolio-card"><div class="portfolio-thumb"><i class="'+p.icon+'" style="font-size:2.6rem;color:var(--light-blue);"></i></div><div class="portfolio-info"><div class="portfolio-tag">'+p.domain+'</div><h3>'+p.name+'</h3><p>'+p.about+'</p></div></div>';}).join('');
 }
 
 // ============ ADD SERVICE ============
-function addService(){
-  var name=document.getElementById('svc-name').value.trim();
-  var desc=document.getElementById('svc-desc').value.trim();
-  if(!name||!desc){toast('⚠️ Fill Service Name & Description');return;}
-  S.services.push({id:Date.now(),icon:selIcon['svc'],name:name,desc:desc});
-  document.getElementById('svc-name').value='';
-  document.getElementById('svc-desc').value='';
-  renderServices(); refreshAdmin();
-  toast('✅ Service added!');
-}
+function addService(){var name=document.getElementById('svc-name').value.trim(),desc=document.getElementById('svc-desc').value.trim();if(!name||!desc){toast('⚠️ Fill Service Name & Description');return;}S.services.push({id:Date.now(),icon:selIcon['svc'],name:name,desc:desc});document.getElementById('svc-name').value='';document.getElementById('svc-desc').value='';renderServices();refreshAdmin();toast('✅ Service added!');}
 
 // ============ ADD RECENT PROJECT ============
-function addRecentProject(){
-  var name=document.getElementById('rp-name').value.trim();
-  var domain=document.getElementById('rp-domain').value.trim();
-  var about=document.getElementById('rp-about').value.trim();
-  if(!name||!domain){toast('⚠️ Fill Project Name & Domain');return;}
-  S.recentProjects.push({id:Date.now(),icon:selIcon['rp'],name:name,domain:domain,about:about});
-  document.getElementById('rp-name').value='';
-  document.getElementById('rp-domain').value='';
-  document.getElementById('rp-about').value='';
-  renderRecentProjects(); refreshAdmin();
-  toast('✅ Recent project added!');
-}
+function addRecentProject(){var name=document.getElementById('rp-name').value.trim(),domain=document.getElementById('rp-domain').value.trim(),about=document.getElementById('rp-about').value.trim();if(!name||!domain){toast('⚠️ Fill Project Name & Domain');return;}S.recentProjects.push({id:Date.now(),icon:selIcon['rp'],name:name,domain:domain,about:about});document.getElementById('rp-name').value='';document.getElementById('rp-domain').value='';document.getElementById('rp-about').value='';renderRecentProjects();refreshAdmin();toast('✅ Recent project added!');}
 
 // ============ PROJECTS FOR SALE ============
-function handleProjImg(input,idx){
-  if(!input.files[0])return;
-  var r=new FileReader();
-  r.onload=function(e){
-    projImgs[idx]=e.target.result;
-    var slot=document.getElementById('slot'+idx);
-    var img=slot.querySelector('img');
-    if(!img){img=document.createElement('img');slot.appendChild(img);}
-    img.src=e.target.result;
-    slot.querySelector('.plus').style.display='none';
-  };
-  r.readAsDataURL(input.files[0]);
-}
+function handleProjImg(input,idx){if(!input.files[0])return;var r=new FileReader();r.onload=function(e){projImgs[idx]=e.target.result;var slot=document.getElementById('slot'+idx);var img=slot.querySelector('img');if(!img){img=document.createElement('img');slot.appendChild(img);}img.src=e.target.result;slot.querySelector('.plus').style.display='none';};r.readAsDataURL(input.files[0]);}
+
 function addProject(){
-  var name=document.getElementById('p-name').value.trim();
-  var domain=document.getElementById('p-domain').value.trim();
-  var budget=document.getElementById('p-budget').value.trim();
-  var tech=document.getElementById('p-tech').value.trim();
-  var desc=document.getElementById('p-desc').value.trim();
+  var name=document.getElementById('p-name').value.trim(),domain=document.getElementById('p-domain').value.trim(),budget=document.getElementById('p-budget').value.trim(),tech=document.getElementById('p-tech').value.trim(),desc=document.getElementById('p-desc').value.trim();
   if(!name||!domain||!budget){toast('⚠️ Fill Project Name, Domain & Budget');return;}
   var imgs=projImgs.filter(function(i){return i!==null;});
   S.projects.unshift({id:Date.now(),name:name,domain:domain,budget:budget,tech:tech,desc:desc,imgs:imgs});
-  document.getElementById('p-name').value='';document.getElementById('p-domain').value='';
-  document.getElementById('p-budget').value='';document.getElementById('p-tech').value='';
-  document.getElementById('p-desc').value='';
+  document.getElementById('p-name').value='';document.getElementById('p-domain').value='';document.getElementById('p-budget').value='';document.getElementById('p-tech').value='';document.getElementById('p-desc').value='';
   projImgs=[null,null,null];
-  [0,1,2].forEach(function(i){
-    var slot=document.getElementById('slot'+i);
-    var img=slot.querySelector('img');if(img)img.remove();
-    slot.querySelector('.plus').style.display='';
-  });
-  refreshAdmin(); renderProjects(); toast('✅ Project posted!');
+  [0,1,2].forEach(function(i){var slot=document.getElementById('slot'+i);var img=slot.querySelector('img');if(img)img.remove();slot.querySelector('.plus').style.display='';});
+  refreshAdmin();renderProjects();toast('✅ Project posted!');
 }
+
 function renderProjects(){
   var grid=document.getElementById('proj-grid');
-  if(!S.projects.length){
-    grid.innerHTML='<div class="empty-box" style="grid-column:1/-1;padding:60px 20px;"><i class="fas fa-folder-open" style="font-size:2.5rem;color:var(--text-muted);margin-bottom:12px;display:block;"></i>No projects uploaded yet.</div>';
-    return;
-  }
-  grid.innerHTML=S.projects.map(function(p){
+  // merge: admin-added first, then defaults
+  var allProjs=S.projects.length>0?S.projects:DEFAULT_PROJECTS;
+  // always show at least defaults
+  var showList=S.projects.concat(DEFAULT_PROJECTS.filter(function(dp){return !S.projects.find(function(sp){return sp.id===dp.id;});}));
+  
+  grid.innerHTML=showList.map(function(p){
     var imgHtml='';
     if(p.imgs&&p.imgs.length>0){
       imgHtml='<div class="proj-imgs">';
       p.imgs.forEach(function(src,i){imgHtml+='<img src="'+src+'" class="'+(i===0?'active':'')+'" />';});
-      if(p.imgs.length>1){
-        imgHtml+='<div class="proj-img-dots">';
-        p.imgs.forEach(function(_,i){imgHtml+='<span class="'+(i===0?'active':'')+'" onclick="switchImg('+p.id+','+i+',event)"></span>';});
-        imgHtml+='</div>';
-      }
+      if(p.imgs.length>1){imgHtml+='<div class="proj-img-dots">';p.imgs.forEach(function(_,i){imgHtml+='<span class="'+(i===0?'active':'')+'" onclick="switchImg('+p.id+','+i+',event)"></span>';});imgHtml+='</div>';}
       imgHtml+='<div class="proj-badge">'+p.domain+'</div></div>';
     }else{
-      imgHtml='<div style="position:relative;"><div class="proj-no-img">📁</div><div class="proj-badge">'+p.domain+'</div></div>';
+      // Show icon-based placeholder for default projects
+      var icons={'IoT':'fa-microchip','AI + IoT':'fa-robot','Web':'fa-globe','Dashboard':'fa-chart-bar'};
+      var ic=icons[p.domain]||'fa-folder';
+      imgHtml='<div style="position:relative;"><div class="proj-no-img"><i class="fas '+ic+'" style="color:var(--light-blue);"></i></div><div class="proj-badge">'+p.domain+'</div></div>';
     }
-    return '<div class="proj-card">'+imgHtml
-      +'<div class="proj-body">'
-      +'<div class="proj-name">'+p.name+'</div>'
-      +'<div class="proj-domain"><i class="fas fa-tag" style="margin-right:5px;font-size:.7rem;"></i>'+p.domain+'</div>'
-      +'<div class="proj-budget">₹ '+p.budget+'</div>'
-      +(p.tech?'<div style="font-size:.75rem;color:var(--text-muted);margin-bottom:.7rem;">🛠 '+p.tech+'</div>':'')
-      +(p.desc?'<div class="proj-desc">'+p.desc+'</div>':'')
-      +'<div class="proj-btns">'
-      +'<button class="proj-buy-btn" onclick="openBuy('+p.id+')">🛒 Buy</button>'
-      +'<button class="proj-enq-btn" onclick="openEnq('+p.id+')">📩 Enquiry</button>'
-      +'</div></div></div>';
+    return '<div class="proj-card">'+imgHtml+'<div class="proj-body"><div class="proj-name">'+p.name+'</div><div class="proj-domain"><i class="fas fa-tag" style="margin-right:5px;font-size:.7rem;"></i>'+p.domain+'</div><div class="proj-budget">₹ '+p.budget+'</div>'+(p.tech?'<div style="font-size:.75rem;color:var(--text-muted);margin-bottom:.7rem;">🛠 '+p.tech+'</div>':'')+(p.desc?'<div class="proj-desc">'+p.desc+'</div>':'')+'<div class="proj-btns"><button class="proj-buy-btn" onclick="openBuy('+p.id+')">🛒 Buy</button><button class="proj-enq-btn" onclick="openEnq('+p.id+')">📩 Enquiry</button></div></div></div>';
   }).join('');
-}
-function switchImg(pid,idx,ev){
-  var card=ev.target.closest('.proj-card');
-  var imgs=card.querySelectorAll('.proj-imgs img');
-  var dots=card.querySelectorAll('.proj-img-dots span');
-  imgs.forEach(function(i){i.classList.remove('active');});
-  dots.forEach(function(d){d.classList.remove('active');});
-  imgs[idx].classList.add('active');
-  if(dots[idx])dots[idx].classList.add('active');
+
+  // also update enquiry form dropdown
+  var sel=document.getElementById('pq-project');
+  if(sel){
+    var opts='<option value="">Select a project...</option>';
+    showList.forEach(function(p){opts+='<option>'+p.name+'</option>';});
+    opts+='<option>Other / All Projects</option>';
+    sel.innerHTML=opts;
+  }
 }
 
-// ============ BUY / ENQ MODALS ============
-function openBuy(pid){
-  var proj=S.projects.find(function(p){return p.id===pid;});
-  if(!proj)return; activeProj=proj;
-  document.getElementById('buy-proj-label').textContent='Project: '+proj.name;
-  document.getElementById('buy-proj').value=proj.name;
-  document.getElementById('buy-name').value='';document.getElementById('buy-phone').value='';document.getElementById('buy-college').value='';
-  document.getElementById('buy-form-wrap').style.display='';document.getElementById('buy-success').style.display='none';
-  openModal('buy-modal');
+function switchImg(pid,idx,ev){var card=ev.target.closest('.proj-card');var imgs=card.querySelectorAll('.proj-imgs img');var dots=card.querySelectorAll('.proj-img-dots span');imgs.forEach(function(i){i.classList.remove('active');});dots.forEach(function(d){d.classList.remove('active');});imgs[idx].classList.add('active');if(dots[idx])dots[idx].classList.add('active');}
+
+// find project from both lists
+function findProject(id){
+  var all=S.projects.concat(DEFAULT_PROJECTS);
+  return all.find(function(p){return p.id===id;});
 }
-function submitBuy(){
-  var name=document.getElementById('buy-name').value.trim();
-  var phone=document.getElementById('buy-phone').value.trim();
-  if(!name||!phone){toast('⚠️ Fill Name & Phone');return;}
-  S.submissions.unshift({id:Date.now(),type:'BUY',name:name,phone:phone,college:document.getElementById('buy-college').value.trim(),project:activeProj?activeProj.name:'',time:new Date().toLocaleString('en-IN')});
-  document.getElementById('buy-form-wrap').style.display='none';
-  document.getElementById('buy-success').style.display='block';
-  refreshAdmin();
-}
-function openEnq(pid){
-  var proj=S.projects.find(function(p){return p.id===pid;});
-  if(!proj)return; activeProj=proj;
-  document.getElementById('enq-proj-label').textContent='Project: '+proj.name;
-  openModal('enq-choice-modal');
-}
+
+// ============ BUY / ENQ ============
+function openBuy(pid){var proj=findProject(pid);if(!proj)return;activeProj=proj;document.getElementById('buy-proj-label').textContent='Project: '+proj.name;document.getElementById('buy-proj').value=proj.name;document.getElementById('buy-name').value='';document.getElementById('buy-phone').value='';document.getElementById('buy-college').value='';document.getElementById('buy-form-wrap').style.display='';document.getElementById('buy-success').style.display='none';openModal('buy-modal');}
+function submitBuy(){var name=document.getElementById('buy-name').value.trim(),phone=document.getElementById('buy-phone').value.trim();if(!name||!phone){toast('⚠️ Fill Name & Phone');return;}S.submissions.unshift({id:Date.now(),type:'BUY',name:name,phone:phone,college:document.getElementById('buy-college').value.trim(),project:activeProj?activeProj.name:'',time:new Date().toLocaleString('en-IN')});document.getElementById('buy-form-wrap').style.display='none';document.getElementById('buy-success').style.display='block';refreshAdmin();}
+function openEnq(pid){var proj=findProject(pid);if(!proj)return;activeProj=proj;document.getElementById('enq-proj-label').textContent='Project: '+proj.name;openModal('enq-choice-modal');}
 function doCall(){closeModal('enq-choice-modal');window.location.href='tel:+917395984042';}
-function openSmsForm(){
-  closeModal('enq-choice-modal');
-  document.getElementById('sms-proj-label').textContent='Project: '+(activeProj?activeProj.name:'');
-  document.getElementById('sms-proj').value=activeProj?activeProj.name:'';
-  document.getElementById('sms-name').value='';document.getElementById('sms-phone').value='';document.getElementById('sms-college').value='';
-  document.getElementById('sms-form-wrap').style.display='';document.getElementById('sms-success').style.display='none';
-  openModal('sms-modal');
-}
-function submitSms(){
-  var name=document.getElementById('sms-name').value.trim();
-  var phone=document.getElementById('sms-phone').value.trim();
-  if(!name||!phone){toast('⚠️ Fill Name & Phone');return;}
-  S.submissions.unshift({id:Date.now(),type:'ENQUIRY',name:name,phone:phone,college:document.getElementById('sms-college').value.trim(),project:activeProj?activeProj.name:'',time:new Date().toLocaleString('en-IN')});
-  document.getElementById('sms-form-wrap').style.display='none';document.getElementById('sms-success').style.display='block';
-  refreshAdmin();
+function openSmsForm(){closeModal('enq-choice-modal');document.getElementById('sms-proj-label').textContent='Project: '+(activeProj?activeProj.name:'');document.getElementById('sms-proj').value=activeProj?activeProj.name:'';document.getElementById('sms-name').value='';document.getElementById('sms-phone').value='';document.getElementById('sms-college').value='';document.getElementById('sms-form-wrap').style.display='';document.getElementById('sms-success').style.display='none';openModal('sms-modal');}
+function submitSms(){var name=document.getElementById('sms-name').value.trim(),phone=document.getElementById('sms-phone').value.trim();if(!name||!phone){toast('⚠️ Fill Name & Phone');return;}S.submissions.unshift({id:Date.now(),type:'ENQUIRY',name:name,phone:phone,college:document.getElementById('sms-college').value.trim(),project:activeProj?activeProj.name:'',time:new Date().toLocaleString('en-IN')});document.getElementById('sms-form-wrap').style.display='none';document.getElementById('sms-success').style.display='block';refreshAdmin();}
+
+// ============ PROJECT ENQUIRY FORM ============
+function submitProjEnquiry(){
+  var name=document.getElementById('pq-name').value.trim(),phone=document.getElementById('pq-phone').value.trim(),project=document.getElementById('pq-project').value.trim();
+  if(!name||!phone||!project){toast('⚠️ Fill Name, Phone & select a Project');return;}
+  S.submissions.unshift({id:Date.now(),type:'PROJ-ENQ',name:name,phone:phone,email:document.getElementById('pq-email').value.trim(),college:document.getElementById('pq-college').value.trim(),project:project,message:document.getElementById('pq-message').value.trim(),time:new Date().toLocaleString('en-IN')});
+  ['pq-name','pq-phone','pq-email','pq-college','pq-message'].forEach(function(id){document.getElementById(id).value='';});
+  document.getElementById('pq-project').value='';
+  var s=document.getElementById('penq-success');s.style.display='block';setTimeout(function(){s.style.display='none';},5000);
+  toast('✅ Enquiry sent!');refreshAdmin();
 }
 
 // ============ CONTACT FORM ============
-function submitContactForm(){
-  var name=document.getElementById('cName').value.trim();
-  var email=document.getElementById('cEmail').value.trim();
-  var service=document.getElementById('cService').value.trim();
-  if(!name||!email||!service){toast('⚠️ Fill Name, Email & Service');return;}
-  S.submissions.unshift({id:Date.now(),type:'CONTACT',name:name,email:email,phone:document.getElementById('cPhone').value.trim(),company:document.getElementById('cCompany').value.trim(),service:service,deadline:document.getElementById('cDeadline').value.trim(),message:document.getElementById('cMessage').value.trim(),time:new Date().toLocaleString('en-IN')});
-  ['cName','cEmail','cPhone','cCompany','cDeadline','cMessage'].forEach(function(id){document.getElementById(id).value='';});
-  document.getElementById('cService').value='';
-  var s=document.getElementById('successMsg');s.style.display='block';
-  setTimeout(function(){s.style.display='none';},5000);
-  toast('✅ Request sent!'); refreshAdmin();
-}
+function submitContactForm(){var name=document.getElementById('cName').value.trim(),email=document.getElementById('cEmail').value.trim(),service=document.getElementById('cService').value.trim();if(!name||!email||!service){toast('⚠️ Fill Name, Email & Service');return;}S.submissions.unshift({id:Date.now(),type:'CONTACT',name:name,email:email,phone:document.getElementById('cPhone').value.trim(),company:document.getElementById('cCompany').value.trim(),service:service,deadline:document.getElementById('cDeadline').value.trim(),message:document.getElementById('cMessage').value.trim(),time:new Date().toLocaleString('en-IN')});['cName','cEmail','cPhone','cCompany','cDeadline','cMessage'].forEach(function(id){document.getElementById(id).value='';});document.getElementById('cService').value='';var s=document.getElementById('successMsg');s.style.display='block';setTimeout(function(){s.style.display='none';},5000);toast('✅ Request sent!');refreshAdmin();}
 
 // ============ BANNER ============
-function handleBannerImg(input){
-  if(!input.files[0])return;
-  var r=new FileReader();
-  r.onload=function(e){bannerImg=e.target.result;document.getElementById('banner-prev-img').src=e.target.result;document.getElementById('banner-prev').style.display='block';};
-  r.readAsDataURL(input.files[0]);
-}
+function handleBannerImg(input){if(!input.files[0])return;var r=new FileReader();r.onload=function(e){bannerImg=e.target.result;document.getElementById('banner-prev-img').src=e.target.result;document.getElementById('banner-prev').style.display='block';};r.readAsDataURL(input.files[0]);}
 function saveBanner(){
   if(!bannerImg&&!S.banner.img){toast('⚠️ Upload an image first');return;}
-  S.banner.img=bannerImg||S.banner.img;S.banner.title=document.getElementById('b-title').value.trim();S.banner.sub=document.getElementById('b-sub').value.trim();S.banner.on=true;
+  S.banner.img=bannerImg||S.banner.img;
+  S.banner.title=document.getElementById('b-title').value.trim();
+  S.banner.sub=document.getElementById('b-sub').value.trim();
+  S.banner.on=true;
   applyBanner();toast('🖼️ Banner applied!');
 }
 function removeBanner(){S.banner.on=false;S.banner.img=null;bannerImg=null;document.getElementById('banner-prev').style.display='none';document.getElementById('b-title').value='';document.getElementById('b-sub').value='';applyBanner();toast('🗑️ Banner removed');}
 function applyBanner(){
   var el=document.getElementById('hero-banner');
-  if(S.banner.on&&S.banner.img){document.getElementById('banner-img').src=S.banner.img;document.getElementById('banner-title-txt').textContent=S.banner.title;document.getElementById('banner-sub-txt').textContent=S.banner.sub;el.style.display='block';}
-  else{el.style.display='none';}
+  var heroSection=document.querySelector('.hero');
+  if(S.banner.on&&S.banner.img){
+    document.getElementById('banner-img').src=S.banner.img;
+    document.getElementById('banner-title-txt').textContent=S.banner.title;
+    document.getElementById('banner-sub-txt').textContent=S.banner.sub;
+    el.style.display='block';
+    // Push hero content down so it doesn't hide behind fixed banner
+    heroSection.style.paddingTop='calc(73px + 220px + 20px)';
+  }else{
+    el.style.display='none';
+    heroSection.style.paddingTop='';
+  }
 }
 
 // ============ SOCIAL ============
 function saveSocial(type){var val=document.getElementById(type+'-inp').value.trim();if(!val){toast('⚠️ Enter a link');return;}S.social[type]=val;applySocial();refreshAdmin();toast('✅ '+type.toUpperCase()+' link saved!');}
-function removeSocial(type){if(!confirm('Remove this link?'))return;S.social[type]='';document.getElementById(type+'-inp').value='';applySocial();refreshAdmin();toast('🗑️ '+type.toUpperCase()+' link removed');}
+function removeSocial(type){if(!confirm('Remove this link?'))return;S.social[type]='';document.getElementById(type+'-inp').value='';applySocial();refreshAdmin();toast('🗑️ Link removed');}
 function applySocial(){
-  var grid=document.getElementById('social-links-grid');var section=document.getElementById('social-section');var prev=document.getElementById('sp-preview');
+  var grid=document.getElementById('social-links-grid'),section=document.getElementById('social-section'),prev=document.getElementById('sp-preview');
   var btns=[],badges=[];
   if(S.social.wa){btns.push('<a href="'+S.social.wa+'" target="_blank" class="social-link-btn wa-btn"><i class="fab fa-whatsapp"></i> WhatsApp Group</a>');badges.push('<span class="sp-badge sp-wa"><i class="fab fa-whatsapp"></i> WhatsApp ✅</span>');}
   if(S.social.ig){btns.push('<a href="'+S.social.ig+'" target="_blank" class="social-link-btn ig-btn"><i class="fab fa-instagram"></i> Instagram</a>');badges.push('<span class="sp-badge sp-ig"><i class="fab fa-instagram"></i> Instagram ✅</span>');}
   if(S.social.tg){btns.push('<a href="'+S.social.tg+'" target="_blank" class="social-link-btn tg-btn"><i class="fab fa-telegram"></i> Telegram</a>');badges.push('<span class="sp-badge sp-tg"><i class="fab fa-telegram"></i> Telegram ✅</span>');}
-  if(S.social.tg){btns.push('<a href="'+S.social.tg+'" target="_blank" class="social-link-btn tg-btn"><i class="fab fa-linkdin "></i> linkdin</a>');badges.push('<span class="sp-badge sp-tg"><i class="fab fa-linkdin"></i> linkdin✅</span>');}
+  if(S.social.li){btns.push('<a href="'+S.social.li+'" target="_blank" class="social-link-btn li-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>');badges.push('<span class="sp-badge sp-li"><i class="fab fa-linkedin"></i> LinkedIn ✅</span>');}
   if(btns.length){grid.innerHTML=btns.join('');section.style.display='block';}else{section.style.display='none';}
   if(prev)prev.innerHTML=badges.length?badges.join(''):'<span style="font-size:.8rem;color:var(--text-muted);">No links saved yet.</span>';
 }
 
 // ============ SETTINGS ============
-function saveCreds(){var u=document.getElementById('new-u').value.trim();var p=document.getElementById('new-p').value.trim();if(u)S.user=u;if(p)S.pass=p;document.getElementById('new-u').value='';document.getElementById('new-p').value='';toast('✅ Credentials updated');}
+function saveCreds(){var u=document.getElementById('new-u').value.trim(),p=document.getElementById('new-p').value.trim();if(u)S.user=u;if(p)S.pass=p;document.getElementById('new-u').value='';document.getElementById('new-p').value='';toast('✅ Credentials updated');}
 function saveWaNum(){var n=document.getElementById('wa-num').value.trim();if(!n){toast('⚠️ Enter a number');return;}S.waNum=n;document.getElementById('wa-float').href='https://wa.me/'+n;toast('✅ WhatsApp number updated');}
 
 // ============ REFRESH ADMIN ============
 function refreshAdmin(){
-  document.getElementById('st-projs').textContent=S.projects.length;
-  document.getElementById('st-subs').textContent=S.submissions.length;
   var svcList=S.services.length?S.services:DEFAULT_SERVICES;
-  document.getElementById('st-svcs').textContent=svcList.length;
   var rpList=S.recentProjects.length?S.recentProjects:DEFAULT_RECENT;
+  var allProjs=S.projects.concat(DEFAULT_PROJECTS.filter(function(dp){return !S.projects.find(function(sp){return sp.id===dp.id;});}));
+  document.getElementById('st-projs').textContent=allProjs.length;
+  document.getElementById('st-subs').textContent=S.submissions.length;
+  document.getElementById('st-svcs').textContent=svcList.length;
   document.getElementById('st-rp').textContent=rpList.length;
-  document.getElementById('proj-count').textContent=S.projects.length;
+  document.getElementById('proj-count').textContent=S.projects.length+' custom (+ '+DEFAULT_PROJECTS.length+' defaults)';
   document.getElementById('sub-count').textContent=S.submissions.length;
   document.getElementById('svc-count').textContent=svcList.length;
   document.getElementById('rp-count').textContent=rpList.length;
   if(S.social.wa)document.getElementById('wa-inp').value=S.social.wa;
   if(S.social.ig)document.getElementById('ig-inp').value=S.social.ig;
   if(S.social.tg)document.getElementById('tg-inp').value=S.social.tg;
+  if(S.social.li)document.getElementById('li-inp').value=S.social.li;
   applySocial();
 
-  // Projects for sale list
+  // Admin proj list (custom only)
   var aplist=document.getElementById('admin-proj-list');
-  if(!S.projects.length){aplist.innerHTML='<div class="empty-box">No projects yet. Add one above.</div>';}
-  else{aplist.innerHTML=S.projects.map(function(p){return '<div class="sub-card"><h4>📦 '+p.name+'<span class="sub-type buy">'+p.domain+'</span></h4><p>💰 Budget: <span>'+p.budget+'</span></p>'+(p.tech?'<p>🛠 Tech: <span>'+p.tech+'</span></p>':'')+'<p>🖼️ Images: <span>'+(p.imgs?p.imgs.length:0)+' uploaded</span></p><button class="del-btn" onclick="deleteProj('+p.id+')">🗑️ Delete</button></div>';}).join('');}
+  if(!S.projects.length){aplist.innerHTML='<div class="empty-box">No custom projects yet. Default 8 projects are shown on website.</div>';}
+  else{aplist.innerHTML=S.projects.map(function(p){return '<div class="sub-card"><h4>📦 '+p.name+'<span class="sub-type buy">'+p.domain+'</span></h4><p>💰 ₹'+p.budget+'</p>'+(p.tech?'<p>🛠 '+p.tech+'</p>':'')+'<p>🖼️ '+( p.imgs?p.imgs.length:0)+' images</p><button class="del-btn" onclick="deleteProj('+p.id+')">🗑️ Delete</button></div>';}).join('');}
 
-  // Services list — show active list (custom or default)
+  // Services
   var svcAdminList=document.getElementById('admin-svc-list');
-  var activeSvcs=S.services.length?S.services:DEFAULT_SERVICES;
-  svcAdminList.innerHTML=activeSvcs.map(function(s,i){return '<div class="sub-card"><h4><i class="'+s.icon+'" style="color:var(--light-blue);margin-right:6px;"></i>'+s.name+'</h4><p style="color:var(--text-muted);font-size:.8rem;">'+s.desc+'</p><button class="del-btn" onclick="deleteSvc('+i+')">🗑️ Delete</button></div>';}).join('');
+  svcAdminList.innerHTML=svcList.map(function(s,i){return '<div class="sub-card"><h4><i class="'+s.icon+'" style="color:var(--light-blue);margin-right:6px;"></i>'+s.name+'</h4><p style="color:var(--text-muted);font-size:.8rem;">'+s.desc+'</p><button class="del-btn" onclick="deleteSvc('+i+')">🗑️ Delete</button></div>';}).join('');
 
-  // Recent projects list — show active list (custom or default)
+  // Recent Projects
   var rpAdminList=document.getElementById('admin-rp-list');
-  var activeRPs=S.recentProjects.length?S.recentProjects:DEFAULT_RECENT;
-  rpAdminList.innerHTML=activeRPs.map(function(p,i){return '<div class="sub-card"><h4><i class="'+p.icon+'" style="color:var(--light-blue);margin-right:6px;"></i>'+p.name+'<span class="sub-type buy">'+p.domain+'</span></h4><p style="color:var(--text-muted);font-size:.8rem;">'+p.about+'</p><button class="del-btn" onclick="deleteRP('+i+')">🗑️ Delete</button></div>';}).join('');
+  rpAdminList.innerHTML=rpList.map(function(p,i){return '<div class="sub-card"><h4><i class="'+p.icon+'" style="color:var(--light-blue);margin-right:6px;"></i>'+p.name+'<span class="sub-type buy">'+p.domain+'</span></h4><p style="color:var(--text-muted);font-size:.8rem;">'+p.about+'</p><button class="del-btn" onclick="deleteRP('+i+')">🗑️ Delete</button></div>';}).join('');
 
   // Enquiries
   var slist=document.getElementById('subs-list');
   if(!S.submissions.length){slist.innerHTML='<div class="empty-box">No enquiries yet.</div>';}
-  else{slist.innerHTML=S.submissions.map(function(s){var tl=s.type==='BUY'?'BUY 🛒':s.type==='ENQUIRY'?'ENQUIRY 💬':'CONTACT 📧';var tc=s.type==='BUY'?'buy':'enq';return '<div class="sub-card"><h4>👤 '+s.name+'<span class="sub-type '+tc+'">'+tl+'</span></h4>'+(s.phone?'<p>📞 Phone: <span>'+s.phone+'</span></p>':'')+(s.email?'<p>📧 Email: <span>'+s.email+'</span></p>':'')+(s.college?'<p>🏫 College: <span>'+s.college+'</span></p>':'')+(s.company?'<p>🏢 Company: <span>'+s.company+'</span></p>':'')+(s.project?'<p>📦 Project: <span>'+s.project+'</span></p>':'')+(s.service?'<p>🔧 Service: <span>'+s.service+'</span></p>':'')+(s.message?'<p>💬 Message: <span>'+s.message+'</span></p>':'')+'<div class="sub-time">⏰ '+s.time+'</div><button class="del-btn" onclick="delSub('+s.id+')">🗑️ Delete</button></div>';}).join('');}
+  else{slist.innerHTML=S.submissions.map(function(s){var tl=s.type==='BUY'?'BUY 🛒':s.type==='ENQUIRY'?'ENQUIRY 💬':s.type==='PROJ-ENQ'?'PROJ ENQUIRY 📦':'CONTACT 📧';var tc=s.type==='BUY'?'buy':'enq';return '<div class="sub-card"><h4>👤 '+s.name+'<span class="sub-type '+tc+'">'+tl+'</span></h4>'+(s.phone?'<p>📞 <span>'+s.phone+'</span></p>':'')+(s.email?'<p>📧 <span>'+s.email+'</span></p>':'')+(s.college?'<p>🏫 <span>'+s.college+'</span></p>':'')+(s.company?'<p>🏢 <span>'+s.company+'</span></p>':'')+(s.project?'<p>📦 <span>'+s.project+'</span></p>':'')+(s.service?'<p>🔧 <span>'+s.service+'</span></p>':'')+(s.message?'<p>💬 <span>'+s.message+'</span></p>':'')+'<div class="sub-time">⏰ '+s.time+'</div><button class="del-btn" onclick="delSub('+s.id+')">🗑️ Delete</button></div>';}).join('');}
 }
 
 function deleteProj(id){if(!confirm('Delete?'))return;S.projects=S.projects.filter(function(p){return p.id!==id;});refreshAdmin();renderProjects();toast('🗑️ Deleted');}
-function deleteSvc(idx){if(!confirm('Delete this service?'))return;var list=S.services.length?S.services:DEFAULT_SERVICES.slice();if(!S.services.length)S.services=DEFAULT_SERVICES.slice();S.services.splice(idx,1);renderServices();refreshAdmin();toast('🗑️ Service deleted');}
-function deleteRP(idx){if(!confirm('Delete this project?'))return;if(!S.recentProjects.length)S.recentProjects=DEFAULT_RECENT.slice();S.recentProjects.splice(idx,1);renderRecentProjects();refreshAdmin();toast('🗑️ Project deleted');}
+function deleteSvc(idx){if(!confirm('Delete?'))return;if(!S.services.length)S.services=DEFAULT_SERVICES.slice();S.services.splice(idx,1);renderServices();refreshAdmin();toast('🗑️ Deleted');}
+function deleteRP(idx){if(!confirm('Delete?'))return;if(!S.recentProjects.length)S.recentProjects=DEFAULT_RECENT.slice();S.recentProjects.splice(idx,1);renderRecentProjects();refreshAdmin();toast('🗑️ Deleted');}
 function delSub(id){if(!confirm('Delete?'))return;S.submissions=S.submissions.filter(function(s){return s.id!==id;});refreshAdmin();toast('🗑️ Deleted');}
 
-// INIT
+// ============ INIT ============
 document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
 document.getElementById('main-page').classList.add('active');
 renderServices();
 renderRecentProjects();
+renderProjects();
 </script>
 </body>
 </html>
