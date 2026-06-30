@@ -1199,7 +1199,7 @@ function delSub(id){if(!confirm('Delete?'))return;S.submissions=S.submissions.fi
 const CLOUD_NAME = "pkcwvlir";
 const UPLOAD_PRESET = "ctechupload";
 
-async function uploadImage(file){
+ window.uploadImage = async function(file){
 
     const data = new FormData();
 
@@ -1216,6 +1216,12 @@ async function uploadImage(file){
 
     return await res.json();
 }
+
+ window.collection = collection;
+window.addDoc = addDoc;
+window.getDocs = getDocs;
+window.deleteDoc = deleteDoc;
+window.doc = doc;
 
 window.db = db;
 
