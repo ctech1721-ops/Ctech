@@ -883,25 +883,133 @@ function addService(){var name=document.getElementById('svc-name').value.trim(),
 function addRecentProject(){var name=document.getElementById('rp-name').value.trim(),domain=document.getElementById('rp-domain').value.trim(),about=document.getElementById('rp-about').value.trim();if(!name||!domain){toast('⚠️ Fill Project Name & Domain');return;}S.recentProjects.push({id:Date.now(),icon:selIcon['rp'],name:name,domain:domain,about:about});document.getElementById('rp-name').value='';document.getElementById('rp-domain').value='';document.getElementById('rp-about').value='';renderRecentProjects();refreshAdmin();toast('✅ Recent project added!');}
 
 // ============ PROJECTS FOR SALE ============
-function handleProjImg(input,idx){if(!input.files[0])return;var r=new FileReader();r.onload=function(e){projImgs[idx]=e.target.result;var slot=document.getElementById('slot'+idx);var img=slot.querySelector('img');if(!img){img=document.createElement('img');slot.appendChild(img);}img.src=e.target.result;slot.querySelector('.plus').style.display='none';};r.readAsDataURL(input.files[0]);}
+function handleProjImg(input, idx) {
 
-function addProject(){
-  var name=document.getElementById('p-name').value.trim(),domain=document.getElementById('p-domain').value.trim(),budget=document.getElementById('p-budget').value.trim(),tech=document.getElementById('p-tech').value.trim(),desc=document.getElementById('p-desc').value.trim();
-  if(!name||!domain||!budget){toast('⚠️ Fill Project Name, Domain & Budget');return;}
-  var imgs=projImgs.filter(function(i){return i!==null;});
-  S.projects.unshift({id:Date.now(),name:name,domain:domain,budget:budget,tech:tech,desc:desc,imgs:imgs});
-  document.getElementById('p-name').value='';document.getElementById('p-domain').value='';document.getElementById('p-budget').value='';document.getElementById('p-tech').value='';document.getElementById('p-desc').value='';
-  projImgs=[null,null,null];
-  [0,1,2].forEach(function(i){var slot=document.getElementById('slot'+i);var img=slot.querySelector('img');if(img)img.remove();slot.querySelector('.plus').style.display='';});
-  refreshAdmin();renderProjects();toast('✅ Project posted!');
+    if (!input.files.length) return;
+
+    const file = input.files[0];
+
+    projImgs[idx] = file;
+
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+
+        const slot = document.getElementById("slot" + idx);
+
+        let img = slot.querySelector("img");
+
+        if (!img) {
+
+            img = document.createElement("img");
+
+            slot.appendChild(img);
+
+        }
+
+        img.src = e.target.result;
+
+        slot.querySelector(".plus").style.display = "none";
+
+    };
+
+    reader.readAsDataURL(file);
+
+}
+async function addProject(){
+
+  const name = document.getElementById("p-name").value.trim();
+  const domain = document.getElementById("p-domain").value.trim();
+  const budget = document.getElementById("p-budget").value.trim();
+  const tech = document.getElementById("p-tech").value.trim();
+  const desc = document.getElementById("p-desc").value.trim();
+
+  if(!name || !domain || !budget){
+      toast("⚠️ Fill Project Name, Domain & Budget");
+      return;
+  }
+
+  try{
+
+      const images = [];
+
+      for(const file of projImgs){
+
+          if(file){
+
+              const upload = await uploadImage(file);
+
+              images.push(upload.secure_url);
+
+          }
+
+      }
+
+      await addDoc(collection(db,"projects"),{
+
+          name:name,
+          domain:domain,
+          budget:budget,
+          tech:tech,
+          desc:desc,
+          imgs:images,
+          createdAt:Date.now()
+
+      });
+
+     await loadProjects();
+
+toast("✅ Project Uploaded");
+  }catch(err){
+
+      console.error(err);
+
+      toast("❌ Upload Failed");
+
+  }
+
 }
 
+async function loadProjects(){
+
+    try{
+
+        const snapshot = await getDocs(collection(db,"projects"));
+
+        S.projects = [];
+
+        snapshot.forEach((doc)=>{
+
+            const data = doc.data();
+
+            S.projects.push({
+                id: doc.id,
+                name: data.name,
+                domain: data.domain,
+                budget: data.budget,
+                tech: data.tech,
+                desc: data.desc,
+                imgs: data.imgs || []
+            });
+
+        });
+
+        renderProjects();
+        refreshAdmin();
+
+    }catch(err){
+
+        console.log(err);
+
+    }
+
+}
 function renderProjects(){
-  var grid=document.getElementById('proj-grid');
-  // merge: admin-added first, then defaults
-  var allProjs=S.projects.length>0?S.projects:DEFAULT_PROJECTS;
-  // always show at least defaults
-  var showList=S.projects.concat(DEFAULT_PROJECTS.filter(function(dp){return !S.projects.find(function(sp){return sp.id===dp.id;});}));
+
+    var grid = document.getElementById("proj-grid");
+
+    var showList = S.projects;
+
   
   grid.innerHTML=showList.map(function(p){
     var imgHtml='';
@@ -1041,23 +1149,14 @@ function refreshAdmin(){
   if(!S.submissions.length){slist.innerHTML='<div class="empty-box">No enquiries yet.</div>';}
   else{slist.innerHTML=S.submissions.map(function(s){var tl=s.type==='BUY'?'BUY 🛒':s.type==='ENQUIRY'?'ENQUIRY 💬':s.type==='PROJ-ENQ'?'PROJ ENQUIRY 📦':'CONTACT 📧';var tc=s.type==='BUY'?'buy':'enq';return '<div class="sub-card"><h4>👤 '+s.name+'<span class="sub-type '+tc+'">'+tl+'</span></h4>'+(s.phone?'<p>📞 <span>'+s.phone+'</span></p>':'')+(s.email?'<p>📧 <span>'+s.email+'</span></p>':'')+(s.college?'<p>🏫 <span>'+s.college+'</span></p>':'')+(s.company?'<p>🏢 <span>'+s.company+'</span></p>':'')+(s.project?'<p>📦 <span>'+s.project+'</span></p>':'')+(s.service?'<p>🔧 <span>'+s.service+'</span></p>':'')+(s.message?'<p>💬 <span>'+s.message+'</span></p>':'')+'<div class="sub-time">⏰ '+s.time+'</div><button class="del-btn" onclick="delSub('+s.id+')">🗑️ Delete</button></div>';}).join('');}
 }
-
-function deleteProj(id){if(!confirm('Delete?'))return;S.projects=S.projects.filter(function(p){return p.id!==id;});refreshAdmin();renderProjects();toast('🗑️ Deleted');}
-function deleteSvc(idx){if(!confirm('Delete?'))return;if(!S.services.length)S.services=DEFAULT_SERVICES.slice();S.services.splice(idx,1);renderServices();refreshAdmin();toast('🗑️ Deleted');}
-function deleteRP(idx){if(!confirm('Delete?'))return;if(!S.recentProjects.length)S.recentProjects=DEFAULT_RECENT.slice();S.recentProjects.splice(idx,1);renderRecentProjects();refreshAdmin();toast('🗑️ Deleted');}
-function delSub(id){if(!confirm('Delete?'))return;S.submissions=S.submissions.filter(function(s){return s.id!==id;});refreshAdmin();toast('🗑️ Deleted');}
-
-// ============ INIT ============
-document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
-document.getElementById('main-page').classList.add('active');
-renderServices();
-renderRecentProjects();
-renderProjects();
 </script>
 
-  <script type="module">
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+
+<script type="module">
+
+ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
     import {
   collection,
@@ -1078,6 +1177,45 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+window.db = db;
+
+window.collection = collection;
+window.addDoc = addDoc;
+window.getDocs = getDocs;
+window.deleteDoc = deleteDoc;
+window.doc = doc;
+// ================= FIRESTORE =================
+const projectRef = collection(db, "projects");
+const serviceRef = collection(db, "services");
+const enquiryRef = collection(db, "enquiries");
+
+// ================= CLOUDINARY =================
+
+function deleteSvc(idx){if(!confirm('Delete?'))return;if(!S.services.length)S.services=DEFAULT_SERVICES.slice();S.services.splice(idx,1);renderServices();refreshAdmin();toast('🗑️ Deleted');}
+function deleteRP(idx){if(!confirm('Delete?'))return;if(!S.recentProjects.length)S.recentProjects=DEFAULT_RECENT.slice();S.recentProjects.splice(idx,1);renderRecentProjects();refreshAdmin();toast('🗑️ Deleted');}
+function delSub(id){if(!confirm('Delete?'))return;S.submissions=S.submissions.filter(function(s){return s.id!==id;});refreshAdmin();toast('🗑️ Deleted');}
+
+
+const CLOUD_NAME = "pkcwvlir";
+const UPLOAD_PRESET = "ctechupload";
+
+async function uploadImage(file){
+
+    const data = new FormData();
+
+    data.append("file", file);
+    data.append("upload_preset", UPLOAD_PRESET);
+
+    const res = await fetch(
+        `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`,
+        {
+            method:"POST",
+            body:data
+        }
+    );
+
+    return await res.json();
+}
 
 window.db = db;
 
