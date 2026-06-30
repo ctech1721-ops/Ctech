@@ -60,14 +60,16 @@ nav{position:fixed;top:0;left:0;width:100%;z-index:999;padding:14px 5%;display:f
 
 .hero-banner{
     width:100%;
-    margin-top:80px;
+    height:750px;
+    overflow:hidden;
 }
 
 .hero-banner img{
-    width:150%;
-    height:700px;
-    display:block;
+    width:100%;
+    height:100%;
     object-fit:cover;
+    object-position:center;
+    display:block;
 }
 /* When banner is active, push content down */
 body.banner-active .hero{padding-top:calc(120px + 220px)!important;}
