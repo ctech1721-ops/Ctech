@@ -1054,5 +1054,35 @@ renderServices();
 renderRecentProjects();
 renderProjects();
 </script>
+
+  <script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+    import {
+  collection,
+  addDoc,
+  getDocs,
+  deleteDoc,
+  doc
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAwK4Z82tLJnbNU89ZvORxGKyFXqk1wZKY",
+  authDomain: "ctech-340d8.firebaseapp.com",
+  projectId: "ctech-340d8",
+  storageBucket: "ctech-340d8.firebasestorage.app",
+  messagingSenderId: "725222829347",
+  appId: "1:725222829347:web:c1df8c296a765a91aff096"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+window.db = db;
+
+console.log("Firebase Connected");
+
+</script>
 </body>
 </html>
