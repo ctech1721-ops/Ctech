@@ -85,6 +85,8 @@ var DEFAULT_PROJECTS=[
 // ============ PAGE NAV ============
 function showPage(id){document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});document.getElementById(id).classList.add('active');window.scrollTo(0,0);}
 function scrollTop(){document.querySelector('#main-page').classList.add('active');document.getElementById('home').scrollIntoView({behavior:'smooth'});}
+function toggleMobileMenu(){document.getElementById('nav-links').classList.toggle('mobile-open');}
+function closeMobileMenu(){document.getElementById('nav-links').classList.remove('mobile-open');}
 function switchTab(id,btn){document.querySelectorAll('.atc').forEach(function(c){c.classList.remove('active');});document.querySelectorAll('.atab').forEach(function(b){b.classList.remove('active');});document.getElementById(id).classList.add('active');btn.classList.add('active');}
 function toast(msg){var t=document.getElementById('toast');t.textContent=msg;t.style.display='block';setTimeout(function(){t.style.display='none';},2800);}
 
@@ -523,6 +525,7 @@ document.addEventListener('DOMContentLoaded', function(){
 // declarations are NOT added to window automatically)
 Object.assign(window, {
   scrollTop, showPage, switchTab, toast,
+  toggleMobileMenu, closeMobileMenu,
   openModal, closeModal,
   doLogin, doLogout,
   toggleIconPicker, filterIcons, selectIcon,
