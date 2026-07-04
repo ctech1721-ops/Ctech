@@ -20,14 +20,15 @@
     </div>
     <h2 class="company-name"><span class="c-letter">C</span><span class="tech-letter">TECH</span></h2>
   </div>
-  <ul class="nav-links">
-    <li><a href="#services">Services</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#portfolio">Recent Projects</a></li>
-    <li><a href="#projects">For Sale</a></li>
-    <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
-    <li><button class="lock-btn" onclick="showPage('admin-login-page')" title="Admin Login"><i class="fas fa-lock"></i></button></li>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#services" onclick="closeMobileMenu()">Services</a></li>
+    <li><a href="#about" onclick="closeMobileMenu()">About</a></li>
+    <li><a href="#portfolio" onclick="closeMobileMenu()">Recent Projects</a></li>
+    <li><a href="#projects" onclick="closeMobileMenu()">For Sale</a></li>
+    <li><a href="#contact" class="nav-cta" onclick="closeMobileMenu()">Get a Quote</a></li>
+    <li><button class="lock-btn" onclick="closeMobileMenu();showPage('admin-login-page')" title="Admin Login"><i class="fas fa-lock"></i></button></li>
   </ul>
+  <button class="hamburger-btn" id="hamburger-btn" onclick="toggleMobileMenu()" title="Menu"><i class="fas fa-bars"></i></button>
 </nav>
 
 <!-- FIXED HERO BANNER -->
