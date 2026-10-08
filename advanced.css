@@ -1,0 +1,46 @@
+/* CTECH advanced effects */
+#scroll-progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:1500;background:linear-gradient(90deg,#2563eb,#22d3ee);}
+#cursor-glow{position:fixed;width:420px;height:420px;margin:-210px 0 0 -210px;border-radius:50%;pointer-events:none;z-index:-1;background:radial-gradient(circle,rgba(37,99,235,.18),transparent 65%);transition:opacity .3s;}
+#hero-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:1;opacity:.8;}
+nav{transition:padding .3s,background .3s,box-shadow .3s;}
+nav.scrolled{padding-top:9px;padding-bottom:9px;background:rgba(7,15,31,.96);box-shadow:0 10px 30px rgba(0,0,0,.35);}
+.rot::after{content:'|';margin-left:2px;color:#22d3ee;-webkit-text-fill-color:#22d3ee;animation:blink 1s steps(1) infinite;}
+@keyframes blink{50%{opacity:0;}}
+.hero h1{min-height:3.4em;}
+
+/* scroll reveal */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;transition-delay:var(--d,0s);}
+.reveal.in{opacity:1;transform:none;}
+
+/* 3D tilt + glow on cards */
+.tilt{transform-style:preserve-3d;transition:transform .15s ease,border-color .3s,box-shadow .3s;will-change:transform;}
+.service-card,.portfolio-card,.proj-card{position:relative;}
+.service-card::after,.portfolio-card::after,.proj-card::after{content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),rgba(96,165,250,.16),transparent 60%);}
+.service-card:hover::after,.portfolio-card:hover::after,.proj-card:hover::after{opacity:1;}
+
+/* steps connector */
+.process-grid .step::after{content:'';position:absolute;top:2.1rem;right:-1.2rem;width:1.2rem;height:2px;background:linear-gradient(90deg,#2563eb,transparent);}
+.process-grid .step:last-child::after{display:none;}
+
+/* FAQ */
+.faq-list{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:.8rem;}
+.faq details{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:1.1rem 1.4rem;transition:border-color .3s;}
+.faq details[open]{border-color:rgba(96,165,250,.45);}
+.faq summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;}
+.faq summary::-webkit-details-marker{display:none;}
+.faq summary::after{content:'+';font-size:1.4rem;color:var(--light-blue);transition:transform .3s;}
+.faq details[open] summary::after{transform:rotate(45deg);}
+.faq details p{margin-top:.8rem;color:var(--text-muted);line-height:1.75;font-size:.92rem;}
+
+/* CTA band */
+.cta-band{padding:80px 6%;}
+.cta-inner{max-width:900px;margin:0 auto;text-align:center;padding:3.5rem 2rem;border-radius:20px;border:1px solid rgba(96,165,250,.3);background:linear-gradient(135deg,rgba(37,99,235,.28),rgba(34,211,238,.10));box-shadow:0 30px 80px rgba(37,99,235,.18);}
+.cta-inner h2{font-size:clamp(1.7rem,3.4vw,2.4rem);font-weight:800;margin-bottom:.6rem;}
+.cta-inner p{color:#cbd5e1;margin-bottom:1.8rem;}
+
+/* back to top */
+#to-top{position:fixed;left:22px;bottom:24px;width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:#0f1b34;color:#fff;cursor:pointer;z-index:990;opacity:0;pointer-events:none;transition:all .3s;}
+#to-top.show{opacity:1;pointer-events:auto;}
+#to-top:hover{background:var(--accent-blue);}
+@media(max-width:900px){.process-grid .step::after{display:none;}#cursor-glow{display:none;}.hero h1{min-height:0;}}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}.rot::after,.float-chip{animation:none;}}

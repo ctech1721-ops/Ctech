@@ -1,0 +1,69 @@
+/* CTECH – corporate IT theme (overrides style.css; admin panel untouched) */
+:root{--navy:#070f1f;--accent-blue:#2563eb;--light-blue:#60a5fa;--text-muted:#94a3b8;--line:rgba(148,163,184,.16);--card:rgba(15,27,52,.72);}
+body,.nav-links a,input,select,textarea,button{font-family:'Plus Jakarta Sans',system-ui,sans-serif;}
+h1,h2,h3,h4,.company-name,.section-title,.stat h3{font-family:'Plus Jakarta Sans',system-ui,sans-serif!important;letter-spacing:-.02em;}
+
+/* calm, clean background instead of busy photo */
+.gbg-photo{opacity:.10;filter:grayscale(.6) brightness(.8);animation:none;}
+#global-bg{background:radial-gradient(1000px 500px at 85% -5%,rgba(37,99,235,.28),transparent 60%),linear-gradient(180deg,#070f1f,#0b1730 60%,#070f1f);}
+.gbg-overlay{background:rgba(7,15,31,.55);}
+
+/* nav */
+nav{background:rgba(7,15,31,.88);border-bottom:1px solid var(--line);}
+.nav-links a{font-size:.86rem;}
+.nav-cta{background:var(--accent-blue);border-radius:8px;font-weight:600;}
+
+/* hero: two columns */
+.hero{gap:3rem;justify-content:space-between;}
+.hero-content{max-width:620px;flex:1 1 55%;}
+.hero h1{font-size:clamp(2.2rem,4.6vw,3.6rem);line-height:1.1;font-weight:800;margin-bottom:1.2rem;}
+.hero h1 span{background:linear-gradient(90deg,#60a5fa,#22d3ee);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.hero-badge{border-radius:999px;background:rgba(37,99,235,.12);border-color:rgba(96,165,250,.3);}
+.btn-primary,.btn-outline{border-radius:10px!important;font-weight:600;}
+.hero-stats{border-top:1px solid var(--line);}
+.hero-visual{position:relative;flex:1 1 40%;max-width:480px;z-index:2;}
+.code-card{background:#0a1224;border:1px solid var(--line);border-radius:14px;box-shadow:0 30px 70px rgba(0,0,0,.45);overflow:hidden;}
+.code-dots{display:flex;align-items:center;gap:7px;padding:12px 16px;border-bottom:1px solid var(--line);background:#0d1830;}
+.code-dots i{width:11px;height:11px;border-radius:50%;background:#ef4444;}
+.code-dots i:nth-child(2){background:#f59e0b;}.code-dots i:nth-child(3){background:#22c55e;}
+.code-dots span{margin-left:10px;font:500 .74rem 'JetBrains Mono',monospace;color:var(--text-muted);}
+.code-card pre{padding:20px;font:400 .82rem/1.8 'JetBrains Mono',monospace;color:#cbd5e1;white-space:pre-wrap;}
+.code-card .k{color:#c084fc;}.code-card .f{color:#60a5fa;}.code-card .p{color:#7dd3fc;}.code-card .s{color:#86efac;}.code-card .c{color:#64748b;}
+.float-chip{position:absolute;background:#0f1b34;border:1px solid var(--line);border-radius:10px;padding:9px 14px;font-size:.78rem;font-weight:600;box-shadow:0 12px 30px rgba(0,0,0,.4);animation:floaty 5s ease-in-out infinite;}
+.float-chip i{color:#22c55e;margin-right:6px;}
+.chip-a{left:-28px;bottom:-18px;}.chip-b{right:-14px;top:-18px;animation-delay:-2.5s;}.chip-b i{color:#f59e0b;}
+@keyframes floaty{50%{transform:translateY(-8px);}}
+
+/* tech strip */
+.tech-strip{padding:26px 6%;border-block:1px solid var(--line);background:rgba(7,15,31,.6);display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;}
+.ts-label{font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;color:var(--text-muted);font-weight:600;}
+.ts-items{display:flex;flex-wrap:wrap;gap:.6rem;}
+.ts-items span{font-size:.8rem;padding:6px 14px;border:1px solid var(--line);border-radius:999px;color:#cbd5e1;background:rgba(255,255,255,.02);}
+
+/* sections */
+section{padding:90px 6%;}
+.section-label{color:var(--light-blue);font-size:.74rem;letter-spacing:.16em;font-weight:700;text-transform:uppercase;}
+.section-title{font-weight:800;}
+.service-card,.portfolio-card,.proj-card,.about-visual{background:var(--card)!important;border:1px solid var(--line)!important;border-radius:14px!important;backdrop-filter:blur(6px);}
+.service-card:hover,.portfolio-card:hover,.proj-card:hover{border-color:rgba(96,165,250,.45)!important;transform:translateY(-5px);box-shadow:0 18px 40px rgba(0,0,0,.35);}
+.service-icon{border-radius:12px!important;background:rgba(37,99,235,.15)!important;}
+.service-card h3,.service-card p{text-align:left!important;}
+
+/* process */
+.process-header{text-align:center;margin-bottom:2.5rem;}
+.process-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem;max-width:1100px;margin:0 auto;}
+.step{position:relative;padding:1.6rem;border:1px solid var(--line);border-radius:14px;background:var(--card);}
+.step b{display:block;font:500 .85rem 'JetBrains Mono',monospace;color:var(--light-blue);margin-bottom:.8rem;}
+.step h4{font-size:1.05rem;margin-bottom:.4rem;}
+.step p{color:var(--text-muted);font-size:.87rem;line-height:1.65;}
+
+/* forms + footer */
+.contact-form,.penq-form{border:1px solid var(--line);border-radius:14px;}
+footer{border-top:1px solid var(--line);background:#050b18;}
+
+@media(max-width:900px){
+  .hero{flex-direction:column;align-items:flex-start;}
+  .hero-visual{max-width:100%;width:100%;}
+  .chip-a{left:8px;}.chip-b{right:8px;}
+  section{padding:70px 5%;}
+}

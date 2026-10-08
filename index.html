@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>CTECH – Software, Mobile Apps, IoT &amp; Data Solutions | Chennai</title>
+<meta name="description" content="CTECH is a Chennai-based IT company building websites, mobile apps, Power BI dashboards, IoT and robotics solutions."/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link rel="stylesheet" href="style.css"/>
+<link rel="stylesheet" href="theme.css"/>
+<link rel="stylesheet" href="advanced.css"/>
+<link rel="stylesheet" href="pro.css"/>
+<link rel="stylesheet" href="it.css"/>
+</head>
+<body>
+<div id="preloader"><div class="pl-inner"><img src="logo.png" alt=""/><div class="pl-bar"><i></i></div><span>CTECH</span></div></div>
+<div id="scroll-progress"></div>
+<div id="cursor-glow"></div>
+
+<div id="global-bg">
+  <div class="gbg-photo"></div>
+  <div class="gbg-overlay"></div>
+</div>
+
+<!-- ========== MAIN PAGE ========== -->
+<div id="main-page" class="page active">
+
+<nav>
+  <div class="logo" onclick="scrollTop()">
+    <div class="logo-circle">
+      <img id="nav-logo-img" src="logo.png" alt="CTECH">
+    </div>
+    <h2 class="company-name"><span class="c-letter">C</span><span class="tech-letter">TECH</span></h2>
+  </div>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#home" data-route="home" onclick="routeTo('home');closeMobileMenu();return false;">Home</a></li>
+    <li><a href="#services" data-route="services" onclick="routeTo('services');closeMobileMenu();return false;">Services</a></li>
+    <li><a href="#about" data-route="about" onclick="routeTo('about');closeMobileMenu();return false;">About</a></li>
+    <li><a href="#industries" data-route="industries" onclick="routeTo('industries');closeMobileMenu();return false;">Industries</a></li>
+    <li><a href="#process" data-route="process" onclick="routeTo('process');closeMobileMenu();return false;">How We Work</a></li>
+    <li><a href="#portfolio" data-route="portfolio" onclick="routeTo('portfolio');closeMobileMenu();return false;">Portfolio</a></li>
+    <li><a href="./portal/index.html" class="portal-nav-btn" id="portalNavBtn" aria-label="Open CTECH Employee Portal" onclick="window.location.href='./portal/index.html'; return false;">Portal</a></li>
+    <li><a href="#contact" data-route="contact" class="nav-cta" onclick="routeTo('contact');closeMobileMenu();return false;">Get a Quote</a></li>
+  </ul>
+  <button class="hamburger-btn" id="hamburger-btn" type="button" aria-label="Open navigation menu" aria-expanded="false" title="Menu"><i class="fas fa-bars"></i></button>
+</nav>
+
+<!-- FIXED HERO BANNER -->
+<div id="hero-banner">
+  <img id="banner-img" src="" alt=""/>
+  <div class="banner-overlay">
+    <div class="banner-text">
+      <h2 id="banner-title-txt"></h2>
+      <p id="banner-sub-txt"></p>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero route-home-section" id="home">
+  <canvas id="hero-canvas"></canvas><div class="hero-bg"></div><div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">
+      <span class="badge-dot"></span> Now building custom digital products — Web · Apps · BI · IoT · Billing
+    </div>
+    <h1>Software &amp; IoT solutions that <span class="rot" id="rot">move your business forward</span></h1>
+    <p class="hero-sub">CTECH builds advanced digital products for businesses, institutions and startups — from high-performance websites and mobile apps to billing software, sales dashboards, IoT systems and intelligent automation.</p>
+    <div class="hero-btns">
+      <a href="#services" class="btn-primary" onclick="routeTo('services');return false;">Explore Services</a>
+      <a href="#contact" class="btn-outline" onclick="routeTo('contact');return false;">Talk to Our Team</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><h3 data-count="50" data-suffix="+">50+</h3><p>Projects Delivered</p></div>
+      <div class="stat"><h3 data-count="30" data-suffix="+">30+</h3><p>Happy Clients</p></div>
+      <div class="stat"><h3 data-count="5" data-suffix="+">5+</h3><p>Service Areas</p></div>
+    </div>
+  </div>
+  <div class="hero-visual" aria-hidden="true">
+    <div class="dash">
+      <div class="dash-top"><i></i><i></i><i></i><span>ctech / project-dashboard</span><em><b></b> Live</em></div>
+      <div class="dash-body">
+        <div class="dash-side"><i class="fas fa-th-large on"></i><i class="fas fa-code"></i><i class="fas fa-mobile-alt"></i><i class="fas fa-microchip"></i><i class="fas fa-chart-pie"></i></div>
+        <div class="dash-main">
+          <div class="kpis">
+            <div><small>Projects</small><b data-count="50" data-suffix="+">50+</b></div>
+            <div><small>Uptime</small><b>99.9%</b></div>
+            <div><small>Response</small><b>&lt; 24h</b></div>
+          </div>
+          <div class="bars">
+            <span style="--h:38%"></span><span style="--h:62%"></span><span style="--h:48%"></span><span style="--h:80%"></span><span style="--h:58%"></span><span style="--h:92%"></span><span style="--h:70%"></span><span style="--h:100%"></span>
+          </div>
+          <div class="term"><span class="g">$</span> deploy --env production<br/><span class="g">✓</span> build passed · <span class="g">✓</span> tests passed<br/><span class="g">✓</span> live on cloud<span class="cur"></span></div>
+        </div>
+      </div>
+    </div>
+    <div class="float-chip chip-a"><i class="fas fa-check-circle"></i> Web · Mobile · IoT · BI</div>
+    <div class="float-chip chip-b"><i class="fas fa-shield-alt"></i> Secure &amp; scalable</div>
+  </div>
+</section>
+
+<!-- TECH STRIP -->
+<div class="tech-strip route-home-section">
+  <span class="ts-label">Technologies we work with</span>
+  <div class="ts-items"><span>HTML / CSS / JS</span><span>React</span><span>Node.js</span><span>PHP · MySQL</span><span>Python</span><span>Firebase</span><span>Arduino · ESP32</span><span>Raspberry Pi</span><span>Power BI</span></div>
+</div>
+
+<!-- SERVICES -->
+<section class="services public-section" id="services">
+  <div class="services-header">
+    <div class="section-label">What We Build</div>
+    <h2 class="section-title">Advanced Digital Services</h2>
+    <p class="section-sub">We design, develop and deploy complete technology products — not just individual screens or code modules. Every service is built around performance, usability, scalability and the real workflow of your business.</p>
+  </div>
+  <div class="services-grid" id="services-grid"></div>
+  <div class="services-extra-grid">
+    <article class="service-extra-card"><i class="fas fa-code"></i><div><h3>Custom Websites</h3><p>Business websites, company portals, landing pages, e-commerce platforms, booking systems and real-estate websites with responsive UI, animations, SEO foundations and admin control.</p></div></article>
+    <article class="service-extra-card"><i class="fas fa-mobile-screen-button"></i><div><h3>Web &amp; Mobile Apps</h3><p>Android, iOS and cross-platform applications with authentication, APIs, notifications, payments, dashboards, Firebase/cloud integration and polished user experiences.</p></div></article>
+    <article class="service-extra-card"><i class="fas fa-cash-register"></i><div><h3>Billing Software</h3><p>Billing, invoice, stock, customer, purchase, sales and reporting systems for shops, distributors, service companies, clinics and other day-to-day business operations.</p></div></article>
+    <article class="service-extra-card"><i class="fas fa-chart-line"></i><div><h3>Business Dashboards</h3><p>Sales dashboards, KPI monitoring, Power BI reports and live analytics that turn operational data into clear decisions for owners and managers.</p></div></article>
+    <article class="service-extra-card"><i class="fas fa-microchip"></i><div><h3>IoT &amp; Automation</h3><p>ESP32, ESP8266, Arduino and sensor-based solutions with cloud connectivity, mobile control, alerts, monitoring and automation for homes, campuses and industries.</p></div></article>
+    <article class="service-extra-card"><i class="fas fa-brain"></i><div><h3>AI &amp; Smart Systems</h3><p>Machine-learning prototypes, prediction systems, image processing and intelligent workflows that can be connected to apps, dashboards or physical devices.</p></div></article>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about public-section" id="about">
+  <div class="about-inner about-advanced">
+    <div class="about-copy">
+      <div class="section-label">About CTECH</div>
+      <h2 class="section-title">We turn ideas into working digital products.</h2>
+      <p>CTECH is a technology and software solutions company focused on building practical, modern and scalable products for businesses, institutions, startups and individuals. Our work covers the complete journey of a digital product — understanding the problem, planning the user experience, designing the interface, developing the application, connecting databases and APIs, integrating devices when required, testing the complete workflow and helping the customer launch it successfully.</p>
+      <p>We do not believe that every business needs the same software. A retail shop may need billing, inventory and sales reports; a real-estate company may need a plot listing website with enquiry management; a college may need a student application and attendance system; a manufacturer may need IoT monitoring and a live production dashboard. We study the workflow first and then build the technology around that workflow, so the final product is useful in everyday operations instead of being only a demonstration.</p>
+      <p>Our approach combines clean front-end development, reliable backend services, cloud databases, mobile application development, data visualization, IoT connectivity and automation. We also design interfaces with strong visual hierarchy, responsive layouts and purposeful animation so the product feels professional while remaining fast and easy to use. From a first prototype to a production-ready solution, CTECH aims to be the technology partner that can stay with the project beyond the first delivery.</p>
+      <div class="about-actions"><a href="#contact" class="btn-primary" onclick="routeTo('contact');return false;">Start a Project</a><span><i class="fas fa-circle-check"></i> Custom-built · Scalable · Support-ready</span></div>
+    </div>
+    <div class="about-visual about-advanced-cards">
+      <div class="about-item"><div class="about-item-icon"><i class="fas fa-sitemap"></i></div><div><h4>End-to-End Engineering</h4><p>Planning, UI/UX, development, APIs, databases, deployment and support handled as one connected workflow.</p></div></div>
+      <div class="about-item"><div class="about-item-icon"><i class="fas fa-wand-magic-sparkles"></i></div><div><h4>Modern Product Experience</h4><p>Responsive layouts, micro-interactions and purposeful animation that make business software feel clear and premium.</p></div></div>
+      <div class="about-item"><div class="about-item-icon"><i class="fas fa-chart-simple"></i></div><div><h4>Data + Automation</h4><p>Dashboards, reports, alerts, cloud workflows and connected devices that reduce manual work and improve visibility.</p></div></div>
+      <div class="about-item"><div class="about-item-icon"><i class="fas fa-headset"></i></div><div><h4>Long-Term Support</h4><p>Post-launch fixes, enhancements, deployment help and technical guidance as your product grows.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CTECH -->
+<section class="public-section why" id="why">
+  <div class="process-header"><div class="section-label">Why CTECH</div><h2 class="section-title">Engineering you can rely on</h2><p class="sec-sub">A small, focused team that treats your project like its own product.</p></div>
+  <div class="bento">
+    <div class="bento-item big"><i class="fas fa-layer-group"></i><h4>End-to-end delivery</h4><p>From idea and design to development, deployment and support — one team handles everything, so nothing gets lost between vendors.</p></div>
+    <div class="bento-item"><i class="fas fa-code-branch"></i><h4>Clean, documented code</h4><p>Maintainable code with documentation you can actually hand over.</p></div>
+    <div class="bento-item"><i class="fas fa-comments"></i><h4>Transparent updates</h4><p>Regular progress updates on WhatsApp — no surprises.</p></div>
+    <div class="bento-item"><i class="fas fa-shield-alt"></i><h4>Secure by default</h4><p>Sensible authentication, validation and cloud security practices.</p></div>
+    <div class="bento-item"><i class="fas fa-rupee-sign"></i><h4>Fair pricing</h4><p>Clear scope and estimate up front, built for startups and students.</p></div>
+    <div class="bento-item big"><i class="fas fa-headset"></i><h4>Support after launch</h4><p>Bug fixes, deployment help and guidance after delivery. We stay reachable when you need us.</p></div>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section class="industries public-section" id="industries">
+  <div class="process-header"><div class="section-label">Industries We Serve</div><h2 class="section-title">Technology built around real business sectors</h2><p class="sec-sub">We adapt the product to the industry workflow, customer journey and operational data instead of forcing every client into one template.</p></div>
+  <div class="ind-grid ind-grid-large">
+    <div class="ind-card"><i class="fas fa-building-columns"></i><h4>Real Estate</h4><p>Plot listing websites, property catalogues, enquiry systems, lead dashboards, booking workflows and location-based property experiences.</p></div>
+    <div class="ind-card"><i class="fas fa-graduation-cap"></i><h4>Education</h4><p>Student portals, attendance apps, learning platforms, college dashboards, project systems and institutional automation.</p></div>
+    <div class="ind-card"><i class="fas fa-cart-shopping"></i><h4>Retail &amp; E-Commerce</h4><p>Billing, inventory, POS workflows, online stores, customer management, order tracking and sales analytics.</p></div>
+    <div class="ind-card"><i class="fas fa-hospital"></i><h4>Healthcare</h4><p>Appointment systems, patient workflows, clinic dashboards, billing, records and connected monitoring concepts.</p></div>
+    <div class="ind-card"><i class="fas fa-industry"></i><h4>Manufacturing</h4><p>Production monitoring, machine data, IoT sensors, quality workflows, operational dashboards and alerts.</p></div>
+    <div class="ind-card"><i class="fas fa-seedling"></i><h4>Agriculture</h4><p>Smart irrigation, soil monitoring, environmental sensors, farm dashboards and automated control systems.</p></div>
+    <div class="ind-card"><i class="fas fa-utensils"></i><h4>Restaurants &amp; Food</h4><p>Billing, menu ordering, kitchen workflows, inventory, customer loyalty and business performance dashboards.</p></div>
+    <div class="ind-card"><i class="fas fa-truck-fast"></i><h4>Logistics</h4><p>Delivery tracking, fleet workflows, shipment records, route information and operational reporting systems.</p></div>
+    <div class="ind-card"><i class="fas fa-briefcase"></i><h4>Professional Services</h4><p>CRM, enquiry management, invoice systems, client portals, appointment booking and internal workflow tools.</p></div>
+    <div class="ind-card"><i class="fas fa-hotel"></i><h4>Hospitality</h4><p>Room/property booking, guest management, service requests, billing and management dashboards.</p></div>
+    <div class="ind-card"><i class="fas fa-solar-panel"></i><h4>Energy &amp; Smart Infrastructure</h4><p>Energy monitoring, sensor networks, automation, live dashboards and alert-based maintenance workflows.</p></div>
+    <div class="ind-card"><i class="fas fa-rocket"></i><h4>Startups &amp; New Products</h4><p>MVP development, landing pages, SaaS concepts, mobile apps, dashboards and rapid product prototypes.</p></div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process public-section" id="process">
+  <div class="process-header">
+    <div class="section-label">How We Work</div>
+    <h2 class="section-title">A clear process from idea to launch</h2>
+    <p class="sec-sub">Our process is designed to reduce confusion, expose risks early and keep the customer involved at every important decision.</p>
+  </div>
+  <div class="process-grid process-grid-advanced">
+    <div class="step"><b>01</b><h4>Discover</h4><p>We discuss the business problem, target users, existing workflow, required features, budget and expected timeline. We turn the conversation into a clear project scope.</p></div>
+    <div class="step"><b>02</b><h4>Plan</h4><p>We define the product modules, user journeys, technology stack, database structure, integrations and milestones before development starts.</p></div>
+    <div class="step"><b>03</b><h4>Design</h4><p>We create the visual direction, responsive layouts, dashboard structure and important interactions so the product has a strong user experience before heavy development.</p></div>
+    <div class="step"><b>04</b><h4>Develop</h4><p>Frontend, backend, mobile, cloud, dashboards and device integrations are developed in connected stages with regular progress updates and working builds.</p></div>
+    <div class="step"><b>05</b><h4>Test &amp; Refine</h4><p>We test forms, APIs, calculations, responsive layouts, device communication, performance and the real user workflow, then fix issues before launch.</p></div>
+    <div class="step"><b>06</b><h4>Deploy &amp; Support</h4><p>We help with hosting, app builds, cloud setup, database configuration and handover, then remain available for fixes, improvements and future modules.</p></div>
+  </div>
+  <div class="process-note"><i class="fas fa-arrows-spin"></i><span>Build → Review → Improve → Release — the product keeps getting better as real feedback comes in.</span></div>
+</section>
+
+<!-- RECENT PROJECTS (PORTFOLIO) -->
+<section class="portfolio public-section" id="portfolio">
+  <div class="portfolio-header">
+    <div class="section-label">Our Work</div>
+    <h2 class="section-title">Advanced Portfolio Experiences</h2>
+    <p class="section-sub">Interactive examples showing how we can make business software, websites, dashboards, apps and IoT solutions feel alive — not static.</p>
+  </div>
+  <div class="advanced-portfolio-grid">
+
+    <article class="work-showcase sales-showcase">
+      <div class="work-visual">
+        <div class="mini-window">
+          <div class="mini-top"><span></span><span></span><span></span><b>Sales Intelligence</b><em>● LIVE</em></div>
+          <div class="sales-kpis"><div><small>Revenue</small><strong>₹48.6L</strong><i>+18.4%</i></div><div><small>Orders</small><strong>1,284</strong><i>+12.8%</i></div><div><small>Conversion</small><strong>7.82%</strong><i>+4.2%</i></div></div>
+          <div class="sales-chart"><div class="chart-line"></div><div class="chart-dot d1"></div><div class="chart-dot d2"></div><div class="chart-dot d3"></div><div class="chart-dot d4"></div><div class="chart-dot d5"></div></div>
+          <div class="chart-bars"><i style="--h:35%"></i><i style="--h:52%"></i><i style="--h:43%"></i><i style="--h:70%"></i><i style="--h:58%"></i><i style="--h:82%"></i><i style="--h:68%"></i><i style="--h:96%"></i></div>
+        </div>
+      </div>
+      <div class="work-copy"><span>01 · BUSINESS INTELLIGENCE</span><h3>Sales Dashboard</h3><p>A live-style sales analytics interface with animated KPIs, trend charts, regional performance and decision-ready summaries for management teams.</p><div class="work-tags"><b>Power BI</b><b>Web</b><b>Analytics</b></div></div>
+    </article>
+
+    <article class="work-showcase realestate-showcase">
+      <div class="work-visual">
+        <div class="plot-scene"><div class="plot-grid-lines"></div><div class="road road-a"></div><div class="road road-b"></div><div class="plot p1">A01</div><div class="plot p2">A02</div><div class="plot p3">A03</div><div class="plot p4">B01</div><div class="plot p5">B02</div><div class="location-pin"><i class="fas fa-location-dot"></i></div><div class="map-scan"></div></div>
+      </div>
+      <div class="work-copy"><span>02 · REAL ESTATE</span><h3>Animated Plot Website</h3><p>A premium real-estate experience where plots can be explored visually, availability can change dynamically and customers can send enquiries directly from the property view.</p><div class="work-tags"><b>Property Web</b><b>Interactive Map</b><b>Lead Capture</b></div></div>
+    </article>
+
+    <article class="work-showcase obstacle-showcase">
+      <div class="work-visual">
+        <div class="robot-floor"><div class="robot-grid"></div><div class="obstacle o1"></div><div class="obstacle o2"></div><div class="obstacle o3"></div><div class="bot"><i class="fas fa-robot"></i><span></span></div><div class="scan-cone"></div><div class="route-line"></div></div>
+      </div>
+      <div class="work-copy"><span>03 · ROBOTICS + IOT</span><h3>Obstacle Avoiding Robot</h3><p>The robot continuously scans its path, detects obstacles, changes direction and keeps moving. The portfolio animation communicates the sensing → decision → movement loop.</p><div class="work-tags"><b>ESP32 / Arduino</b><b>Ultrasonic</b><b>Automation</b></div></div>
+    </article>
+
+    <article class="work-showcase app-showcase">
+      <div class="work-visual app-stage">
+        <div class="phone"><div class="phone-notch"></div><div class="app-head"><i class="fas fa-bars"></i><b>CTECH App</b><i class="fas fa-bell"></i></div><div class="app-hero"><small>Welcome back</small><strong>Track your business</strong><div class="app-ring"></div></div><div class="app-cards"><div></div><div></div><div></div></div><div class="app-nav"><i></i><i></i><i></i><i></i></div></div>
+        <div class="app-float af1"><i class="fas fa-check"></i> Sync complete</div><div class="app-float af2"><i class="fas fa-cloud"></i> Cloud connected</div>
+      </div>
+      <div class="work-copy"><span>04 · MOBILE DEVELOPMENT</span><h3>Business Mobile App</h3><p>A polished mobile workflow with dashboard cards, cloud sync, notifications and smooth transitions for teams that need their business in their pocket.</p><div class="work-tags"><b>Flutter</b><b>Firebase</b><b>REST API</b></div></div>
+    </article>
+
+    <article class="work-showcase billing-showcase">
+      <div class="work-visual">
+        <div class="billing-screen"><div class="bill-top"><b>CTECH BILLING</b><span>INVOICE #1048</span></div><div class="bill-row"><i></i><span>Product / Service</span><b>Amount</b></div><div class="bill-row"><i></i><span>Premium Package</span><b>₹12,500</b></div><div class="bill-row"><i></i><span>Support Plan</span><b>₹2,500</b></div><div class="bill-total"><span>Total</span><strong>₹15,000</strong></div><div class="bill-paid"><i class="fas fa-circle-check"></i> Payment recorded</div></div>
+      </div>
+      <div class="work-copy"><span>05 · BUSINESS SOFTWARE</span><h3>Billing &amp; Inventory Software</h3><p>Invoice creation, product management, stock updates, customer records, payment tracking and business reports combined into one practical workflow.</p><div class="work-tags"><b>Billing</b><b>Inventory</b><b>Reports</b></div></div>
+    </article>
+
+    <article class="work-showcase iot-showcase">
+      <div class="work-visual">
+        <div class="iot-room"><div class="iot-device sensor"><i class="fas fa-temperature-half"></i><b>27.4°C</b></div><div class="iot-device lamp"><i class="fas fa-lightbulb"></i><b>ON</b></div><div class="iot-device fan"><i class="fas fa-fan"></i><b>62%</b></div><div class="iot-hub"><i class="fas fa-wifi"></i><span>Cloud Hub</span></div><div class="signal s1"></div><div class="signal s2"></div><div class="signal s3"></div></div>
+      </div>
+      <div class="work-copy"><span>06 · CONNECTED SYSTEMS</span><h3>IoT Monitoring Dashboard</h3><p>Sensors send live data to a connected dashboard where users can monitor conditions, trigger automation and receive alerts when values cross a threshold.</p><div class="work-tags"><b>ESP32</b><b>Firebase</b><b>Live Monitoring</b></div></div>
+    </article>
+
+  </div>
+</section>
+
+<!-- PROJECTS FOR SALE REMOVED: CTECH now presents custom portfolio work and service solutions. -->
+
+<!-- TECH STACK -->
+<section class="public-section stack" id="stack">
+  <div class="process-header"><div class="section-label">Tech Stack</div><h2 class="section-title">Tools we build with</h2></div>
+  <div class="stack-grid">
+    <div class="stack-col"><h5><i class="fas fa-desktop"></i> Frontend</h5><p><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>React</span></p></div>
+    <div class="stack-col"><h5><i class="fas fa-server"></i> Backend</h5><p><span>Node.js</span><span>PHP</span><span>Python</span><span>REST APIs</span></p></div>
+    <div class="stack-col"><h5><i class="fas fa-database"></i> Database</h5><p><span>Firebase</span><span>MySQL</span><span>MongoDB</span></p></div>
+    <div class="stack-col"><h5><i class="fas fa-microchip"></i> IoT &amp; Hardware</h5><p><span>Arduino</span><span>ESP32</span><span>Raspberry Pi</span><span>Sensors</span></p></div>
+    <div class="stack-col"><h5><i class="fas fa-chart-bar"></i> Data &amp; BI</h5><p><span>Power BI</span><span>Excel</span><span>Pandas</span></p></div>
+    <div class="stack-col"><h5><i class="fas fa-cloud"></i> Cloud &amp; Tools</h5><p><span>Git / GitHub</span><span>Cloudinary</span><span>Netlify</span></p></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="public-section faq" id="faq">
+  <div class="process-header"><div class="section-label">FAQ</div><h2 class="section-title">Questions we often hear</h2></div>
+  <div class="faq-list">
+    <details><summary>How long does a typical project take?</summary><p>Small websites and dashboards usually take 1–3 weeks. Apps, ERP systems and IoT builds are scoped after a short discovery call, and we share a clear timeline before starting.</p></details>
+    <details><summary>Do you build custom projects for college students?</summary><p>Yes. We build final-year and institutional projects end to end, with planning, development, documentation and deployment support based on the project scope.</p></details>
+    <details><summary>Will I get the source code?</summary><p>Yes, source code and basic documentation are handed over on delivery. Details are confirmed in the project enquiry.</p></details>
+    <details><summary>Do you provide support after delivery?</summary><p>We help with fixes, deployment and queries after delivery. Reach us anytime through WhatsApp or the contact form.</p></details>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="cta-inner">
+    <h2>Have an idea? Let's build it.</h2>
+    <p>Tell us what you need — we'll reply within 24 hours with a plan.</p>
+    <div class="hero-btns" style="justify-content:center;">
+      <a href="#contact" class="btn-primary">Start a Project</a>
+      <a href="https://wa.me/917395984042" target="_blank" class="btn-outline">Chat on WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL -->
+<div class="social-section" id="social-section">
+  <div class="social-section-inner">
+    <div class="section-label">Community</div>
+    <h2>Join Our Community</h2>
+    <p>Follow us and join our groups for updates, offers, and tech tips.</p>
+    <div class="social-links-grid" id="social-links-grid"></div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section class="public-section contact" id="contact">
+  <div class="contact-inner">
+    <div>
+      <div class="section-label">Contact Us</div>
+      <h2 class="section-title">Let's Build Something Great Together</h2>
+      <p class="section-sub">Have a project in mind? Fill in the form and we'll get back to you within 24 hours.</p>
+      <div class="contact-info">
+        <div class="contact-item"><i class="fas fa-envelope"></i><span>ctech1721@gmail.com</span></div>
+        <div class="contact-item"><i class="fas fa-phone"></i><span>+91 73959 84042</span></div>
+        <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Chennai, Tamil Nadu, India</span></div>
+        <div class="contact-item"><i class="fab fa-whatsapp"></i><span>WhatsApp: +91 73959 84042</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="contact-form">
+        <div class="form-row">
+          <div class="form-field"><label>Your Name *</label><input type="text" id="cName" placeholder="John Doe"/></div>
+          <div class="form-field"><label>Email Address *</label><input type="email" id="cEmail" placeholder="john@email.com"/></div>
+        </div>
+        <div class="form-row">
+          <div class="form-field"><label>Phone Number</label><input type="text" id="cPhone" placeholder="+91 98765 43210"/></div>
+          <div class="form-field"><label>Company / College</label><input type="text" id="cCompany" placeholder="ABC Pvt Ltd"/></div>
+        </div>
+        <div class="form-field">
+          <label>Service Needed *</label>
+          <select id="cService">
+            <option value="">Select a service...</option>
+            <option>Website Development</option><option>Mobile App</option>
+            <option>Power BI Dashboard</option><option>IoT Solution</option>
+            <option>Robotics Project</option><option>College Tech Project</option>
+          </select>
+        </div>
+        <div class="form-field"><label>Deadline</label><input type="date" id="cDeadline"/></div>
+        <div class="form-field"><label>Project Description</label><textarea rows="4" id="cMessage" placeholder="Describe your project in detail..."></textarea></div>
+        <button class="submit-btn" onclick="submitContactForm()">Send Request →</button>
+        <div class="success-msg" id="successMsg">✅ Request submitted! We will contact you within 24 hours.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<button id="to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+<a href="https://wa.me/917395984042" class="whatsapp-float" id="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+<footer class="mega-foot">
+  <div class="foot-grid">
+    <div class="foot-col foot-brand">
+      <p class="fb-logo"><span style="color:#4fa3e8;">C</span>TECH</p>
+      <p>We build websites, mobile apps, Power BI dashboards and IoT &amp; robotics solutions for businesses, colleges and startups.</p>
+      <a href="https://wa.me/917395984042" target="_blank" class="foot-wa"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+    </div>
+    <div class="foot-col foot-accordion"><h6 class="foot-toggle" role="button" tabindex="0" aria-expanded="false">Company <span>+</span></h6><a href="#home" data-footer-route="home">Home</a><a href="#about" data-footer-route="about">About us</a><a href="#process" data-footer-route="process">How we work</a></div>
+    <div class="foot-col foot-accordion"><h6 class="foot-toggle" role="button" tabindex="0" aria-expanded="false">Solutions <span>+</span></h6><a href="#services" data-footer-route="services">Services</a><a href="#industries" data-footer-route="industries">Industries</a><a href="#portfolio" data-footer-route="portfolio">Portfolio</a></div>
+    <div class="foot-col foot-accordion"><h6 class="foot-toggle" role="button" tabindex="0" aria-expanded="false">Contact <span>+</span></h6><a href="#contact" data-footer-route="contact">Contact</a><a href="https://wa.me/917395984042" target="_blank"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a><a href="mailto:ctech1721@gmail.com"><i class="fas fa-envelope"></i> ctech1721@gmail.com</a><a href="tel:+917395984042"><i class="fas fa-phone"></i> +91 73959 84042</a></div>
+  </div>
+  <div class="foot-bottom"><span>© 2026 CTECH. All rights reserved.</span><span>Software · IoT · Data</span></div>
+</footer>
+</div><!-- end main-page -->
+
+<!-- BUY MODAL -->
+<div class="modal-overlay" id="buy-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('buy-modal')"><i class="fas fa-times"></i></button>
+    <div id="buy-form-wrap">
+      <div class="modal-title">🛒 Buy This Project</div>
+      <div class="modal-proj-name" id="buy-proj-label">Project: —</div>
+      <div class="mf"><label>Your Name *</label><input type="text" id="buy-name" placeholder="Your full name"/></div>
+      <div class="mf"><label>Phone Number *</label><input type="text" id="buy-phone" placeholder="+91 98765 43210"/></div>
+      <div class="mf"><label>College / Company</label><input type="text" id="buy-college" placeholder="College or Company name"/></div>
+      <div class="mf"><label>Project</label><input type="text" id="buy-proj" readonly/></div>
+      <button class="modal-submit" onclick="submitBuy()">Submit Request →</button>
+    </div>
+    <div class="modal-success" id="buy-success">
+      <i class="fas fa-check-circle"></i><h3>Request Received!</h3>
+      <p>We will contact you soon regarding this project.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ENQUIRY CHOICE MODAL -->
+<div class="modal-overlay" id="enq-choice-modal">
+  <div class="modal-box" style="max-width:360px;">
+    <button class="modal-close" onclick="closeModal('enq-choice-modal')"><i class="fas fa-times"></i></button>
+    <div class="modal-title">📩 Enquiry</div>
+    <div class="modal-proj-name" id="enq-proj-label">Project: —</div>
+    <div class="enq-options">
+      <button class="enq-opt-btn enq-call-btn" onclick="doCall()">
+        <i class="fas fa-phone-alt"></i>
+        <div><span class="eot">Call Us</span><span class="eos">Tap to call +91 73959 84042</span></div>
+      </button>
+      <button class="enq-opt-btn enq-sms-btn" onclick="openSmsForm()">
+        <i class="fas fa-comment-dots"></i>
+        <div><span class="eot">Send SMS / Message</span><span class="eos">Fill a quick form & we'll reply</span></div>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- SMS MODAL -->
+<div class="modal-overlay" id="sms-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('sms-modal')"><i class="fas fa-times"></i></button>
+    <div id="sms-form-wrap">
+      <div class="modal-title">💬 Send Enquiry</div>
+      <div class="modal-proj-name" id="sms-proj-label">Project: —</div>
+      <div class="mf"><label>Your Name *</label><input type="text" id="sms-name" placeholder="Your full name"/></div>
+      <div class="mf"><label>Phone Number *</label><input type="text" id="sms-phone" placeholder="+91 98765 43210"/></div>
+      <div class="mf"><label>College / Company</label><input type="text" id="sms-college" placeholder="College or Company name"/></div>
+      <div class="mf"><label>Project</label><input type="text" id="sms-proj" readonly/></div>
+      <button class="modal-submit" onclick="submitSms()">Submit Enquiry →</button>
+    </div>
+    <div class="modal-success" id="sms-success">
+      <i class="fas fa-check-circle"></i><h3>Enquiry Sent!</h3>
+      <p>We will contact you soon. Thank you!</p>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN LOGIN -->
+<div id="admin-login-page" class="page">
+  <div class="login-box">
+    <h2>🔐 Admin Login</h2>
+    <p class="login-sub">Sign in to manage CTECH website</p>
+    <div class="lf"><label>Username</label><input type="text" id="lu" placeholder="Username" onkeydown="if(event.key==='Enter')doLogin()"/></div>
+    <div class="lf"><label>Password</label><input type="password" id="lp" placeholder="Password" onkeydown="if(event.key==='Enter')doLogin()"/></div>
+    <button class="login-btn" onclick="doLogin()">Sign In</button>
+    <div class="login-err" id="lerr">❌ Invalid username or password</div>
+    <a class="back-link" onclick="showPage('main-page')">← Back to Website</a>
+  </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div id="admin-page" class="page">
+  <div class="admin-header">
+    <h2>⚙️ CTECH Admin Panel</h2>
+    <button class="admin-logout" onclick="doLogout()">Logout</button>
+  </div>
+  <div class="admin-body">
+    <div class="admin-stats">
+      <div class="astat"><div class="num" id="st-projs">0</div><div class="lbl">Sale Projects</div></div>
+      <div class="astat"><div class="num" id="st-subs">0</div><div class="lbl">Enquiries</div></div>
+      <div class="astat"><div class="num" id="st-svcs">0</div><div class="lbl">Services</div></div>
+      <div class="astat"><div class="num" id="st-rp">0</div><div class="lbl">Recent Projects</div></div>
+    </div>
+    <div class="admin-tabs">
+      <button class="atab active" onclick="switchTab('t-projs',this)">📦 Projects</button>
+      <button class="atab" onclick="switchTab('t-subs',this)">📥 Enquiries</button>
+      <button class="atab" onclick="switchTab('t-services',this)">🛠️ Services</button>
+      <button class="atab" onclick="switchTab('t-recent',this)">🗂️ Recent Projects</button>
+      <button class="atab" onclick="switchTab('t-banner',this)">🖼️ Banner</button>
+      <button class="atab" onclick="switchTab('t-social',this)">🔗 Social</button>
+      <button class="atab" onclick="switchTab('t-settings',this)">⚙️ Settings</button>
+    </div>
+
+    <!-- PROJECTS FOR SALE TAB -->
+    <div id="t-projs" class="atc active">
+      <div class="acard">
+        <h3>➕ Add New Project (For Sale)</h3>
+        <div class="af-row">
+          <div class="af"><label>Project Name *</label><input type="text" id="p-name" placeholder="e.g. Smart Attendance System"/></div>
+          <div class="af"><label>Domain / Category *</label><input type="text" id="p-domain" placeholder="e.g. IoT, Web, Mobile App"/></div>
+        </div>
+        <div class="af-row">
+          <div class="af"><label>Budget / Price (₹) *</label><input type="text" id="p-budget" placeholder="e.g. 5,000"/></div>
+          <div class="af"><label>Tech Stack</label><input type="text" id="p-tech" placeholder="e.g. Arduino, Python, Firebase"/></div>
+        </div>
+        <div class="af"><label>Description</label><textarea id="p-desc" placeholder="Brief description of the project..."></textarea></div>
+        <div class="af">
+          <label>Project Images (up to 3)</label>
+          <div class="proj-upload-grid">
+            <div class="proj-img-slot" id="slot0"><input type="file" accept="image/*" onchange="handleProjImg(this,0)"/><span class="plus"><i class="fas fa-plus"></i></span></div>
+            <div class="proj-img-slot" id="slot1"><input type="file" accept="image/*" onchange="handleProjImg(this,1)"/><span class="plus"><i class="fas fa-plus"></i></span></div>
+            <div class="proj-img-slot" id="slot2"><input type="file" accept="image/*" onchange="handleProjImg(this,2)"/><span class="plus"><i class="fas fa-plus"></i></span></div>
+          </div>
+        </div>
+        <button class="apost-btn" onclick="addProject()">📦 Post Project</button>
+      </div>
+      <div class="acard">
+        <h3>📋 Projects for Sale (<span id="proj-count">0</span>)</h3>
+        <div id="admin-proj-list"><div class="empty-box">No projects yet.</div></div>
+      </div>
+    </div>
+
+    <!-- ENQUIRIES TAB -->
+    <div id="t-subs" class="atc">
+      <div class="acard">
+        <h3>📥 All Enquiries & Buy Requests (<span id="sub-count">0</span>)</h3>
+        <div id="subs-list"><div class="empty-box">No enquiries yet.</div></div>
+      </div>
+    </div>
+
+    <!-- SERVICES TAB -->
+    <div id="t-services" class="atc">
+      <div class="acard">
+        <h3>➕ Add New Service</h3>
+        <p class="adesc">Add a service card — it will appear in the "Our Core Services" section on the main page.</p>
+        <div class="af">
+          <label>Choose Icon</label>
+          <div class="icon-picker-wrap" id="svc-icon-wrap">
+            <div class="icon-preview" onclick="toggleIconPicker('svc')">
+              <i class="fas fa-globe" id="svc-icon-preview-i"></i>
+              <span id="svc-icon-preview-txt">fas fa-globe</span>
+              <span class="arrow">▼</span>
+            </div>
+            <div class="icon-dropdown" id="svc-icon-dd">
+              <input class="icon-search-inp" placeholder="Search icon..." oninput="filterIcons('svc',this.value)"/>
+              <div class="icon-grid" id="svc-icon-grid"></div>
+            </div>
+          </div>
+        </div>
+        <div class="af"><label>Service Name *</label><input type="text" id="svc-name" placeholder="e.g. Billing Software"/></div>
+        <div class="af"><label>Description *</label><textarea id="svc-desc" placeholder="Brief description of this service..."></textarea></div>
+        <button class="apost-btn" onclick="addService()">➕ Add Service</button>
+      </div>
+      <div class="acard">
+        <h3>🛠️ Current Services (<span id="svc-count">0</span>)</h3>
+        <div id="admin-svc-list"><div class="empty-box">No custom services yet. Default services shown.</div></div>
+      </div>
+    </div>
+
+    <!-- RECENT PROJECTS TAB -->
+    <div id="t-recent" class="atc">
+      <div class="acard">
+        <h3>➕ Add Recent Project</h3>
+        <p class="adesc">Add a card to the "Recent Projects" section — choose an icon, domain & project name.</p>
+        <div class="af">
+          <label>Choose Icon</label>
+          <div class="icon-picker-wrap" id="rp-icon-wrap">
+            <div class="icon-preview" onclick="toggleIconPicker('rp')">
+              <i class="fas fa-globe" id="rp-icon-preview-i"></i>
+              <span id="rp-icon-preview-txt">fas fa-globe</span>
+              <span class="arrow">▼</span>
+            </div>
+            <div class="icon-dropdown" id="rp-icon-dd">
+              <input class="icon-search-inp" placeholder="Search icon..." oninput="filterIcons('rp',this.value)"/>
+              <div class="icon-grid" id="rp-icon-grid"></div>
+            </div>
+          </div>
+        </div>
+        <div class="af-row">
+          <div class="af"><label>Project Name *</label><input type="text" id="rp-name" placeholder="e.g. HR Management Portal"/></div>
+          <div class="af"><label>Domain *</label><input type="text" id="rp-domain" placeholder="e.g. Web + Dashboard"/></div>
+        </div>
+        <div class="af"><label>About Project</label><textarea id="rp-about" placeholder="Short description about this project..."></textarea></div>
+        <button class="apost-btn" onclick="addRecentProject()">📌 Add to Recent Projects</button>
+      </div>
+      <div class="acard">
+        <h3>🗂️ Recent Projects (<span id="rp-count">0</span>)</h3>
+        <div id="admin-rp-list"><div class="empty-box">No recent projects yet.</div></div>
+      </div>
+    </div>
+
+    <!-- BANNER TAB -->
+    <div id="t-banner" class="atc">
+      <div class="acard">
+        <h3>🖼️ Fixed Home Page Banner</h3>
+        <p class="adesc">Upload a banner image — it will appear <strong>fixed below the navbar</strong> at the top of the page at all times. Recommended: 1400×220px wide banner.</p>
+        <div class="af">
+          <label>Banner Image</label>
+          <div class="img-upload-box">
+            <input type="file" accept="image/*" onchange="handleBannerImg(this)"/>
+            <i class="fas fa-image"></i><p>Click to upload banner image</p>
+          </div>
+          <div class="banner-prev" id="banner-prev">
+            <img id="banner-prev-img" src="" alt=""/>
+            <p>✅ Image ready — click Save to apply</p>
+          </div>
+        </div>
+        <div class="af"><label>Banner Title (optional overlay text)</label><input type="text" id="b-title" placeholder="e.g. Special Offers This Month 🎉"/></div>
+        <div class="af"><label>Banner Subtitle (optional)</label><input type="text" id="b-sub" placeholder="e.g. Get 20% off on all web projects!"/></div>
+        <button class="apost-btn" onclick="saveBanner()">💾 Save & Show Banner</button>
+        <button class="apost-btn danger" onclick="removeBanner()" style="margin-top:7px;">🗑️ Remove Banner</button>
+      </div>
+    </div>
+
+    <!-- SOCIAL TAB -->
+    <div id="t-social" class="atc">
+      <div class="acard">
+        <h3>🔗 Social & Community Links</h3>
+        <p class="adesc">Set your group/profile links — buttons will appear on the website.</p>
+        <div class="srow"><div class="af"><label><i class="fab fa-whatsapp" style="color:#25D366;margin-right:5px;"></i>WhatsApp Group Link</label><input type="text" id="wa-inp" placeholder="https://chat.whatsapp.com/xxx"/></div><button class="save-btn" onclick="saveSocial('wa')">Save</button><button class="del-btn" style="margin-top:0;" onclick="removeSocial('wa')">🗑️</button></div>
+        <div class="srow"><div class="af"><label><i class="fab fa-instagram" style="color:#E1306C;margin-right:5px;"></i>Instagram Link</label><input type="text" id="ig-inp" placeholder="https://instagram.com/yourpage"/></div><button class="save-btn" onclick="saveSocial('ig')">Save</button><button class="del-btn" style="margin-top:0;" onclick="removeSocial('ig')">🗑️</button></div>
+        <div class="srow"><div class="af"><label><i class="fab fa-telegram" style="color:#0088cc;margin-right:5px;"></i>Telegram Group Link</label><input type="text" id="tg-inp" placeholder="https://t.me/yourchannel"/></div><button class="save-btn" onclick="saveSocial('tg')">Save</button><button class="del-btn" style="margin-top:0;" onclick="removeSocial('tg')">🗑️</button></div>
+        <div class="srow"><div class="af"><label><i class="fab fa-linkedin" style="color:#0077b5;margin-right:5px;"></i>LinkedIn Link</label><input type="text" id="li-inp" placeholder="https://linkedin.com/company/yourpage"/></div><button class="save-btn" onclick="saveSocial('li')">Save</button><button class="del-btn" style="margin-top:0;" onclick="removeSocial('li')">🗑️</button></div>
+        <div><p style="font-size:.76rem;color:var(--text-muted);margin-bottom:7px;">Active on website:</p><div class="sp-row" id="sp-preview"><span style="font-size:.8rem;color:var(--text-muted);">No links saved yet.</span></div></div>
+      </div>
+    </div>
+
+    <!-- SETTINGS TAB -->
+    <div id="t-settings" class="atc">
+      <div class="acard">
+        <h3>🔑 Admin Credentials</h3>
+        <div class="af-row">
+          <div class="af"><label>New Username</label><input type="text" id="new-u" placeholder="New username"/></div>
+          <div class="af"><label>New Password</label><input type="password" id="new-p" placeholder="New password"/></div>
+        </div>
+        <button class="apost-btn" onclick="saveCreds()">💾 Update Credentials</button>
+      </div>
+      <div class="acard">
+        <h3>📱 WhatsApp Float Button</h3>
+        <div class="srow"><div class="af"><label>Number (with country code, no +)</label><input type="text" id="wa-num" placeholder="917395984042"/></div><button class="save-btn" onclick="saveWaNum()">Save</button></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="fx.js" defer></script>
+<script src="pro.js" defer></script>
+<script type="module" src="script.js"></script>
+
+<script>
+/* Reliable responsive footer navigation — phone, tablet and iPad. */
+(function(){
+  function getClosest(el, selector){
+    while(el && el.nodeType===1){
+      if(el.matches && el.matches(selector)) return el;
+      el=el.parentElement;
+    }
+    return null;
+  }
+
+  document.addEventListener('click', function(e){
+    var toggle=getClosest(e.target,'.foot-toggle');
+    if(toggle){
+      var col=getClosest(toggle,'.foot-accordion');
+      if(!col) return;
+      var open=col.classList.toggle('open');
+      toggle.setAttribute('aria-expanded',open?'true':'false');
+      e.preventDefault();
+      return;
+    }
+
+    var link=getClosest(e.target,'[data-footer-route]');
+    if(link){
+      var route=link.getAttribute('data-footer-route');
+      if(window.routeTo){
+        e.preventDefault();
+        window.routeTo(route);
+        try{ window.scrollTo({top:0,behavior:'smooth'}); }catch(err){ window.scrollTo(0,0); }
+      }
+    }
+  }, true);
+
+  document.addEventListener('keydown', function(e){
+    var toggle=getClosest(e.target,'.foot-toggle');
+    if(toggle && (e.key==='Enter' || e.key===' ')){
+      e.preventDefault();
+      toggle.click();
+    }
+  });
+
+  window.addEventListener('resize',function(){
+    /* Keep footer accordions usable at every width. */
+    document.querySelectorAll('.foot-toggle').forEach(function(t){
+      var col=t.closest('.foot-accordion');
+      if(col) t.setAttribute('aria-expanded',col.classList.contains('open')?'true':'false');
+    });
+  });
+})();
+
+document.addEventListener('ctech:route',function(e){
+  var active=e.detail && e.detail.route;
+  if(active==='portfolio' && window.renderRecentProjects) {
+    /* Firebase-managed recent projects remain available to the admin panel. */
+  }
+});
+</script>
+
+<script>
+/* CTECH MOBILE NAV — independent of Firebase/module loading.
+   This keeps the hamburger menu working even if the app module is delayed. */
+(function(){
+  function initMobileNav(){
+    var btn=document.getElementById('hamburger-btn');
+    var menu=document.getElementById('nav-links');
+    if(!btn || !menu || btn.dataset.mobileNavReady==='1') return;
+    btn.dataset.mobileNavReady='1';
+
+    function closeMenu(){
+      menu.classList.remove('mobile-open');
+      btn.setAttribute('aria-expanded','false');
+      btn.setAttribute('aria-label','Open navigation menu');
+      var icon=btn.querySelector('i');
+      if(icon) icon.className='fas fa-bars';
+    }
+    function openMenu(){
+      menu.classList.add('mobile-open');
+      btn.setAttribute('aria-expanded','true');
+      btn.setAttribute('aria-label','Close navigation menu');
+      var icon=btn.querySelector('i');
+      if(icon) icon.className='fas fa-times';
+    }
+
+    btn.addEventListener('click',function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      if(menu.classList.contains('mobile-open')) closeMenu(); else openMenu();
+    });
+
+    menu.addEventListener('click',function(e){
+      var link=e.target.closest('a');
+      if(link) closeMenu();
+    });
+
+    document.addEventListener('click',function(e){
+      if(!menu.classList.contains('mobile-open')) return;
+      if(!menu.contains(e.target) && !btn.contains(e.target)) closeMenu();
+    });
+
+    document.addEventListener('keydown',function(e){
+      if(e.key==='Escape') closeMenu();
+    });
+
+    window.addEventListener('resize',function(){
+      if(window.innerWidth>768) closeMenu();
+    });
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',initMobileNav);
+  else initMobileNav();
+})();
+</script>
+
+</body>
+</html>
