@@ -17,7 +17,7 @@ from schemas import LoginIn, UserCreate, UserUpdate, ProjectCreate, ProjectUpdat
 
 app = FastAPI(title="CTech Backend API", version="1.0.0")
 
-FRONTEND_DIR = Path(__file__).resolve().parent.parent / "frontend"
+FRONTEND_DIR = Path(__file__).resolve().parent.parent
 
 app.add_middleware(
     CORSMiddleware,
@@ -393,9 +393,3 @@ def update_profile(id: str,p: UserUpdate,db: Session=Depends(get_db)):
 def dashboard(db: Session=Depends(get_db)):
     return {"employees":db.query(User).filter(User.role=="employee").count(),"activeEmployees":db.query(User).filter(User.role=="employee",User.active==True).count(),"projects":db.query(Project).filter(Project.status!="Completed").count(),"completedProjects":db.query(Project).filter(Project.status=="Completed").count(),"tasks":db.query(Task).count(),"pendingTasks":db.query(Task).filter(Task.status!="Completed").count(),"reports":db.query(Report).count(),"pendingLeaves":db.query(Leave).filter(Leave.status=="Pending").count(),"announcements":db.query(Announcement).count()}
 # existing code above...
-
-app.mount(
-    "/",
-    StaticFiles(directory=FRONTEND_DIR, html=True),
-    name="frontend"
-)
