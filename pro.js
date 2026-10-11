@@ -120,7 +120,7 @@
    Clicking a navigation item switches the visible page.
    ========================================================= */
 (function(){
-  var routes = ['home','services','about','industries','process','portfolio','contact'];
+  var routes = ['home','services','about','industries','process','portfolio','reviews','contact'];
   var main = document.getElementById('main-page');
   if(!main) return;
 
